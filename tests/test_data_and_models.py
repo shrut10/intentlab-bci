@@ -1,5 +1,6 @@
 import hashlib
 import json
+import tomllib
 from pathlib import Path
 
 import numpy as np
@@ -9,6 +10,17 @@ import pytest
 from intentlab.inference import Predictor
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_docker_and_serverless_use_the_same_serving_dependencies():
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+    requirements = {
+        line
+        for line in (ROOT / "requirements.txt").read_text().splitlines()
+        if line and not line.startswith("#")
+    }
+    assert set(project["dependencies"]) == requirements
+    assert "torch" not in " ".join(project["dependencies"])
 
 
 def test_people_are_disjoint_and_only_imagery_runs_used():
