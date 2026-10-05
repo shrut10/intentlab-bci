@@ -1,0 +1,16 @@
+.venv/
+.vercel/
+.env*
+!.env.example
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+data/raw/
+data/derived/epochs.npz
+artifacts/*.pt
+*.log
+build/
+dist/
+*.egg-info/
