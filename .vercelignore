@@ -1,0 +1,13 @@
+.venv
+.git
+.env*
+data/raw
+data/derived/epochs.npz
+data/derived/trials.parquet
+tests
+docs
+__pycache__
+.pytest_cache
+.ruff_cache
+*.log
+*.ses

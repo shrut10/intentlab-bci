@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#11242b" />
+    <meta
+      name="description"
+      content="A motor-imagery EEG experiment by Shruthi. Decode real held-out recordings, explore uncertainty, and test when a brain-computer interface should act."
+    />
+    <title>IntentLab — imagined movement, measured</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#studio">Skip to the experiment</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="IntentLab home"
+        ><svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M2 16h6l4-10 7 20 4-10h7" /></svg
+        >IntentLab<span class="brand-dot">.</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#studio">Experiment</a><a href="#evidence">Evidence</a
+        ><a href="#notes">Field notes</a>
+      </nav>
+      <a
+        class="source-link"
+        href="https://github.com/shrut10/intentlab-bci"
+        target="_blank"
+        rel="noopener"
+        >Source code <span aria-hidden="true">↗</span></a
+      >
+    </header>
+
+    <main id="top">
+      <section class="hero page-width">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="live-dot"></span> NEURAL INTERFACES / EXPERIMENT 001
+          </p>
+          <h1>
+            Decode imagined movement<br />from recorded<br /><em
+              >brain signals.</em
+            >
+          </h1>
+          <p class="hero-description">
+            This demo uses EEG recorded while people imagined moving their left
+            or right fist. Choose a recording to see the model’s prediction, its
+            confidence, and whether it would send a command or wait.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#studio"
+              >Open the experiment <span aria-hidden="true">↓</span></a
+            ><span>Real recordings.<br />Models you can inspect.</span>
+          </div>
+        </div>
+        <div
+          class="hero-visual"
+          aria-label="Project dataset and held-out evaluation"
+        >
+          <div class="orbital" aria-hidden="true">
+            <svg viewBox="0 0 420 310">
+              <defs>
+                <radialGradient id="glow">
+                  <stop offset="0" stop-color="#8bdfc4" stop-opacity=".25" />
+                  <stop offset="1" stop-color="#8bdfc4" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <circle cx="210" cy="150" r="150" fill="url(#glow)" />
+              <g class="orbit-lines">
+                <ellipse cx="210" cy="148" rx="133" ry="105" />
+                <ellipse cx="210" cy="148" rx="95" ry="105" />
+                <ellipse cx="210" cy="148" rx="47" ry="105" />
+                <ellipse cx="210" cy="148" rx="133" ry="43" />
+                <path d="M77 148h266M210 43v210" />
+                <path d="M113 76l194 144M113 220L307 76" />
+              </g>
+              <g class="electrode-dots">
+                <circle cx="148" cy="105" r="5" />
+                <circle cx="210" cy="97" r="5" />
+                <circle cx="272" cy="105" r="5" />
+                <circle cx="132" cy="148" r="7" />
+                <circle cx="210" cy="148" r="5" />
+                <circle cx="288" cy="148" r="7" />
+                <circle cx="148" cy="191" r="5" />
+                <circle cx="210" cy="200" r="5" />
+                <circle cx="272" cy="191" r="5" />
+              </g>
+              <g class="diagram-labels">
+                <text x="94" y="153">C3</text>
+                <text x="302" y="153">C4</text>
+                <text x="165" y="280">9 ELECTRODES</text>
+              </g>
+            </svg>
+          </div>
+          <div class="hero-data">
+            <div>
+              <strong id="people-count">—</strong
+              ><span>people after data checks</span>
+            </div>
+            <div>
+              <strong id="trial-count">—</strong><span>usable EEG trials</span>
+            </div>
+            <div>
+              <strong id="test-count">—</strong><span>people held out</span>
+            </div>
+          </div>
+          <p class="hero-footnote">PUBLIC EEG · PHYSIONET · 160 Hz</p>
+        </div>
+      </section>
+
+      <div
+        id="error-banner"
+        class="error-banner page-width"
+        role="alert"
+        hidden
+      ></div>
+      <noscript
+        ><p class="page-width error-banner">
+          This interactive experiment needs JavaScript. The dataset, results and
+          model cards are also available in the
+          <a href="https://github.com/shrut10/intentlab-bci"
+            >GitHub repository</a
+          >.
+        </p></noscript
+      >
+
+      <section id="studio" class="studio-section">
+        <div class="page-width">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">01 / DECODING STUDIO</p>
+              <h2>A signal becomes a decision.</h2>
+            </div>
+            <p>
+              Replay recorded EEG from an unseen participant.<br />The server
+              runs the model on each request.
+            </p>
+          </div>
+          <div class="control-strip">
+            <label
+              >Participant<select
+                id="subject-select"
+                disabled
+                aria-label="Held-out participant"
+              >
+                <option>Loading…</option>
+              </select></label
+            >
+            <label
+              >Recorded trial<select
+                id="trial-select"
+                disabled
+                aria-label="Recorded trial"
+              >
+                <option>Loading…</option>
+              </select></label
+            >
+            <label class="model-control"
+              >Decoder<select
+                id="model-select"
+                disabled
+                aria-label="Decoder model"
+              >
+                <option>Loading…</option>
+              </select></label
+            >
+            <button class="button primary" id="decode-button" disabled>
+              Run decoder <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <div class="studio-grid">
+            <div class="signal-panel card">
+              <div class="card-heading">
+                <div>
+                  <span class="eyebrow">THE RECORDING</span>
+                  <h3>Nine channels. Three seconds.</h3>
+                </div>
+                <span class="badge" id="trial-badge">HELD-OUT EEG</span>
+              </div>
+              <div class="waveform-frame">
+                <canvas
+                  id="waveform"
+                  role="img"
+                  aria-label="Nine EEG channels plotted from one to four seconds after the imagery cue"
+                ></canvas>
+                <div class="waveform-footer">
+                  <span>8–30 Hz · normalised amplitude</span
+                  ><span>Seconds after the cue →</span>
+                </div>
+              </div>
+              <div class="recording-meta">
+                <span id="cue-label">Cued imagery: —</span
+                ><span id="recording-id">—</span
+                ><a id="csv-link" href="#" aria-disabled="true"
+                  >Download this signal ↓</a
+                >
+              </div>
+              <div class="perturbation-controls">
+                <div>
+                  <h4>Change the conditions</h4>
+                  <p>Test the same signal with a controlled disturbance.</p>
+                </div>
+                <label
+                  >Added noise<select id="noise-select" disabled>
+                    <option value="0">None</option>
+                    <option value="0.5">0.5 × signal RMS</option>
+                    <option value="1">1.0 × signal RMS</option>
+                  </select></label
+                ><label
+                  >Disconnect electrode<select id="drop-select" disabled>
+                    <option value="">All connected</option>
+                  </select></label
+                >
+              </div>
+              <p class="small-note">
+                Disturbances are applied after preprocessing. They are
+                repeatable stress tests, not a simulation of every real headset
+                failure.
+              </p>
+            </div>
+
+            <div class="decision-panel card">
+              <div class="card-heading">
+                <div>
+                  <span class="eyebrow">THE DECISION</span>
+                  <h3 id="decision-title">Ready to decode</h3>
+                </div>
+                <span id="latency" class="mono">— ms</span>
+              </div>
+              <div class="probability-block">
+                <div class="probability-labels">
+                  <span>Left <strong id="left-prob">—</strong></span
+                  ><span>Right <strong id="right-prob">—</strong></span>
+                </div>
+                <div class="probability-track"><div id="left-fill"></div></div>
+                <p id="decision-explanation" aria-live="polite">
+                  Choose a trial and run the decoder.
+                </p>
+              </div>
+              <label class="threshold-label" for="threshold"
+                >Minimum confidence
+                <output id="threshold-value" for="threshold">75%</output></label
+              ><input
+                type="range"
+                id="threshold"
+                min="50"
+                max="99"
+                step="1"
+                value="75"
+                disabled
+              />
+              <p class="small-note" id="threshold-note">
+                Below this level, the interface sends no command.
+              </p>
+              <div class="cursor-demo">
+                <div class="cursor-head">
+                  <span>COMMAND REPLAY</span
+                  ><span id="command-state">Waiting</span>
+                </div>
+                <div class="cursor-track" id="cursor-track">
+                  <span class="target left-target">L</span>
+                  <div class="track-line"></div>
+                  <div
+                    class="cursor"
+                    id="cursor"
+                    aria-label="Simulated cursor"
+                  ></div>
+                  <span class="target right-target">R</span>
+                </div>
+                <div class="replay-actions">
+                  <button class="button secondary" id="replay-button" disabled>
+                    Replay 6 trials</button
+                  ><button class="text-button" id="reset-button">Reset</button>
+                </div>
+                <p id="replay-status" class="small-note" aria-live="polite">
+                  Recorded-data simulation. No headset or physical device is
+                  connected.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="explanation-grid">
+            <div class="card sensitivity-panel">
+              <div class="card-heading">
+                <div>
+                  <span class="eyebrow">MODEL SENSITIVITY</span>
+                  <h3>Which channels change the answer?</h3>
+                </div>
+                <span class="badge">LIVE OCCLUSION</span>
+              </div>
+              <div class="sensitivity-content">
+                <svg
+                  id="scalp"
+                  viewBox="0 0 250 238"
+                  role="img"
+                  aria-label="Electrode layout with channel sensitivity"
+                ></svg>
+                <div>
+                  <p>
+                    Each electrode is set to zero in turn. The bars show the
+                    change in the model’s probability of
+                    <strong>right-fist imagery</strong>.
+                  </p>
+                  <div id="occlusion-bars" class="occlusion-bars"></div>
+                  <p class="small-note">
+                    This explains the model’s sensitivity. It does not locate a
+                    thought in the brain. Electrode positions are schematic.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card spectrum-panel">
+              <div class="card-heading">
+                <div>
+                  <span class="eyebrow">THE RHYTHMS</span>
+                  <h3>Power across frequencies</h3>
+                </div>
+              </div>
+              <svg
+                id="spectrum"
+                viewBox="0 0 440 205"
+                role="img"
+                aria-label="Average power spectrum across the nine channels"
+              ></svg>
+              <div class="legend">
+                <span><i class="alpha-dot"></i> Alpha / mu · 8–13 Hz</span
+                ><span><i class="beta-dot"></i> Beta · 13–30 Hz</span>
+              </div>
+              <p class="small-note">
+                Average across the displayed channels. Mu and beta rhythms
+                motivate the filter; the plot alone does not establish which
+                movement was imagined.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="evidence" class="page-width evidence-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / THE EVIDENCE</p>
+            <h2>New people. The harder test.</h2>
+          </div>
+          <p>
+            Every trial from a person stays in one split.<br />The test
+            participants never enter training or model selection.
+          </p>
+        </div>
+        <div class="metric-row">
+          <div class="metric-card">
+            <span>Selected model · held-out people</span
+            ><strong id="metric-score">—</strong>
+            <p id="metric-ci">Participant-macro balanced accuracy</p>
+          </div>
+          <div class="metric-card">
+            <span>When the model accepts a command</span
+            ><strong id="metric-accuracy">—</strong>
+            <p id="metric-coverage">
+              At the validation-selected confidence threshold
+            </p>
+          </div>
+          <div class="metric-card">
+            <span>Chance-level reference</span><strong>50<span>%</span></strong>
+            <p>Balanced accuracy for this two-class task</p>
+          </div>
+        </div>
+        <p id="operating-caveat" class="finding-note"></p>
+        <div class="evidence-grid">
+          <div class="card model-comparison">
+            <div class="card-heading">
+              <div>
+                <span class="eyebrow">FOUR FIXED CANDIDATES</span>
+                <h3>Does complexity help?</h3>
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col">Validation</th>
+                    <th scope="col">Test</th>
+                  </tr>
+                </thead>
+                <tbody id="models-table"></tbody>
+              </table>
+            </div>
+            <p class="small-note">
+              Both columns use participant-macro balanced accuracy. The serving
+              model was chosen using validation only. All test results are
+              shown, including weaker models.
+            </p>
+            <div class="split-strip" id="split-strip"></div>
+          </div>
+          <div class="card">
+            <div class="card-heading">
+              <div>
+                <span class="eyebrow">THE COST OF WAITING</span>
+                <h3>Fewer commands. Fewer errors?</h3>
+              </div>
+            </div>
+            <svg
+              id="coverage-chart"
+              viewBox="0 0 470 245"
+              role="img"
+              aria-label="Held-out accuracy versus fraction of trials retained as the confidence threshold changes"
+            ></svg>
+            <p class="small-note">
+              Each point uses a different confidence threshold. High thresholds
+              can leave very few examples; a high accuracy at tiny coverage is
+              weak evidence. This chart is exploratory, not used for model
+              selection.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-grid lower-evidence">
+          <div class="card">
+            <div class="card-heading">
+              <div>
+                <span class="eyebrow">PARTICIPANT VARIATION</span>
+                <h3>The average hides a lot.</h3>
+              </div>
+            </div>
+            <div id="participant-chart" class="participant-chart"></div>
+            <p class="small-note">
+              One bar per held-out participant, using all eligible test trials.
+              The demo above contains the first six valid trials for each
+              person, not a selection of successful predictions.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-heading">
+              <div>
+                <span class="eyebrow">CONTROLLED STRESS TESTS</span>
+                <h3>How easily does it break?</h3>
+              </div>
+            </div>
+            <div id="robustness-chart" class="robustness-chart"></div>
+            <p class="small-note">
+              The selected model stays frozen. These disturbances measure
+              sensitivity under specific conditions; they do not validate a
+              wearable or assistive device.
+            </p>
+          </div>
+        </div>
+        <details class="methods-details">
+          <summary>
+            Inspect calibration, confusion matrix and data exclusions
+            <span>+</span>
+          </summary>
+          <div class="methods-grid">
+            <div>
+              <h3>Probability calibration</h3>
+              <p id="calibration-summary"></p>
+              <svg
+                id="calibration-chart"
+                viewBox="0 0 380 230"
+                role="img"
+                aria-label="Predicted confidence versus observed accuracy"
+              ></svg>
+            </div>
+            <div>
+              <h3>Every prediction, including errors</h3>
+              <div id="confusion-matrix"></div>
+              <p class="small-note">
+                Rows: recorded label. Columns: model prediction. Before
+                abstention.
+              </p>
+              <h4>Data quality audit</h4>
+              <p id="quality-summary"></p>
+              <a
+                href="https://github.com/shrut10/intentlab-bci/blob/main/data/derived/manifest.json"
+                target="_blank"
+                rel="noopener"
+                >Full provenance and exclusions ↗</a
+              >
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section id="notes" class="notes-section">
+        <div class="page-width">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">03 / FIELD NOTES</p>
+              <h2>A first step towards neural interfaces.</h2>
+            </div>
+          </div>
+          <div class="notes-grid">
+            <article>
+              <span class="note-number">01</span>
+              <h3>The question I’m exploring</h3>
+              <p>
+                How can a noisy brain signal become a useful input to a
+                computer? IntentLab starts with a constrained task: two imagined
+                movements, a short recording, and the option to make no
+                decision.
+              </p>
+              <p>
+                That option matters. A useful interface needs to account for
+                uncertainty, differences between people, and changes in the
+                signal.
+              </p>
+            </article>
+            <article>
+              <span class="note-number">02</span>
+              <h3>What this experiment can tell us</h3>
+              <p>
+                It measures whether models can distinguish recorded left and
+                right imagery cues in people they did not train on. You can
+                inspect the full path from an open EDF recording to a deployed
+                prediction.
+              </p>
+              <p>
+                Visual cues and recording artefacts may contribute to the
+                result. These labels do not prove that a model has isolated a
+                person’s intention.
+              </p>
+            </article>
+            <article>
+              <span class="note-number">03</span>
+              <h3>Where I’d take it next</h3>
+              <p>
+                Participant-specific calibration, causal filtering for a
+                streaming signal, and a second dataset to test transfer. Each
+                would need a new, untouched evaluation set.
+              </p>
+              <p>
+                Dream reconstruction and consciousness are much larger
+                questions. This project builds practical signal-decoding skills
+                without claiming to answer them.
+              </p>
+            </article>
+          </div>
+          <div class="reading-list">
+            <div>
+              <h3>Trace it back to the source.</h3>
+              <p>
+                Open data, inspectable methods, and a guide to reproducing the
+                experiment.
+              </p>
+            </div>
+            <div>
+              <a
+                href="https://physionet.org/content/eegmmidb/1.0.0/"
+                target="_blank"
+                rel="noopener"
+                >PhysioNet dataset & licence ↗</a
+              ><a
+                href="https://arxiv.org/abs/1611.08024"
+                target="_blank"
+                rel="noopener"
+                >EEGNet paper · architecture inspiration ↗</a
+              ><a
+                href="https://github.com/shrut10/intentlab-bci/blob/main/docs/WALKTHROUGH.md"
+                target="_blank"
+                rel="noopener"
+                >Walk through the experiment ↗</a
+              ><a href="/docs" target="_blank" rel="noopener"
+                >Explore the live API ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="page-width">
+      <div>
+        <a class="brand" href="#top"
+          >IntentLab<span class="brand-dot">.</span></a
+        >
+        <p>
+          A project by
+          <a href="https://jayashruthi.com" target="_blank" rel="noopener"
+            >Shruthi</a
+          >
+          · Motor imagery, measured.
+        </p>
+      </div>
+      <p>
+        Research demonstration. Not a medical device.<br />PhysioNet EEGMMIDB
+        v1.0.0 · ODC-BY 1.0 ·
+        <a
+          href="https://github.com/shrut10/intentlab-bci/blob/main/NOTICE.md"
+          target="_blank"
+          rel="noopener"
+          >Attribution</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

@@ -11,6 +11,8 @@ data/raw/
 data/derived/epochs.npz
 artifacts/*.pt
 *.log
+*.ses
 build/
 dist/
 *.egg-info/
+.vercel

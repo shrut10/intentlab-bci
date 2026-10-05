@@ -1,0 +1,5 @@
+-r requirements-dev.txt
+mne==1.13.2
+scikit-learn==1.9.1
+torch==2.14.1
+onnx==1.23.1

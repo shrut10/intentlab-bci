@@ -1,0 +1,14 @@
+.git
+.venv
+.vercel
+.env*
+data/raw
+data/derived/epochs.npz
+data/derived/trials.parquet
+__pycache__
+.pytest_cache
+.ruff_cache
+*.log
+*.ses
+docs
+tests

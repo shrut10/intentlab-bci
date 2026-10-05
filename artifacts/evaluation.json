@@ -1,0 +1,1290 @@
+{
+  "protocol": "docs/PROTOCOL.md",
+  "seed": 2027,
+  "selected": "compact_eeg",
+  "selection_metric": "validation participant-macro balanced accuracy",
+  "threshold": 0.75,
+  "threshold_target_met": false,
+  "validation_threshold": {
+    "threshold": 0.75,
+    "coverage": 0.007077856420626896,
+    "retained": 7,
+    "accuracy": 0.5714285714285714
+  },
+  "onnx_max_absolute_logit_error": 2.384185791015625e-07,
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7001587245199415,
+      "validation_participant_balanced_accuracy": 0.5
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6878974344995287,
+      "validation_participant_balanced_accuracy": 0.5097151284157214
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6717852221594917,
+      "validation_participant_balanced_accuracy": 0.5479778373800112
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.6571326851844788,
+      "validation_participant_balanced_accuracy": 0.5430414035898224
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.6397683991326226,
+      "validation_participant_balanced_accuracy": 0.547360248447205
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.6211354560322232,
+      "validation_participant_balanced_accuracy": 0.5421345370703079
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.6102977143393622,
+      "validation_participant_balanced_accuracy": 0.5578154141642284
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.6077647937668694,
+      "validation_participant_balanced_accuracy": 0.5587912581489657
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.6063989506827461,
+      "validation_participant_balanced_accuracy": 0.5714788340776483
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.599663413895501,
+      "validation_participant_balanced_accuracy": 0.5609990717451192
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.5956562227673001,
+      "validation_participant_balanced_accuracy": 0.5616300284037439
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.5964328779114617,
+      "validation_participant_balanced_accuracy": 0.5563604708861626
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.5973064144452412,
+      "validation_participant_balanced_accuracy": 0.55289074397276
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.5921532882584466,
+      "validation_participant_balanced_accuracy": 0.5578047199835737
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.5973833852344089,
+      "validation_participant_balanced_accuracy": 0.5644992770733878
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.5983414067162408,
+      "validation_participant_balanced_accuracy": 0.5667466591379635
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.5903917875554826,
+      "validation_participant_balanced_accuracy": 0.553244186643396
+    }
+  ],
+  "models": {
+    "majority": {
+      "name": "Constant majority",
+      "validation_participant_balanced_accuracy": 0.5,
+      "test": {
+        "participant_balanced_accuracy": 0.5,
+        "bootstrap_95_ci": [
+          0.5,
+          0.5
+        ],
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.5037037037037037,
+        "roc_auc": 0.5,
+        "brier": 0.24998781968073588,
+        "ece": 0.0012397991211553496,
+        "n": 945,
+        "confusion_matrix": [
+          [
+            476,
+            0
+          ],
+          [
+            469,
+            0
+          ]
+        ],
+        "participants": [
+          {
+            "subject": 10,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 20,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 26,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 28,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 29,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 42,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 48,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 49,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 50,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 57,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 68,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 70,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 74,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 79,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 81,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 82,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 87,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 102,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 103,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 105,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 108,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          }
+        ],
+        "reliability": [
+          {
+            "confidence": 0.504943502824859,
+            "accuracy": 0.5037037037037037,
+            "count": 945
+          }
+        ],
+        "selective_curve": [
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "retained": 945,
+            "accuracy": 0.5037037037037037
+          },
+          {
+            "threshold": 0.525,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.55,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.5750000000000001,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.6250000000000001,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.6500000000000001,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.6750000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7000000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7250000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7500000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7750000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8000000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8250000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8500000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8750000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9000000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9250000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9500000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9750000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          }
+        ]
+      }
+    },
+    "bandpower": {
+      "name": "Bandpower + logistic regression",
+      "validation_participant_balanced_accuracy": 0.5407576613110211,
+      "test": {
+        "participant_balanced_accuracy": 0.5872298853665313,
+        "bootstrap_95_ci": [
+          0.5336472113548977,
+          0.6420520365590241
+        ],
+        "balanced_accuracy": 0.5836886993603412,
+        "accuracy": 0.5841269841269842,
+        "roc_auc": 0.634211893712709,
+        "brier": 0.2426023551908296,
+        "ece": 0.05634929208307351,
+        "n": 945,
+        "confusion_matrix": [
+          [
+            306,
+            170
+          ],
+          [
+            223,
+            246
+          ]
+        ],
+        "participants": [
+          {
+            "subject": 10,
+            "trials": 45,
+            "balanced_accuracy": 0.6279761904761905
+          },
+          {
+            "subject": 20,
+            "trials": 45,
+            "balanced_accuracy": 0.599802371541502
+          },
+          {
+            "subject": 26,
+            "trials": 45,
+            "balanced_accuracy": 0.6309523809523809
+          },
+          {
+            "subject": 28,
+            "trials": 45,
+            "balanced_accuracy": 0.4733201581027668
+          },
+          {
+            "subject": 29,
+            "trials": 45,
+            "balanced_accuracy": 0.8478260869565217
+          },
+          {
+            "subject": 42,
+            "trials": 45,
+            "balanced_accuracy": 0.8033596837944664
+          },
+          {
+            "subject": 48,
+            "trials": 45,
+            "balanced_accuracy": 0.5622529644268774
+          },
+          {
+            "subject": 49,
+            "trials": 45,
+            "balanced_accuracy": 0.642292490118577
+          },
+          {
+            "subject": 50,
+            "trials": 45,
+            "balanced_accuracy": 0.4782608695652174
+          },
+          {
+            "subject": 57,
+            "trials": 45,
+            "balanced_accuracy": 0.46130952380952384
+          },
+          {
+            "subject": 68,
+            "trials": 45,
+            "balanced_accuracy": 0.5830039525691699
+          },
+          {
+            "subject": 70,
+            "trials": 45,
+            "balanced_accuracy": 0.3626482213438735
+          },
+          {
+            "subject": 74,
+            "trials": 45,
+            "balanced_accuracy": 0.48214285714285715
+          },
+          {
+            "subject": 79,
+            "trials": 45,
+            "balanced_accuracy": 0.5138339920948617
+          },
+          {
+            "subject": 81,
+            "trials": 45,
+            "balanced_accuracy": 0.4980237154150198
+          },
+          {
+            "subject": 82,
+            "trials": 45,
+            "balanced_accuracy": 0.4980237154150198
+          },
+          {
+            "subject": 87,
+            "trials": 45,
+            "balanced_accuracy": 0.5049407114624506
+          },
+          {
+            "subject": 102,
+            "trials": 45,
+            "balanced_accuracy": 0.7786561264822134
+          },
+          {
+            "subject": 103,
+            "trials": 45,
+            "balanced_accuracy": 0.6047430830039526
+          },
+          {
+            "subject": 105,
+            "trials": 45,
+            "balanced_accuracy": 0.558300395256917
+          },
+          {
+            "subject": 108,
+            "trials": 45,
+            "balanced_accuracy": 0.8201581027667983
+          }
+        ],
+        "reliability": [
+          {
+            "confidence": 0.5272138442490438,
+            "accuracy": 0.5814696485623003,
+            "count": 939
+          },
+          {
+            "confidence": 0.6160198719405631,
+            "accuracy": 1.0,
+            "count": 6
+          }
+        ],
+        "selective_curve": [
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "retained": 945,
+            "accuracy": 0.5841269841269842
+          },
+          {
+            "threshold": 0.525,
+            "coverage": 0.4634920634920635,
+            "retained": 438,
+            "accuracy": 0.6712328767123288
+          },
+          {
+            "threshold": 0.55,
+            "coverage": 0.15026455026455027,
+            "retained": 142,
+            "accuracy": 0.7464788732394366
+          },
+          {
+            "threshold": 0.5750000000000001,
+            "coverage": 0.03597883597883598,
+            "retained": 34,
+            "accuracy": 0.8529411764705882
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "coverage": 0.006349206349206349,
+            "retained": 6,
+            "accuracy": 1.0
+          },
+          {
+            "threshold": 0.6250000000000001,
+            "coverage": 0.0010582010582010583,
+            "retained": 1,
+            "accuracy": 1.0
+          },
+          {
+            "threshold": 0.6500000000000001,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.6750000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7000000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7250000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7500000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7750000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8000000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8250000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8500000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8750000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9000000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9250000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9500000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9750000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          }
+        ]
+      }
+    },
+    "csp_lda": {
+      "name": "CSP + shrinkage LDA",
+      "validation_participant_balanced_accuracy": 0.5521421513269339,
+      "test": {
+        "participant_balanced_accuracy": 0.6154748460649082,
+        "bootstrap_95_ci": [
+          0.5692385954711265,
+          0.6645458998816919
+        ],
+        "balanced_accuracy": 0.6119716543333751,
+        "accuracy": 0.6126984126984127,
+        "roc_auc": 0.6640671193850675,
+        "brier": 0.239493891581958,
+        "ece": 0.07891786093687612,
+        "n": 945,
+        "confusion_matrix": [
+          [
+            338,
+            138
+          ],
+          [
+            228,
+            241
+          ]
+        ],
+        "participants": [
+          {
+            "subject": 10,
+            "trials": 45,
+            "balanced_accuracy": 0.6755952380952381
+          },
+          {
+            "subject": 20,
+            "trials": 45,
+            "balanced_accuracy": 0.6205533596837944
+          },
+          {
+            "subject": 26,
+            "trials": 45,
+            "balanced_accuracy": 0.5446428571428572
+          },
+          {
+            "subject": 28,
+            "trials": 45,
+            "balanced_accuracy": 0.49604743083003955
+          },
+          {
+            "subject": 29,
+            "trials": 45,
+            "balanced_accuracy": 0.8260869565217391
+          },
+          {
+            "subject": 42,
+            "trials": 45,
+            "balanced_accuracy": 0.8468379446640316
+          },
+          {
+            "subject": 48,
+            "trials": 45,
+            "balanced_accuracy": 0.8043478260869565
+          },
+          {
+            "subject": 49,
+            "trials": 45,
+            "balanced_accuracy": 0.6521739130434783
+          },
+          {
+            "subject": 50,
+            "trials": 45,
+            "balanced_accuracy": 0.5454545454545454
+          },
+          {
+            "subject": 57,
+            "trials": 45,
+            "balanced_accuracy": 0.5416666666666666
+          },
+          {
+            "subject": 68,
+            "trials": 45,
+            "balanced_accuracy": 0.5217391304347826
+          },
+          {
+            "subject": 70,
+            "trials": 45,
+            "balanced_accuracy": 0.541501976284585
+          },
+          {
+            "subject": 74,
+            "trials": 45,
+            "balanced_accuracy": 0.5059523809523809
+          },
+          {
+            "subject": 79,
+            "trials": 45,
+            "balanced_accuracy": 0.607707509881423
+          },
+          {
+            "subject": 81,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 82,
+            "trials": 45,
+            "balanced_accuracy": 0.5217391304347826
+          },
+          {
+            "subject": 87,
+            "trials": 45,
+            "balanced_accuracy": 0.5049407114624506
+          },
+          {
+            "subject": 102,
+            "trials": 45,
+            "balanced_accuracy": 0.7776679841897234
+          },
+          {
+            "subject": 103,
+            "trials": 45,
+            "balanced_accuracy": 0.6254940711462451
+          },
+          {
+            "subject": 105,
+            "trials": 45,
+            "balanced_accuracy": 0.5503952569169961
+          },
+          {
+            "subject": 108,
+            "trials": 45,
+            "balanced_accuracy": 0.7144268774703557
+          }
+        ],
+        "reliability": [
+          {
+            "confidence": 0.5303232492645722,
+            "accuracy": 0.6084070796460177,
+            "count": 904
+          },
+          {
+            "confidence": 0.6100098555970436,
+            "accuracy": 0.7073170731707317,
+            "count": 41
+          }
+        ],
+        "selective_curve": [
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "retained": 945,
+            "accuracy": 0.6126984126984127
+          },
+          {
+            "threshold": 0.525,
+            "coverage": 0.5238095238095238,
+            "retained": 495,
+            "accuracy": 0.6848484848484848
+          },
+          {
+            "threshold": 0.55,
+            "coverage": 0.22962962962962963,
+            "retained": 217,
+            "accuracy": 0.7603686635944701
+          },
+          {
+            "threshold": 0.5750000000000001,
+            "coverage": 0.11005291005291006,
+            "retained": 104,
+            "accuracy": 0.7692307692307693
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "coverage": 0.04338624338624339,
+            "retained": 41,
+            "accuracy": 0.7073170731707317
+          },
+          {
+            "threshold": 0.6250000000000001,
+            "coverage": 0.004232804232804233,
+            "retained": 4,
+            "accuracy": 0.75
+          },
+          {
+            "threshold": 0.6500000000000001,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.6750000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7000000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7250000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7500000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.7750000000000002,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8000000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8250000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8500000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.8750000000000003,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9000000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9250000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9500000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9750000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          }
+        ]
+      }
+    },
+    "compact_eeg": {
+      "name": "Compact EEG CNN",
+      "validation_participant_balanced_accuracy": 0.5714788340776483,
+      "test": {
+        "participant_balanced_accuracy": 0.6107301945811263,
+        "bootstrap_95_ci": [
+          0.5584928981474012,
+          0.666447023473421
+        ],
+        "balanced_accuracy": 0.6069547221873823,
+        "accuracy": 0.6074074074074074,
+        "roc_auc": 0.6610972747307879,
+        "brier": 0.23173069953918457,
+        "ece": 0.04343877910936951,
+        "n": 945,
+        "confusion_matrix": [
+          [
+            318,
+            158
+          ],
+          [
+            213,
+            256
+          ]
+        ],
+        "participants": [
+          {
+            "subject": 10,
+            "trials": 45,
+            "balanced_accuracy": 0.7619047619047619
+          },
+          {
+            "subject": 20,
+            "trials": 45,
+            "balanced_accuracy": 0.5345849802371542
+          },
+          {
+            "subject": 26,
+            "trials": 45,
+            "balanced_accuracy": 0.625
+          },
+          {
+            "subject": 28,
+            "trials": 45,
+            "balanced_accuracy": 0.4496047430830039
+          },
+          {
+            "subject": 29,
+            "trials": 45,
+            "balanced_accuracy": 0.9565217391304348
+          },
+          {
+            "subject": 42,
+            "trials": 45,
+            "balanced_accuracy": 0.5869565217391304
+          },
+          {
+            "subject": 48,
+            "trials": 45,
+            "balanced_accuracy": 0.8231225296442688
+          },
+          {
+            "subject": 49,
+            "trials": 45,
+            "balanced_accuracy": 0.6926877470355731
+          },
+          {
+            "subject": 50,
+            "trials": 45,
+            "balanced_accuracy": 0.5513833992094861
+          },
+          {
+            "subject": 57,
+            "trials": 45,
+            "balanced_accuracy": 0.39285714285714285
+          },
+          {
+            "subject": 68,
+            "trials": 45,
+            "balanced_accuracy": 0.6086956521739131
+          },
+          {
+            "subject": 70,
+            "trials": 45,
+            "balanced_accuracy": 0.6294466403162056
+          },
+          {
+            "subject": 74,
+            "trials": 45,
+            "balanced_accuracy": 0.5297619047619048
+          },
+          {
+            "subject": 79,
+            "trials": 45,
+            "balanced_accuracy": 0.5355731225296443
+          },
+          {
+            "subject": 81,
+            "trials": 45,
+            "balanced_accuracy": 0.5
+          },
+          {
+            "subject": 82,
+            "trials": 45,
+            "balanced_accuracy": 0.5434782608695652
+          },
+          {
+            "subject": 87,
+            "trials": 45,
+            "balanced_accuracy": 0.48221343873517786
+          },
+          {
+            "subject": 102,
+            "trials": 45,
+            "balanced_accuracy": 0.6679841897233202
+          },
+          {
+            "subject": 103,
+            "trials": 45,
+            "balanced_accuracy": 0.6017786561264822
+          },
+          {
+            "subject": 105,
+            "trials": 45,
+            "balanced_accuracy": 0.5948616600790514
+          },
+          {
+            "subject": 108,
+            "trials": 45,
+            "balanced_accuracy": 0.7569169960474309
+          }
+        ],
+        "reliability": [
+          {
+            "confidence": 0.5379770398139954,
+            "accuracy": 0.5674967234600262,
+            "count": 763
+          },
+          {
+            "confidence": 0.6377382278442383,
+            "accuracy": 0.7368421052631579,
+            "count": 133
+          },
+          {
+            "confidence": 0.7407805323600769,
+            "accuracy": 0.8857142857142857,
+            "count": 35
+          },
+          {
+            "confidence": 0.8314141035079956,
+            "accuracy": 0.8461538461538461,
+            "count": 13
+          },
+          {
+            "confidence": 0.9189860820770264,
+            "accuracy": 1.0,
+            "count": 1
+          }
+        ],
+        "selective_curve": [
+          {
+            "threshold": 0.5,
+            "coverage": 1.0,
+            "retained": 945,
+            "accuracy": 0.6074074074074074
+          },
+          {
+            "threshold": 0.525,
+            "coverage": 0.6793650793650794,
+            "retained": 642,
+            "accuracy": 0.660436137071651
+          },
+          {
+            "threshold": 0.55,
+            "coverage": 0.43703703703703706,
+            "retained": 413,
+            "accuracy": 0.7046004842615012
+          },
+          {
+            "threshold": 0.5750000000000001,
+            "coverage": 0.2962962962962963,
+            "retained": 280,
+            "accuracy": 0.7357142857142858
+          },
+          {
+            "threshold": 0.6000000000000001,
+            "coverage": 0.1925925925925926,
+            "retained": 182,
+            "accuracy": 0.7747252747252747
+          },
+          {
+            "threshold": 0.6250000000000001,
+            "coverage": 0.12804232804232804,
+            "retained": 121,
+            "accuracy": 0.8016528925619835
+          },
+          {
+            "threshold": 0.6500000000000001,
+            "coverage": 0.09735449735449736,
+            "retained": 92,
+            "accuracy": 0.8260869565217391
+          },
+          {
+            "threshold": 0.6750000000000002,
+            "coverage": 0.07089947089947089,
+            "retained": 67,
+            "accuracy": 0.8656716417910447
+          },
+          {
+            "threshold": 0.7000000000000002,
+            "coverage": 0.05185185185185185,
+            "retained": 49,
+            "accuracy": 0.8775510204081632
+          },
+          {
+            "threshold": 0.7250000000000002,
+            "coverage": 0.039153439153439155,
+            "retained": 37,
+            "accuracy": 0.8918918918918919
+          },
+          {
+            "threshold": 0.7500000000000002,
+            "coverage": 0.02857142857142857,
+            "retained": 27,
+            "accuracy": 0.8888888888888888
+          },
+          {
+            "threshold": 0.7750000000000002,
+            "coverage": 0.01904761904761905,
+            "retained": 18,
+            "accuracy": 0.8888888888888888
+          },
+          {
+            "threshold": 0.8000000000000003,
+            "coverage": 0.014814814814814815,
+            "retained": 14,
+            "accuracy": 0.8571428571428571
+          },
+          {
+            "threshold": 0.8250000000000003,
+            "coverage": 0.006349206349206349,
+            "retained": 6,
+            "accuracy": 0.8333333333333334
+          },
+          {
+            "threshold": 0.8500000000000003,
+            "coverage": 0.004232804232804233,
+            "retained": 4,
+            "accuracy": 1.0
+          },
+          {
+            "threshold": 0.8750000000000003,
+            "coverage": 0.0031746031746031746,
+            "retained": 3,
+            "accuracy": 1.0
+          },
+          {
+            "threshold": 0.9000000000000004,
+            "coverage": 0.0010582010582010583,
+            "retained": 1,
+            "accuracy": 1.0
+          },
+          {
+            "threshold": 0.9250000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9500000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          },
+          {
+            "threshold": 0.9750000000000004,
+            "coverage": 0.0,
+            "retained": 0,
+            "accuracy": null
+          }
+        ]
+      }
+    }
+  },
+  "operating_point": {
+    "threshold": 0.75,
+    "coverage": 0.02857142857142857,
+    "retained": 27,
+    "accuracy": 0.8888888888888888
+  },
+  "robustness": [
+    {
+      "condition": "Clean",
+      "participant_balanced_accuracy": 0.6107301945811263,
+      "threshold": 0.75,
+      "coverage": 0.02857142857142857,
+      "retained": 27,
+      "accuracy": 0.8888888888888888
+    },
+    {
+      "condition": "Noise \u00d7 0.5 RMS",
+      "participant_balanced_accuracy": 0.6075960357792656,
+      "threshold": 0.75,
+      "coverage": 0.026455026455026454,
+      "retained": 25,
+      "accuracy": 0.88
+    },
+    {
+      "condition": "Noise \u00d7 1.0 RMS",
+      "participant_balanced_accuracy": 0.5946062219354145,
+      "threshold": 0.75,
+      "coverage": 0.020105820105820106,
+      "retained": 19,
+      "accuracy": 0.8947368421052632
+    },
+    {
+      "condition": "C3 disconnected",
+      "participant_balanced_accuracy": 0.5275845186559472,
+      "threshold": 0.75,
+      "coverage": 0.01798941798941799,
+      "retained": 17,
+      "accuracy": 0.9411764705882353
+    },
+    {
+      "condition": "C4 disconnected",
+      "participant_balanced_accuracy": 0.5291742849972665,
+      "threshold": 0.75,
+      "coverage": 0.033862433862433865,
+      "retained": 32,
+      "accuracy": 0.71875
+    }
+  ],
+  "channel_occlusion": [
+    {
+      "channel": "FC3",
+      "balanced_accuracy_drop": -0.0004050038987926108,
+      "mean_absolute_probability_change": 0.010217077098786831
+    },
+    {
+      "channel": "FCz",
+      "balanced_accuracy_drop": -0.0004845482329953743,
+      "mean_absolute_probability_change": 0.01951291598379612
+    },
+    {
+      "channel": "FC4",
+      "balanced_accuracy_drop": 0.01567415503750913,
+      "mean_absolute_probability_change": 0.03404483571648598
+    },
+    {
+      "channel": "C3",
+      "balanced_accuracy_drop": 0.08314567592517907,
+      "mean_absolute_probability_change": 0.10217879712581635
+    },
+    {
+      "channel": "Cz",
+      "balanced_accuracy_drop": 0.002630004570998379,
+      "mean_absolute_probability_change": 0.018893525004386902
+    },
+    {
+      "channel": "C4",
+      "balanced_accuracy_drop": 0.08155590958385983,
+      "mean_absolute_probability_change": 0.0765586867928505
+    },
+    {
+      "channel": "CP3",
+      "balanced_accuracy_drop": 0.07215175266417506,
+      "mean_absolute_probability_change": 0.07623966038227081
+    },
+    {
+      "channel": "CPz",
+      "balanced_accuracy_drop": 0.0037352226793220256,
+      "mean_absolute_probability_change": 0.008339038118720055
+    },
+    {
+      "channel": "CP4",
+      "balanced_accuracy_drop": 0.06961697722567295,
+      "mean_absolute_probability_change": 0.06866896897554398
+    }
+  ],
+  "environment": {
+    "python": "3.12.6",
+    "numpy": "2.5.3",
+    "torch": "2.14.1",
+    "onnxruntime": "1.30.0",
+    "device": "cpu",
+    "threads": 4
+  },
+  "data_manifest_sha256": "6824f94163c4070cee1ba6a61e44ac477e1d16debbb599a58d3255e3cbfb3f30"
+}

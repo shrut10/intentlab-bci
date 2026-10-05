@@ -1,0 +1,6 @@
+# Serving only: PyTorch, MNE and scikit-learn are not needed in production.
+fastapi==0.142.2
+uvicorn==0.54.0
+numpy==2.5.3
+scipy==1.18.1
+onnxruntime==1.30.0

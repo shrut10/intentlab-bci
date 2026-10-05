@@ -1,0 +1,39 @@
+name: Test models, API and container
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: node --check web/app.js
+      - run: pytest -q
+      - name: Build actual serving image
+        run: docker build -t intentlab-bci:ci .
+      - name: Exercise the container over HTTP
+        run: |
+          docker run -d --name intentlab -p 8000:8000 intentlab-bci:ci
+          python scripts/smoke_test.py --attempts 25
+      - name: Logs on failure
+        if: failure()
+        run: docker logs intentlab || true
