@@ -88,7 +88,14 @@ def test_personal_temperature_changes_confidence_without_changing_decisions_or_r
     fitted = fit_temperature(logits, labels)
     before, after = expit(logits), probabilities(logits, fitted["temperature"])
     np.testing.assert_array_equal(before >= 0.5, after >= 0.5)
-    np.testing.assert_array_equal(np.argsort(abs(before - 0.5)), np.argsort(abs(after - 0.5)))
+    # Opposite-sign logits of equal magnitude have tied confidence. Tiny
+    # platform-dependent sigmoid rounding must not impose an ordering on ties.
+    magnitude_difference = abs(logits)[:, None] - abs(logits)[None, :]
+    for probability in (before, after):
+        confidence = np.maximum(probability, 1 - probability)
+        difference = confidence[:, None] - confidence[None, :]
+        assert (difference[magnitude_difference > 0] > 0).all()
+        np.testing.assert_allclose(difference[magnitude_difference == 0], 0, atol=1e-15)
     assert fitted["temperature"] > 1
     fallback = fit_temperature(logits, np.ones(10), fallback=2.5)
     assert fallback == {"temperature": 2.5, "fallback": "single_class", "at_bound": False}
