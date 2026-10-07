@@ -238,6 +238,11 @@ def index():
     return FileResponse(ROOT / "web/index.html")
 
 
+@app.get("/research", include_in_schema=False)
+def research():
+    return FileResponse(ROOT / "web/research.html")
+
+
 @app.get("/favicon.svg", include_in_schema=False)
 def favicon():
     return FileResponse(ROOT / "web/favicon.svg", media_type="image/svg+xml")

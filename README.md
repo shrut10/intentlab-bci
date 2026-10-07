@@ -144,3 +144,7 @@ Data: Schalk, G. (2009). *EEG Motor Movement/Imagery Dataset*, v1.0.0. PhysioNet
 The compact CNN is **inspired by EEGNet**, not an exact reproduction: Lawhern et al. (2018), *EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces*. [Paper](https://arxiv.org/abs/1611.08024).
 
 Original application code is MIT licensed. The MIT licence does not replace the dataset's licence. Built by Shruthi with AI coding assistance; the recorded experiments and source provenance are inspectable.
+
+## Research report
+
+The [on-site research report](https://intentlab-bci.vercel.app/research) describes the methods, compares every fixed candidate, and critically assesses generalisation, calibration, abstention and signal perturbations, with eight academic/data references and a downloadable BibTeX bibliography. It is an independent project report rather than a peer-reviewed publication. Source: `web/research.html`; editing guide: [docs/EDITING.md](docs/EDITING.md). Automated checks verify the published comparison table against the archived results.

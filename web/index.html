@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#11242b" />
     <meta
       name="description"
-      content="A motor-imagery EEG experiment by Shruthi. Decode real held-out recordings, explore uncertainty, and test when a brain-computer interface should act."
+      content="An EEG experiment by Shruthi that classifies recorded imagined hand movements and evaluates predictions on participants unseen during training."
     />
-    <title>IntentLab — imagined movement, measured</title>
+    <title>IntentLab | Motor-imagery EEG decoding</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/static/styles.css" />
     <script src="/static/app.js" defer></script>
@@ -19,11 +19,11 @@
       <a class="brand" href="#top" aria-label="IntentLab home"
         ><svg viewBox="0 0 32 32" aria-hidden="true">
           <path d="M2 16h6l4-10 7 20 4-10h7" /></svg
-        >IntentLab<span class="brand-dot">.</span></a
+        >IntentLab</a
       >
       <nav aria-label="Main navigation">
-        <a href="#studio">Experiment</a><a href="#evidence">Evidence</a
-        ><a href="#notes">Field notes</a>
+        <a href="#studio">Experiment</a><a href="#evidence">Results</a
+        ><a href="/research">Research</a>
       </nav>
       <a
         class="source-link"
@@ -38,22 +38,20 @@
       <section class="hero page-width">
         <div class="hero-copy">
           <p class="eyebrow">
-            <span class="live-dot"></span> NEURAL INTERFACES / EXPERIMENT 001
+            <span class="live-dot"></span> MOTOR-IMAGERY EEG
           </p>
           <h1>
             Decode imagined movement<br />from recorded<br /><em
-              >brain signals.</em
+              >brain signals</em
             >
           </h1>
           <p class="hero-description">
-            This demo uses EEG recorded while people imagined moving their left
-            or right fist. Choose a recording to see the model’s prediction, its
-            confidence, and whether it would send a command or wait.
+            This experiment classifies EEG recorded while people imagined moving their left or right fist, letting you inspect each prediction and see how confidence affects whether the model sends a cursor command
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#studio"
               >Open the experiment <span aria-hidden="true">↓</span></a
-            ><span>Real recordings.<br />Models you can inspect.</span>
+            ><a class="text-button" href="/research">Read the research report ↗</a>
           </div>
         </div>
         <div
@@ -132,11 +130,10 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">01 / DECODING STUDIO</p>
-              <h2>A signal becomes a decision.</h2>
+              <h2>EEG decoding</h2>
             </div>
             <p>
-              Replay recorded EEG from an unseen participant.<br />The server
-              runs the model on each request.
+              Run the model on a held-out recording to inspect its prediction and confidence
             </p>
           </div>
           <div class="control-strip">
@@ -177,7 +174,7 @@
               <div class="card-heading">
                 <div>
                   <span class="eyebrow">THE RECORDING</span>
-                  <h3>Nine channels. Three seconds.</h3>
+                  <h3>Three-second EEG recording</h3>
                 </div>
                 <span class="badge" id="trial-badge">HELD-OUT EEG</span>
               </div>
@@ -202,7 +199,7 @@
               <div class="perturbation-controls">
                 <div>
                   <h4>Change the conditions</h4>
-                  <p>Test the same signal with a controlled disturbance.</p>
+                  <p>Test the same signal with a controlled disturbance</p>
                 </div>
                 <label
                   >Added noise<select id="noise-select" disabled>
@@ -217,9 +214,7 @@
                 >
               </div>
               <p class="small-note">
-                Disturbances are applied after preprocessing. They are
-                repeatable stress tests, not a simulation of every real headset
-                failure.
+                These repeatable disturbances are applied after preprocessing to test specific sensitivities, without simulating every real headset failure
               </p>
             </div>
 
@@ -238,7 +233,7 @@
                 </div>
                 <div class="probability-track"><div id="left-fill"></div></div>
                 <p id="decision-explanation" aria-live="polite">
-                  Choose a trial and run the decoder.
+                  Choose a trial and run the decoder
                 </p>
               </div>
               <label class="threshold-label" for="threshold"
@@ -254,7 +249,7 @@
                 disabled
               />
               <p class="small-note" id="threshold-note">
-                Below this level, the interface sends no command.
+                Predictions below this confidence level produce no command
               </p>
               <div class="cursor-demo">
                 <div class="cursor-head">
@@ -277,8 +272,7 @@
                   ><button class="text-button" id="reset-button">Reset</button>
                 </div>
                 <p id="replay-status" class="small-note" aria-live="polite">
-                  Recorded-data simulation. No headset or physical device is
-                  connected.
+                  A simulation using recorded EEG, with no headset or physical device connected
                 </p>
               </div>
             </div>
@@ -302,14 +296,11 @@
                 ></svg>
                 <div>
                   <p>
-                    Each electrode is set to zero in turn. The bars show the
-                    change in the model’s probability of
-                    <strong>right-fist imagery</strong>.
+                    Each electrode is set to zero in turn to measure the change in the model’s probability of <strong>right-fist imagery</strong>
                   </p>
                   <div id="occlusion-bars" class="occlusion-bars"></div>
                   <p class="small-note">
-                    This explains the model’s sensitivity. It does not locate a
-                    thought in the brain. Electrode positions are schematic.
+                    The schematic shows model sensitivity to channel removal, which cannot establish where a thought originates in the brain
                   </p>
                 </div>
               </div>
@@ -332,9 +323,7 @@
                 ><span><i class="beta-dot"></i> Beta · 13–30 Hz</span>
               </div>
               <p class="small-note">
-                Average across the displayed channels. Mu and beta rhythms
-                motivate the filter; the plot alone does not establish which
-                movement was imagined.
+                Average power across the displayed channels, with the filter informed by motor-imagery research <a href="/research#ref-1" aria-label="Reference 1: motor imagery research">[1]</a>; the spectrum alone cannot identify the imagined movement
               </p>
             </div>
           </div>
@@ -345,11 +334,10 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">02 / THE EVIDENCE</p>
-            <h2>New people. The harder test.</h2>
+            <h2>Evaluation on unseen participants</h2>
           </div>
           <p>
-            Every trial from a person stays in one split.<br />The test
-            participants never enter training or model selection.
+            Participants remain separate across training, validation and testing so the evaluation measures generalisation to unfamiliar people
           </p>
         </div>
         <div class="metric-row">
@@ -362,7 +350,7 @@
             <span>When the model accepts a command</span
             ><strong id="metric-accuracy">—</strong>
             <p id="metric-coverage">
-              At the validation-selected confidence threshold
+              At the declared fallback confidence threshold
             </p>
           </div>
           <div class="metric-card">
@@ -376,7 +364,7 @@
             <div class="card-heading">
               <div>
                 <span class="eyebrow">FOUR FIXED CANDIDATES</span>
-                <h3>Does complexity help?</h3>
+                <h3>Model comparison</h3>
               </div>
             </div>
             <div class="table-scroll">
@@ -392,17 +380,15 @@
               </table>
             </div>
             <p class="small-note">
-              Both columns use participant-macro balanced accuracy. The serving
-              model was chosen using validation only. All test results are
-              shown, including weaker models.
+              Both columns report participant-macro balanced accuracy for every candidate, with the serving model selected using validation results only
             </p>
             <div class="split-strip" id="split-strip"></div>
           </div>
           <div class="card">
             <div class="card-heading">
               <div>
-                <span class="eyebrow">THE COST OF WAITING</span>
-                <h3>Fewer commands. Fewer errors?</h3>
+                <span class="eyebrow">ACCURACY AND COVERAGE</span>
+                <h3>Confidence thresholds</h3>
               </div>
             </div>
             <svg
@@ -412,10 +398,7 @@
               aria-label="Held-out accuracy versus fraction of trials retained as the confidence threshold changes"
             ></svg>
             <p class="small-note">
-              Each point uses a different confidence threshold. High thresholds
-              can leave very few examples; a high accuracy at tiny coverage is
-              weak evidence. This chart is exploratory, not used for model
-              selection.
+              Each point represents a different confidence threshold; high thresholds retain fewer trials, making the resulting accuracy less certain, so this exploratory chart should be interpreted alongside coverage
             </p>
           </div>
         </div>
@@ -424,28 +407,24 @@
             <div class="card-heading">
               <div>
                 <span class="eyebrow">PARTICIPANT VARIATION</span>
-                <h3>The average hides a lot.</h3>
+                <h3>Results by participant</h3>
               </div>
             </div>
             <div id="participant-chart" class="participant-chart"></div>
             <p class="small-note">
-              One bar per held-out participant, using all eligible test trials.
-              The demo above contains the first six valid trials for each
-              person, not a selection of successful predictions.
+              Each bar includes all eligible test trials for one participant, while the demonstration uses their first six valid trials without selecting for successful predictions
             </p>
           </div>
           <div class="card">
             <div class="card-heading">
               <div>
                 <span class="eyebrow">CONTROLLED STRESS TESTS</span>
-                <h3>How easily does it break?</h3>
+                <h3>Signal perturbation analysis</h3>
               </div>
             </div>
             <div id="robustness-chart" class="robustness-chart"></div>
             <p class="small-note">
-              The selected model stays frozen. These disturbances measure
-              sensitivity under specific conditions; they do not validate a
-              wearable or assistive device.
+              The selected model remains frozen while these disturbances measure sensitivity under specific conditions, without establishing suitability for a wearable or assistive device
             </p>
           </div>
         </div>
@@ -469,8 +448,7 @@
               <h3>Every prediction, including errors</h3>
               <div id="confusion-matrix"></div>
               <p class="small-note">
-                Rows: recorded label. Columns: model prediction. Before
-                abstention.
+                Rows: recorded label · Columns: model prediction · All test trials before abstention
               </p>
               <h4>Data quality audit</h4>
               <p id="quality-summary"></p>
@@ -489,67 +467,50 @@
         <div class="page-width">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">03 / FIELD NOTES</p>
-              <h2>A first step towards neural interfaces.</h2>
+              <p class="eyebrow">03 / RESEARCH</p>
+              <h2>Methods and interpretation</h2>
             </div>
           </div>
           <div class="notes-grid">
             <article>
               <span class="note-number">01</span>
-              <h3>The question I’m exploring</h3>
+              <h3>Research question</h3>
               <p>
-                How can a noisy brain signal become a useful input to a
-                computer? IntentLab starts with a constrained task: two imagined
-                movements, a short recording, and the option to make no
-                decision.
+                IntentLab investigates whether models can distinguish cued left and right fist imagery in previously unseen participants, using a fixed EEG window and allowing uncertain predictions to be rejected.
               </p>
               <p>
-                That option matters. A useful interface needs to account for
-                uncertainty, differences between people, and changes in the
-                signal.
+                The comparison includes common spatial patterns <a href="/research#ref-4">[4]</a> and a compact convolutional model inspired by EEGNet <a href="/research#ref-5">[5]</a>, with selection based on validation participants.
               </p>
             </article>
             <article>
               <span class="note-number">02</span>
-              <h3>What this experiment can tell us</h3>
+              <h3>Interpretation</h3>
               <p>
-                It measures whether models can distinguish recorded left and
-                right imagery cues in people they did not train on. You can
-                inspect the full path from an open EDF recording to a deployed
-                prediction.
+                The selected model reaches 61.1% participant-macro balanced accuracy, although its confidence threshold fails the validation target for reliable control, as assessed in the <a href="/research#results">research report</a>.
               </p>
               <p>
-                Visual cues and recording artefacts may contribute to the
-                result. These labels do not prove that a model has isolated a
-                person’s intention.
+                Visual cues, eye movements and muscle artefacts may contribute to the predictions, so classification performance alone cannot demonstrate that the model has isolated motor intention.
               </p>
             </article>
             <article>
               <span class="note-number">03</span>
-              <h3>Where I’d take it next</h3>
+              <h3>Further evaluation</h3>
               <p>
-                Participant-specific calibration, causal filtering for a
-                streaming signal, and a second dataset to test transfer. Each
-                would need a new, untouched evaluation set.
+                A stronger evaluation would use repeated participant splits, an independent dataset and causal filtering for streaming signals, with a new untouched test set for each subsequent development.
               </p>
               <p>
-                Dream reconstruction and consciousness are much larger
-                questions. This project builds practical signal-decoding skills
-                without claiming to answer them.
+                The present results are restricted to a two-class, cued motor-imagery task and provide no evidence for decoding arbitrary thoughts, reconstructing dreams or measuring consciousness.
               </p>
             </article>
           </div>
           <div class="reading-list">
             <div>
-              <h3>Trace it back to the source.</h3>
+              <h3>Research documentation</h3>
               <p>
-                Open data, inspectable methods, and a guide to reproducing the
-                experiment.
+                Read the methods, cited literature and critical assessment of the recorded results
               </p>
             </div>
-            <div>
-              <a
-                href="https://physionet.org/content/eegmmidb/1.0.0/"
+            <div><a href="/research">Research report and references ↗</a><a href="https://physionet.org/content/eegmmidb/1.0.0/"
                 target="_blank"
                 rel="noopener"
                 >PhysioNet dataset & licence ↗</a
@@ -574,18 +535,18 @@
     <footer class="page-width">
       <div>
         <a class="brand" href="#top"
-          >IntentLab<span class="brand-dot">.</span></a
+          >IntentLab</a
         >
         <p>
           A project by
           <a href="https://jayashruthi.com" target="_blank" rel="noopener"
             >Shruthi</a
           >
-          · Motor imagery, measured.
+          · Motor-imagery EEG
         </p>
       </div>
       <p>
-        Research demonstration. Not a medical device.<br />PhysioNet EEGMMIDB
+        Research demonstration without medical validation<br />PhysioNet EEGMMIDB
         v1.0.0 · ODC-BY 1.0 ·
         <a
           href="https://github.com/shrut10/intentlab-bci/blob/main/NOTICE.md"

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Methods, results and limitations of IntentLab’s participant-independent motor-imagery EEG experiment, with academic references and reproducible evaluation artefacts." />
+  <title>Research report | IntentLab</title>
+  <link rel="canonical" href="https://intentlab-bci.vercel.app/research" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/research.css" />
+</head>
+<body>
+  <a class="skip-link" href="#report">Skip to the report</a>
+  <header class="report-nav"><a class="report-brand" href="/">IntentLab</a><nav aria-label="Main navigation"><a href="/#studio">Experiment</a><a href="/#evidence">Results</a><a href="/research" aria-current="page">Research</a></nav></header>
+  <main id="report" class="report">
+    <header class="report-heading">
+      <p class="report-kicker">Research report · Motor-imagery EEG</p>
+      <h1>Participant-independent decoding of imagined hand movement</h1>
+      <p class="report-subtitle">A reproducible comparison of classical and compact neural models on PhysioNet EEGMMIDB</p>
+      <p class="byline">Jayashruthi Rajesh Babu · 7 October 2026 · Experiment v1.0.0</p>
+      <p class="report-status">Independent project report, not a peer-reviewed publication</p>
+      <div class="report-links"><a href="#references">References ↓</a><a href="/static/references.bib" download>Download BibTeX ↓</a><a href="https://github.com/shrut10/intentlab-bci/tree/421ba475a1e7664f666ef56da5d685e748bd229d">Experimental source ↗</a></div>
+    </header>
+
+    <section class="abstract" aria-labelledby="abstract-title">
+      <h2 id="abstract-title">Abstract</h2>
+      <p>This study evaluates whether a model trained on some participants can distinguish cued left- and right-fist motor imagery in previously unseen participants. Following predefined quality exclusions, 4,766 EEG epochs from 106 people were divided into disjoint training, validation and test groups. Four fixed candidates were compared: a constant majority baseline, bandpower logistic regression, common spatial patterns with shrinkage linear discriminant analysis, and a compact convolutional neural network. The neural model was selected on validation performance and achieved <strong>61.07% participant-macro balanced accuracy</strong> on 945 test epochs from 21 participants, with a participant-bootstrap 95% interval of 55.85–66.64%. The validation criterion for selective prediction was not met. A declared fallback confidence threshold of 0.75 retained only 27 test trials, of which 24 were correct. These findings support modest transfer within this dataset, while the low command coverage, potential confounds and absence of prospective evaluation prevent a claim of reliable assistive control.</p>
+    </section>
+
+    <nav class="report-contents" aria-label="Report contents"><a href="#background">1 Background</a><a href="#methods">2 Methods</a><a href="#results">3 Results</a><a href="#discussion">4 Discussion</a><a href="#reproducibility">5 Reproducibility</a><a href="#references">References</a></nav>
+
+    <section id="background">
+      <h2>1 Background and research question</h2>
+      <p>Motor imagery offers a constrained setting in which to study the relationship between neural recordings and intended actions. Pfurtscheller and Neuper reported localised changes in sensorimotor EEG during unilateral motor imagery <a class="citation" href="#ref-1">[1]</a>, providing a physiological motivation for investigating signals over central scalp regions. This motivation does not imply that any successful classifier necessarily relies on the same mechanism: recordings may also contain information related to cues, eye movements or muscle activity.</p>
+      <p>IntentLab asks whether a fixed decoding pipeline can classify cued left- versus right-fist imagery in participants absent from training, and whether rejecting uncertain predictions provides a useful balance between accuracy and command availability. It compares classical approaches with a small neural network rather than assuming that greater architectural complexity improves generalisation. The task concerns two experimentally specified labels; it does not evaluate unrestricted thought decoding or consciousness.</p>
+    </section>
+
+    <section id="methods">
+      <h2>2 Materials and methods</h2>
+      <h3>2.1 Dataset and eligibility</h3>
+      <p>The source is the PhysioNet EEG Motor Movement/Imagery Dataset, version 1.0.0 <a class="citation" href="#ref-2">[2]</a>, acquired with the BCI2000 platform <a class="citation" href="#ref-3">[3]</a>. This analysis uses runs 04, 08 and 12, in which T1 and T2 indicate imagined left- and right-fist movement respectively; rest periods and other task types are excluded. The original recordings contain 64 scalp channels, with a nominal sampling rate of 160 Hz.</p>
+      <p>The acquisition script verified all 327 selected EDF files against the publisher’s SHA-256 checksums. Predefined rules excluded nine recordings from S088, S092 and S100 because their sampling rate was 128 Hz, one high-amplitude epoch from S099, and one incomplete labelled epoch from S104. Eligibility also required finite values, the required channels, channel standard deviation of at least 0.01 μV, and peak-to-peak amplitude no greater than 1,000 μV before filtering. These checks identify gross failures and do not establish freedom from physiological artefacts.</p>
+      <h3>2.2 Preprocessing and participant separation</h3>
+      <p>Common-average referencing uses all 64 original EEG channels before retaining FC3, FCz, FC4, C3, Cz, C4, CP3, CPz and CP4. Each epoch comprises 480 samples from 1 to 4 seconds after the cue. Channel means are removed before a fourth-order, 8–30 Hz Butterworth bandpass is applied independently to each completed epoch using zero-phase filtering. A single root-mean-square scaling factor across channels and time normalises each epoch while preserving relative channel amplitudes. This operation uses future samples within the completed window and is therefore unsuitable for direct claims about causal, online decoding.</p>
+      <p>Participant IDs were shuffled with seed 2027 before exclusions, assigning 65 to training, 22 to validation and 22 to testing. The retained groups contain 63 participants and 2,832 epochs, 22 participants and 989 epochs, and 21 participants and 945 epochs respectively. Every epoch from a participant remains within one partition, and fitted transformations use training data only. This separation addresses the intended generalisation setting, although a single split does not characterise sensitivity to partition choice; neuroimaging evaluation literature emphasises both uncertainty and the need to separate tuning from performance assessment <a class="citation" href="#ref-6">[6]</a>.</p>
+      <h3>2.3 Candidate models and selection</h3>
+      <p>The constant baseline predicts the training-set majority class. Log-bandpower features feed a standardised logistic regression with C = 1.0. The spatial-filter baseline uses four common spatial pattern (CSP) components followed by shrinkage linear discriminant analysis; CSP seeks projections that discriminate the classes through their relative signal variance, following the approach introduced for imagined hand movements by Ramoser and colleagues <a class="citation" href="#ref-4">[4]</a>.</p>
+      <p>The 1,289-parameter convolutional model uses temporal and depthwise spatial filtering inspired by EEGNet <a class="citation" href="#ref-5">[5]</a>. It is an adaptation rather than a reproduction, with different temporal kernels, adaptive pooling and a single binary output. Training uses eight temporal filters, spatial depth multiplier two, dropout 0.35, AdamW with learning rate 0.001 and weight decay 0.01, batch size 64, and an early-stopping patience of eight within a maximum of 40 epochs. Training stopped after epoch 17, retaining the epoch-nine checkpoint. Both checkpoint selection and the choice of serving model use validation participant-macro balanced accuracy.</p>
+      <h3>2.4 Metrics, calibration and rejection</h3>
+      <p>The primary metric averages balanced accuracy across participants, giving each person equal weight: for each participant, balanced accuracy is the mean of left-class and right-class recall. A constant prediction gives 50% on this task. The reported percentile interval resamples the 21 test participants with replacement 2,000 times, keeping the trained model fixed; it captures variation across those participants rather than uncertainty from retraining or choosing a different split.</p>
+      <p>One temperature parameter per non-constant candidate is fitted to validation logits, bounded between 0.5 and 5.0, following the post-hoc calibration principle studied by Guo and colleagues <a class="citation" href="#ref-7">[7]</a>. The neural model’s fitted temperature is 2.883. Calibration is assessed using the binary Brier score and a ten-bin expected calibration error (ECE), computed as the count-weighted absolute difference between confidence and observed correctness. These are pooled trial metrics, whereas the primary accuracy measure weights participants equally.</p>
+      <p>Selective prediction introduces a trade-off between errors and coverage, the fraction of trials receiving a prediction <a class="citation" href="#ref-8">[8]</a>. IntentLab implements a post-hoc confidence threshold, not the jointly trained SelectiveNet architecture. Validation examines thresholds from 0.50 to 0.95 in increments of 0.05, choosing the lowest that achieves at least 75% retained-trial accuracy, 20% coverage and 100 retained trials. The protocol specifies a fallback of 0.75 if none qualifies. Validation is reused for checkpoint selection, model selection, calibration and this threshold rule, making its estimates vulnerable to selection optimism.</p>
+    </section>
+
+    <section id="results">
+      <h2>3 Results</h2>
+      <h3>3.1 Generalisation to held-out participants</h3>
+      <div class="report-table-wrap" tabindex="0" role="region" aria-label="Model comparison table, horizontally scrollable on small screens">
+        <table class="report-table"><caption>Table 1 · Participant-macro balanced accuracy for all fixed candidates</caption><thead><tr><th scope="col">Model</th><th scope="col">Validation</th><th scope="col">Test</th><th scope="col">Test 95% interval</th></tr></thead><tbody>
+          <!-- Model rows are verified against artifacts/evaluation.json by tests/test_research.py. -->
+          <tr data-model="majority"><th scope="row">Constant majority</th><td>50.00%</td><td>50.00%</td><td>50.00–50.00%</td></tr>
+          <tr data-model="bandpower"><th scope="row">Bandpower + logistic regression</th><td>54.08%</td><td>58.72%</td><td>53.36–64.21%</td></tr>
+          <tr data-model="csp_lda"><th scope="row">CSP + shrinkage LDA</th><td>55.21%</td><td>61.55%</td><td>56.92–66.45%</td></tr>
+          <tr data-model="compact_eeg"><th scope="row">Compact EEG CNN <span class="table-note">Selected on validation</span></th><td>57.15%</td><td>61.07%</td><td>55.85–66.64%</td></tr>
+        </tbody></table>
+      </div>
+      <p>The neural model was selected because its validation score was highest, but CSP + LDA obtained a slightly higher test score by approximately 0.47 percentage points. The reported marginal intervals do not provide a paired test of this difference, and the experiment does not establish that either approach is superior. Selecting a new winner after examining these test results would undermine the original selection procedure.</p>
+      <p>For the selected model, pooled balanced accuracy was 60.70%, ordinary accuracy was 60.74% and ROC AUC was 0.661. The confusion matrix contained 318 correctly classified left epochs and 256 correctly classified right epochs, with 158 left epochs predicted as right and 213 right epochs predicted as left. The participant-bootstrap interval lies above the 50% reference, but this comparison remains conditional on the fixed sample, split and processing choices rather than establishing performance in a new deployment environment.</p>
+      <h3>3.2 Calibration and the cost of abstention</h3>
+      <p>No candidate threshold for the selected model met the validation criterion. At the 0.75 fallback, only seven validation trials were retained and four were correct. On the test set, that same threshold retained 27 of 945 epochs (2.86% coverage), with 24 correct predictions (88.89% retained-trial accuracy). The latter percentage describes a very small, selected subset and is not the model’s overall accuracy; the result provides neither a reliable throughput estimate nor evidence that the validation target was achieved.</p>
+      <p>The calibrated neural model’s test Brier score was 0.232, compared with 0.250 for the constant baseline, while ECE was 4.34 percentage points. These measurements describe average probabilistic behaviour and depend on the observed sample and, for ECE, the binning scheme. A relatively small aggregate calibration error cannot guarantee accuracy at a sparsely populated, high-confidence threshold. Changing the threshold in the public interface is an exploratory analysis of the same recordings and must not be treated as fresh validation.</p>
+      <h3>3.3 Signal perturbations and channel sensitivity</h3>
+      <p>For the frozen neural model, adding Gaussian noise at 0.5 and 1.0 times epoch RMS produced participant-macro balanced accuracies of 60.76% and 59.46%, respectively. Zeroing C3 reduced the score to 52.76%, while zeroing C4 reduced it to 52.92%. These controlled changes indicate sensitivity to the central channels under the particular perturbation scheme, without demonstrating robustness to real electrode detachment or physiological artefacts.</p>
+      <p>The interactive channel analysis zeros one channel at a time and recomputes the probability of right-fist imagery without renormalising the epoch. Its bars describe changes in the model output, not causal importance of brain regions. Correlation between channels, reference choices and the artificial distribution created by zeroing limit physiological interpretation; neither the scalp graphic nor the observed accuracy reductions localise an imagined thought.</p>
+    </section>
+
+    <section id="discussion">
+      <h2>4 Discussion and limitations</h2>
+      <p>The experiment demonstrates an auditable path from public EEG recordings to deployed inference, with modest classification performance on held-out participants from the same dataset. Its central negative finding is that the selected model did not meet the predefined selective-prediction target. The higher accuracy among 27 accepted test trials therefore cannot justify a claim of useful control, particularly when almost all available trials are rejected.</p>
+      <p>The evaluation uses one dataset, one participant split and one training seed, without an independent recording environment or prospective users. Participant separation reduces one important route to overly optimistic evaluation, but shared acquisition procedures and visual cue structure can still produce dependencies. There is no dedicated eye- or muscle-artefact removal stage, and success at predicting the experimental label does not prove that motor imagery itself supplies the discriminating information. Published scores from other tasks, participant splits or preprocessing pipelines cannot provide a like-for-like ranking against this report.</p>
+      <p>There is also a gap between offline classification and interaction: this pipeline processes completed, cue-aligned windows, excludes rest and assumes that an imagery event has occurred. It does not measure false activations during ordinary activity, end-to-end device latency, user fatigue or prospective command success. The cursor is a replay simulation, so neither its movement nor the server’s inference time validates a usable brain–computer interface.</p>
+      <p>Subsequent work should evaluate repeated participant splits with appropriately separated tuning and calibration, followed by a reserved independent dataset. A streaming version would require causal filtering and an explicit rest or no-intention condition before prospective evaluation. Participant-specific adaptation could be investigated with a fixed calibration budget and a separate within-participant test session. Each extension should use new evaluation data rather than tuning against this already inspected test set.</p>
+    </section>
+
+    <section id="reproducibility">
+      <h2>5 Reproducibility and data attribution</h2>
+      <p>This report describes experiment v1.0.0, with the implementation and archived results fixed at commit <a href="https://github.com/shrut10/intentlab-bci/tree/421ba475a1e7664f666ef56da5d685e748bd229d"><code>421ba47</code></a>; the report itself was added later without retraining. The repository contains the protocol dated 5 October 2026, acquisition and training scripts, source checksums, participant assignments, exclusion records, fitted artefacts and the full evaluation JSON. This is a repository protocol, not an externally registered study. Automated checks compare the table above with the archived numerical results.</p>
+      <p>The public demonstration serves the first six eligible test epochs from each held-out participant, giving 126 trials selected independently of prediction correctness, while the evaluation uses all 945 test epochs. FastAPI performs actual model inference through the packaged serving implementations. The derived data retain the source dataset’s Open Data Commons Attribution licence, with changes and requested acknowledgements recorded in the repository notice; original application code is MIT-licensed.</p>
+      <ul class="source-files">
+        <li><a href="https://github.com/shrut10/intentlab-bci/blob/421ba475a1e7664f666ef56da5d685e748bd229d/docs/PROTOCOL.md">Fixed experiment protocol</a></li>
+        <li><a href="https://github.com/shrut10/intentlab-bci/blob/421ba475a1e7664f666ef56da5d685e748bd229d/artifacts/evaluation.json">Full numerical evaluation</a></li>
+        <li><a href="https://github.com/shrut10/intentlab-bci/blob/421ba475a1e7664f666ef56da5d685e748bd229d/data/derived/manifest.json">Data provenance, exclusions and participant split</a></li>
+        <li><a href="https://github.com/shrut10/intentlab-bci/blob/421ba475a1e7664f666ef56da5d685e748bd229d/docs/MODEL_CARD.md">Model card</a> · <a href="https://github.com/shrut10/intentlab-bci/blob/main/NOTICE.md">Data attribution and licences</a></li>
+      </ul>
+    </section>
+
+    <section id="references" class="references" aria-labelledby="references-title">
+      <h2 id="references-title">References</h2>
+      <ol>
+        <li id="ref-1">Pfurtscheller, G. and Neuper, C. (1997). Motor imagery activates primary sensorimotor area in humans. <cite>Neuroscience Letters</cite>, 239(2–3), 65–68. <a href="https://doi.org/10.1016/S0304-3940(97)00889-6">doi:10.1016/S0304-3940(97)00889-6</a></li>
+        <li id="ref-2">Schalk, G. (2009). <cite>EEG Motor Movement/Imagery Dataset</cite>, version 1.0.0. PhysioNet. <a href="https://doi.org/10.13026/C28G6P">doi:10.13026/C28G6P</a> · <a href="https://physionet.org/content/eegmmidb/1.0.0/">Dataset and documentation</a></li>
+        <li id="ref-3">Schalk, G., McFarland, D. J., Hinterberger, T., Birbaumer, N. and Wolpaw, J. R. (2004). BCI2000: a general-purpose brain-computer interface (BCI) system. <cite>IEEE Transactions on Biomedical Engineering</cite>, 51(6), 1034–1043. <a href="https://doi.org/10.1109/TBME.2004.827072">doi:10.1109/TBME.2004.827072</a></li>
+        <li id="ref-4">Ramoser, H., Müller-Gerking, J. and Pfurtscheller, G. (2000). Optimal spatial filtering of single trial EEG during imagined hand movement. <cite>IEEE Transactions on Rehabilitation Engineering</cite>, 8(4), 441–446. <a href="https://doi.org/10.1109/86.895946">doi:10.1109/86.895946</a> · <a href="https://www.cs.hmc.edu/~keller/eeg/Ramoser.pdf">Author paper</a></li>
+        <li id="ref-5">Lawhern, V. J., Solon, A. J., Waytowich, N. R., Gordon, S. M., Hung, C. P. and Lance, B. J. (2018). EEGNet: a compact convolutional neural network for EEG-based brain–computer interfaces. <cite>Journal of Neural Engineering</cite>, 15(5), 056013. <a href="https://doi.org/10.1088/1741-2552/aace8c">doi:10.1088/1741-2552/aace8c</a> · <a href="https://arxiv.org/abs/1611.08024">Open manuscript</a></li>
+        <li id="ref-6">Varoquaux, G., Raamana, P. R., Engemann, D. A., Hoyos-Idrobo, A., Schwartz, Y. and Thirion, B. (2017). Assessing and tuning brain decoders: cross-validation, caveats, and guidelines. <cite>NeuroImage</cite>, 145, 166–179. <a href="https://doi.org/10.1016/j.neuroimage.2016.10.038">doi:10.1016/j.neuroimage.2016.10.038</a> · <a href="https://arxiv.org/abs/1606.05201">Open manuscript</a></li>
+        <li id="ref-7">Guo, C., Pleiss, G., Sun, Y. and Weinberger, K. Q. (2017). On calibration of modern neural networks. <cite>Proceedings of the 34th International Conference on Machine Learning</cite>, PMLR 70, 1321–1330. <a href="https://proceedings.mlr.press/v70/guo17a.html">Paper and proceedings</a></li>
+        <li id="ref-8">Geifman, Y. and El-Yaniv, R. (2019). SelectiveNet: a deep neural network with an integrated reject option. <cite>Proceedings of the 36th International Conference on Machine Learning</cite>, PMLR 97, 2151–2159. <a href="https://proceedings.mlr.press/v97/geifman19a.html">Paper and proceedings</a></li>
+      </ol>
+    </section>
+  </main>
+  <footer class="report-footer"><a href="/">Return to the experiment</a><a href="https://jayashruthi.com">Jayashruthi Rajesh Babu</a></footer>
+</body>
+</html>

@@ -4,15 +4,8 @@ from pathlib import Path
 
 import numpy as np
 import pytest
-from fastapi.testclient import TestClient
 
-from intentlab.api import app, assets
-
-
-@pytest.fixture(scope="module")
-def client():
-    with TestClient(app) as client:
-        yield client
+from intentlab.api import assets
 
 
 @pytest.fixture(scope="module")

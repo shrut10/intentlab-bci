@@ -9,21 +9,24 @@ Local project folder: `/Users/shruthi/Documents/ChatGPT/Career/intentlab-bci`
 | What you want to change | File | Search for |
 |---|---|---|
 | Main title at the very top | `web/index.html` | `Decode imagined movement` |
-| Short explanation below it | `web/index.html` | `This demo uses EEG` |
+| Short explanation below it | `web/index.html` | `This experiment classifies EEG` |
 | Browser-tab title and search description | `web/index.html` | `<title>` and `name="description"` |
-| Section headings | `web/index.html` | `DECODING STUDIO`, `THE EVIDENCE`, `FIELD NOTES` |
-| Your motivation and future ideas | `web/index.html` | `The question I’m exploring` and `Where I’d take it next` |
+| Section headings | `web/index.html` | `DECODING STUDIO`, `THE EVIDENCE`, `RESEARCH` |
+| Your motivation and future ideas | `web/index.html` | `Research question` and `Further evaluation` |
 | Chart explanations and labels | `web/index.html` | The exact sentence visible on the page |
 | Text that changes after a prediction | `web/app.js` | `renderPrediction`, `decision-explanation` |
 | Confidence warning and result explanations | `web/app.js` | `operating-caveat`, `threshold-note` |
 | Loading, error and replay messages | `web/app.js` | `showError`, `replay-status`, `Decoding` |
+| On-site research report, numbered citations and results discussion | `web/research.html` | Section titles and `ref-1` to `ref-8` |
+| Downloadable academic references | `web/references.bib` | The matching author or title |
+| Report typography and print layout | `web/research.css` | The relevant CSS rule |
 | GitHub project description and technical overview | `README.md` | The paragraph you want to change |
 | Colours, spacing and fonts | `web/base.css`, `web/styles.css` | Colour variables at the start of `base.css` |
 
 In HTML, edit the words between tags. For example:
 
 ```html
-<h3>The question I’m exploring</h3>
+<h3>Research question</h3>
 <p>Write your own reason for caring about brain–computer interfaces here.</p>
 ```
 
@@ -61,4 +64,8 @@ Only stage the files you actually changed. For a JavaScript change, run `node --
 
 Model scores, participant counts and probabilities come from `artifacts/evaluation.json`, `artifacts/models.json` and the actual prediction API. They are not decorative text. Change them only by running and documenting a new experiment. In particular, 88.9% is accuracy on just 27 retained test trials, not overall model accuracy.
 
-The introduction deliberately says **recorded** brain signals. There is no live headset connection. The field notes are the best place to add your own motivation, questions, and future direction while keeping that distinction clear.
+The introduction deliberately says **recorded** brain signals. There is no live headset connection. The methods and interpretation section is the best place to add your own motivation, questions, and future direction while keeping that distinction clear.
+
+## Research writing
+
+The report at `/research` is a standalone HTML page in `web/research.html`, which can be edited without changing the model. Keep normal punctuation in its scholarly paragraphs while avoiding slogan-style headings. Preserve citations beside the claims they support, the reference anchors, and the distinction between this independent report and peer-reviewed papers. The report table is checked against `artifacts/evaluation.json` by the test suite. Changes to the experiment require a new versioned evaluation and corresponding updates throughout the report; a prose edit alone must not alter a result.

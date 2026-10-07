@@ -35,12 +35,12 @@ async function api(path, options = {}) {
     });
     if (!response.ok)
       throw new Error(
-        `The server returned ${response.status}. Please try again.`,
+        `The server returned ${response.status}; please try again`,
       );
     return await response.json();
   } catch (error) {
     if (error.name === "AbortError")
-      throw new Error("The server took too long to respond. Please try again.");
+      throw new Error("The server took too long to respond; please try again");
     throw error;
   } finally {
     clearTimeout(timer);
@@ -119,7 +119,7 @@ async function decode(moveCursor = false) {
     return true;
   } catch (error) {
     if (sequence === state.request) {
-      showError(`The recording could not be decoded. ${error.message}`);
+      showError(`Unable to decode the recording: ${error.message}`);
       state.prediction = null;
       drawWaveform();
       $("left-prob").textContent = "—";
@@ -129,7 +129,7 @@ async function decode(moveCursor = false) {
       $("spectrum").replaceChildren();
       $("decision-title").textContent = "Prediction unavailable";
       $("decision-explanation").textContent =
-        "No command was sent. Run the decoder to retry.";
+        "Run the decoder again to retry the command";
       stopReplay();
     }
     return false;
@@ -151,10 +151,10 @@ function renderPrediction(prediction, moveCursor) {
   const agrees = prediction.predicted_label === prediction.recorded_label;
   $("decision-title").textContent = prediction.accepted
     ? `${label === "left" ? "Left" : "Right"} command`
-    : "Wait. No command.";
+    : "No command";
   $("decision-explanation").textContent = prediction.accepted
-    ? `${pct(prediction.confidence, 0)} confidence · ${agrees ? "matches" : "does not match"} the recorded cue.`
-    : `The model leans ${label} at ${pct(prediction.confidence, 0)} confidence, below your ${pct(prediction.threshold, 0)} threshold.`;
+    ? `${pct(prediction.confidence, 0)} confidence · ${agrees ? "matches" : "does not match"} the recorded cue`
+    : `The model leans ${label} at ${pct(prediction.confidence, 0)} confidence, below your ${pct(prediction.threshold, 0)} threshold`;
   $("command-state").textContent = prediction.accepted
     ? `${label} ${label === "left" ? "←" : "→"}`
     : "Abstained";
@@ -200,7 +200,7 @@ function drawWaveform() {
   }
   if (!state.prediction || !state.overview) {
     ctx.fillStyle = "#aec6ba";
-    ctx.fillText("No signal to display yet.", w / 2, h / 2);
+    ctx.fillText("No signal to display yet", w / 2, h / 2);
     return;
   }
   const signal = state.prediction.signal;
@@ -354,8 +354,8 @@ function renderEvidence() {
   $("metric-coverage").textContent =
     `${pct(overview.operating_point.coverage)} coverage · ${overview.operating_point.retained} of ${result.n} test trials · ${pct(overview.threshold, 0)} threshold`;
   $("operating-caveat").textContent = overview.threshold_target_met
-    ? "The confidence threshold was chosen on validation participants. Test performance and retained-trial accuracy remain estimates; this is an offline research demo."
-    : "The model did not meet the validation target of 75% accuracy at useful coverage. The 75% confidence threshold is a declared fallback, not a validated operating point. These results support an exploratory demo, not reliable device control.";
+    ? "The confidence threshold was chosen on validation participants, with test performance and retained-trial accuracy reported as estimates from an offline experiment"
+    : "The model failed to achieve 75% retained-trial accuracy at the required validation coverage, so the 75% confidence threshold is a declared fallback whose limited coverage does not support reliable device control";
   $("models-table").innerHTML = Object.entries(report.models)
     .map(
       ([key, model]) =>
@@ -398,7 +398,7 @@ function renderEvidence() {
     bar.style.width = `${bar.dataset.width}%`;
   });
   $("calibration-summary").textContent =
-    `Brier score ${result.brier.toFixed(3)}; expected calibration error ${pct(result.ece)}. Temperature scaling was fitted on validation only. Lower Brier is better; the curve compares confidence with observed correctness.`;
+    `Following temperature scaling fitted on validation participants, the test Brier score is ${result.brier.toFixed(3)} and expected calibration error is ${pct(result.ece)}; lower Brier is better, while the curve compares confidence with observed correctness`;
   lineChart(
     "calibration-chart",
     result.reliability.map((bin) => ({
@@ -415,13 +415,13 @@ function renderEvidence() {
     (row) => !row.trial,
   ).length;
   $("quality-summary").textContent =
-    `All 327 source files were checksum-verified. ${recordingExclusions} recordings at a different sampling rate and ${overview.quality_exclusions.length - recordingExclusions} individual trials were excluded under the predefined rules. Raw recordings remain available from PhysioNet.`;
+    `Checksum verification covered all 327 source files, with ${recordingExclusions} recordings at a different sampling rate and ${overview.quality_exclusions.length - recordingExclusions} individual trials excluded under the predefined rules; the raw recordings remain available from PhysioNet`;
 }
 
 async function replay() {
   if (state.playing) {
     stopReplay();
-    $("replay-status").textContent = "Replay stopped.";
+    $("replay-status").textContent = "Replay stopped";
     return;
   }
   const token = ++state.replay;
@@ -434,7 +434,7 @@ async function replay() {
     if (token !== state.replay) return;
     $("trial-select").value = trials[i].id;
     $("replay-status").textContent =
-      `Trial ${i + 1} of ${trials.length} · each accepted prediction moves the simulated cursor.`;
+      `Trial ${i + 1} of ${trials.length} · each accepted prediction moves the simulated cursor`;
     const success = await decode(true);
     if (!success || token !== state.replay) return;
     await new Promise((resolve) => setTimeout(resolve, 1200));
@@ -442,7 +442,7 @@ async function replay() {
   if (token === state.replay) {
     stopReplay();
     $("replay-status").textContent =
-      "Replay complete. Accepted commands moved the cursor; abstentions left it still.";
+      "Replay complete — the cursor moved only for accepted commands";
   }
 }
 
@@ -481,7 +481,7 @@ async function initialise() {
     $("threshold").value = Math.round(overview.threshold * 100);
     $("threshold-value").textContent = pct(overview.threshold, 0);
     $("threshold-note").textContent =
-      "Below this level, the interface sends no command. Changing it here is exploratory.";
+      "Adjust this threshold to explore when uncertain predictions are rejected";
     [
       "subject-select",
       "trial-select",
@@ -499,7 +499,7 @@ async function initialise() {
     await decode(false);
   } catch (error) {
     showError(
-      `The experiment could not load. ${error.message} Refresh this page to retry.`,
+      `Unable to load the experiment: ${error.message} — refresh to retry`,
     );
   }
 }
@@ -533,7 +533,7 @@ $("reset-button").addEventListener("click", () => {
   state.cursor = 50;
   $("cursor").style.left = "50%";
   $("replay-status").textContent =
-    "Cursor reset. This is a recorded-data simulation.";
+    "Simulated cursor reset to its starting position";
   $("decode-button").disabled = false;
   $("decode-button").textContent = "Run decoder ↗";
 });
