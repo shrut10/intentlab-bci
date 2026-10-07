@@ -1,0 +1,27 @@
+{
+  "experiment": "adaptation-v1",
+  "version": "1.0.0",
+  "issue": "https://github.com/shrut10/intentlab-bci/issues/1",
+  "calibration_run": 4,
+  "calibration_trials": 10,
+  "evaluation_runs": [8, 12],
+  "seeds": [2027, 2028, 2029],
+  "alignment_shrinkage": 0.01,
+  "eigenvalue_floor": 0.000001,
+  "temperature_bounds": [0.5, 5.0],
+  "thresholds": [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95],
+  "fallback_threshold": 0.75,
+  "target_accuracy": 0.75,
+  "target_coverage": 0.2,
+  "target_retained": 100,
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 4027,
+  "training": {
+    "epochs": 40,
+    "patience": 8,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "threads": 4
+  }
+}
