@@ -59,3 +59,8 @@
   .report-table-wrap { overflow: visible; }
   tr, .references li { break-inside: avoid; }
 }
+.report-details { border-block: 1px solid var(--line); margin-block: 24px; padding: 16px 0; }
+.report-details summary { cursor: pointer; font-size: 14px; line-height: 1.5; color: var(--green); }
+.report-code { white-space: pre-wrap; overflow-wrap: anywhere; padding: 20px; background: var(--wash); font: 12px/1.8 var(--mono); }
+.study-update { border-left: 3px solid var(--green); padding: 3px 0 3px 20px; margin-bottom: 30px; }
+.study-update p { font-size: 14px; line-height: 1.7; }

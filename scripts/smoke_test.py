@@ -40,6 +40,11 @@ def main():
     assert len(result["occlusion"]) == 9
     with urllib.request.urlopen(base + "/", timeout=25) as response:
         assert "Decode imagined movement" in response.read().decode()
+    study = request("/api/adaptation")
+    assert study["experiment"] == "adaptation-v1" and not study["production_model_changed"]
+    assert len(study["summary"]) == 4 and study["counts"]["test"]["evaluation_trials"] == 630
+    with urllib.request.urlopen(base + "/research/adaptation", timeout=25) as response:
+        assert "Personal calibration and signal alignment" in response.read().decode()
     print(
         json.dumps(
             {

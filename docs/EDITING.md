@@ -18,6 +18,8 @@ Local project folder: `/Users/shruthi/Documents/ChatGPT/Career/intentlab-bci`
 | Confidence warning and result explanations | `web/app.js` | `operating-caveat`, `threshold-note` |
 | Loading, error and replay messages | `web/app.js` | `showError`, `replay-status`, `Decoding` |
 | On-site research report, numbered citations and results discussion | `web/research.html` | Section titles and `ref-1` to `ref-8` |
+| Calibration/alignment follow-up prose | `experiments/adaptation-v1/report.template.html` | The heading or paragraph to rewrite |
+| Follow-up conclusion | `experiments/adaptation-v1/interpretation.txt` | The interpretation paragraph |
 | Downloadable academic references | `web/references.bib` | The matching author or title |
 | Report typography and print layout | `web/research.css` | The relevant CSS rule |
 | GitHub project description and technical overview | `README.md` | The paragraph you want to change |
@@ -69,3 +71,7 @@ The introduction deliberately says **recorded** brain signals. There is no live 
 ## Research writing
 
 The report at `/research` is a standalone HTML page in `web/research.html`, which can be edited without changing the model. Keep normal punctuation in its scholarly paragraphs while avoiding slogan-style headings. Preserve citations beside the claims they support, the reference anchors, and the distinction between this independent report and peer-reviewed papers. The report table is checked against `artifacts/evaluation.json` by the test suite. Changes to the experiment require a new versioned evaluation and corresponding updates throughout the report; a prose edit alone must not alter a result.
+
+## Calibration and alignment page
+
+The follow-up is published at `/research/adaptation`. Its editable prose is in `experiments/adaptation-v1/report.template.html`, with the conclusion in `interpretation.txt` beside it. After editing those files, run `python scripts/render_adaptation_report.py` to regenerate `web/adaptation.html`; commit both the source and generated page. Do not edit the generated numerical tables by hand, since CI compares them with the saved study results. The original report in `web/research.html` remains a separately editable account of experiment v1.0.0.

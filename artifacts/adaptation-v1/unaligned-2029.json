@@ -1,0 +1,91 @@
+{
+  "name": "unaligned-2029",
+  "kind": "unaligned",
+  "seed": 2029,
+  "best_epoch": 7,
+  "validation_participant_balanced_accuracy": 0.584388528138528,
+  "global_temperature": {
+    "temperature": 3.701674624655361,
+    "fallback": null,
+    "at_bound": false
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6931010219785902,
+      "validation_participant_balanced_accuracy": 0.4931006493506494
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6863966345787048,
+      "validation_participant_balanced_accuracy": 0.5084550865800866
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6689763916863336,
+      "validation_participant_balanced_accuracy": 0.5379599567099567
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.6375435259607103,
+      "validation_participant_balanced_accuracy": 0.5669642857142857
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.6180134005016751,
+      "validation_participant_balanced_accuracy": 0.5541260822510822
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.6105399012565613,
+      "validation_participant_balanced_accuracy": 0.5780167748917748
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.6032644126150343,
+      "validation_participant_balanced_accuracy": 0.584388528138528
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.605920414129893,
+      "validation_participant_balanced_accuracy": 0.5708603896103895
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.6025757816102769,
+      "validation_participant_balanced_accuracy": 0.5570481601731602
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.6003711409038968,
+      "validation_participant_balanced_accuracy": 0.5580898268398268
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.6031849251853095,
+      "validation_participant_balanced_accuracy": 0.5638528138528138
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.596916467613644,
+      "validation_participant_balanced_accuracy": 0.572267316017316
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.599714395734999,
+      "validation_participant_balanced_accuracy": 0.5574540043290044
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.5983307520548503,
+      "validation_participant_balanced_accuracy": 0.5629464285714285
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.5907512532340156,
+      "validation_participant_balanced_accuracy": 0.5646645021645021
+    }
+  ],
+  "onnx_max_absolute_logit_error": 2.086162567138672e-07,
+  "onnx_sha256": "756ca531c3dfffdc59811bc6cbbb5c513ce97e749f1122107800bea4b91f1d57"
+}

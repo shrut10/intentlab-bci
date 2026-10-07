@@ -153,6 +153,34 @@ def evaluation():
     return assets()["evaluation"]
 
 
+@lru_cache(maxsize=1)
+def adaptation_report():
+    """Load the separate offline study; this never changes the live predictor."""
+    folder = ROOT / "artifacts/adaptation-v1"
+    checksums = json.loads((folder / "checksums.json").read_text())
+    for name, digest in checksums.items():
+        if hashlib.sha256((folder / name).read_bytes()).hexdigest() != digest:
+            raise RuntimeError(f"Adaptation study integrity check failed: {name}")
+    return json.loads((folder / "evaluation.json").read_text())
+
+
+@app.get("/api/adaptation")
+def adaptation_evaluation():
+    """Archived four-condition comparison, not online personal calibration."""
+    return adaptation_report()
+
+
+@app.get("/api/adaptation/predictions")
+def adaptation_predictions():
+    """Download the public benchmark's validation/test probabilities as Parquet."""
+    adaptation_report()
+    return FileResponse(
+        ROOT / "artifacts/adaptation-v1/predictions.parquet",
+        media_type="application/octet-stream",
+        filename="intentlab-adaptation-predictions.parquet",
+    )
+
+
 @app.get("/api/trials")
 def trials():
     return {
@@ -241,6 +269,11 @@ def index():
 @app.get("/research", include_in_schema=False)
 def research():
     return FileResponse(ROOT / "web/research.html")
+
+
+@app.get("/research/adaptation", include_in_schema=False)
+def adaptation_research():
+    return FileResponse(ROOT / "web/adaptation.html")
 
 
 @app.get("/favicon.svg", include_in_schema=False)

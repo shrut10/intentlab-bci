@@ -1,0 +1,21 @@
+{
+  "started_utc": "2026-10-07T21:18:54.577197+00:00",
+  "code_revision": "3f0190f496c55020c61276704ad8b9210044f605",
+  "input_and_code_sha256": {
+    "experiments/adaptation-v1/protocol.json": "5935bda15a1e1d7aeec1426cf000df439718a24f62f4e3eea7f0fa3187de38c8",
+    "experiments/adaptation-v1/PROTOCOL.md": "c8b6b58bc640ae3bb2b7febf812ce16a27e5c6eed5d28d821363b850275aedd2",
+    "scripts/run_adaptation.py": "a6d3f625e3260c3341ad6d80abedfb5c46045d3ed4a84b3dd278d294a44e088f",
+    "src/intentlab/adaptation.py": "0b3127c1a09077260a0a1c1cf2329ef0a0a7c4f884d31bf780b37cfa0a201d8c",
+    "scripts/train.py": "119b20dda90cb8196e1c3391983e876b3e5dc3e9d7a3acb09b6972d78549be76",
+    "data/derived/epochs.npz": "9bf589951029469d594b3faec7a18bb0208301cb49f808184c5f23b71e2added",
+    "data/derived/trials.parquet": "ef1f5805997fa6822ef0d714796edd1b9c5d34d867ca71efcd610ed8cc933295",
+    "data/derived/manifest.json": "6824f94163c4070cee1ba6a61e44ac477e1d16debbb599a58d3255e3cbfb3f30"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "numpy": "2.5.3",
+    "torch": "2.14.1",
+    "onnxruntime": "1.30.0",
+    "device": "cpu"
+  }
+}

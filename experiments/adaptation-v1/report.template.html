@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="An exploratory comparison of personal confidence calibration and Euclidean alignment for motor-imagery EEG, using ten initial trials and evaluation on later runs across three training seeds." />
+  <title>Calibration and alignment study | IntentLab</title>
+  <link rel="canonical" href="https://intentlab-bci.vercel.app/research/adaptation" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/research.css" />
+</head>
+<body>
+  <a class="skip-link" href="#report">Skip to the report</a>
+  <header class="report-nav"><a class="report-brand" href="/">IntentLab</a><nav aria-label="Main navigation"><a href="/#studio">Experiment</a><a href="/#evidence">Results</a><a href="/research" aria-current="page">Research</a></nav></header>
+  <main id="report" class="report">
+    <header class="report-heading">
+      <p class="report-kicker">Follow-up study · Issue #1</p>
+      <h1>Personal calibration and signal alignment for motor-imagery EEG</h1>
+      <p class="report-subtitle">Comparing four approaches after ten initial recordings, with evaluation on later runs</p>
+      <p class="byline">Jayashruthi Rajesh Babu · $report_date · Adaptation experiment v1.0.0</p>
+      <p class="report-status">Exploratory reanalysis of an existing benchmark, not an independent replication or a peer-reviewed publication</p>
+      <div class="report-links"><a href="/research">Original study ↗</a><a href="https://github.com/shrut10/intentlab-bci/issues/1">Discussion on GitHub ↗</a><a href="/api/adaptation">Numerical results ↗</a><a href="/api/adaptation/predictions">Trial predictions ↓</a></div>
+    </header>
+    <section class="abstract" aria-labelledby="question-title">
+      <h2 id="question-title">Research question and findings</h2>
+      <p>This follow-up investigates whether initial recordings from a new participant can improve later motor-imagery decoding. Confidence calibration adjusts the probabilities attached to a prediction, while signal alignment transforms the inputs before classification. Four conditions were compared across three training seeds, using the same $test_trials later-run trials from $test_people test participants for each comparison. The original production decoder and its reported results remain unchanged.</p>
+      <p>$overall_finding</p>
+      <p>$reliability_finding</p>
+    </section>
+    <nav class="report-contents" aria-label="Report contents"><a href="#design">Design</a><a href="#comparison">Model comparison</a><a href="#reliability">Reliability and coverage</a><a href="#limitations">Interpretation</a><a href="#reproduce">Reproduce</a><a href="#references">References</a></nav>
+
+    <section id="design">
+      <h2>1 Study design</h2>
+      <p>The question arose in a discussion with neowalter, who asked whether confidence calibration or participant-specific alignment would be the more useful next step. The <a href="$protocol_url">follow-up protocol</a> was committed before fitting these models, but the dataset and its original test outcomes had already been inspected. This study therefore provides exploratory evidence on the existing benchmark, with no claim of a newly untouched test population.</p>
+      <p>The original train, validation and test participant assignments and quality exclusions were preserved. For every participant, the first ten eligible trials from run 04 were selected chronologically without regard to their class labels or prediction correctness. Adaptation parameters use only this initial block; all eligible trials from runs 08 and 12 form the later evaluation block. Remaining run-04 trials are unused for validation/test adaptation and scoring. The $validation_people validation participants supply $validation_trials evaluation trials, while the $test_people test participants supply $test_trials. These are later runs within the dataset, not independent-day sessions or live recordings.</p>
+      <div class="report-table-wrap" tabindex="0" role="region" aria-label="Adaptation conditions">
+        <table class="report-table"><caption>Table 1 · What each condition learns from a new participant</caption><thead><tr><th scope="col">Condition</th><th scope="col">Initial recordings</th><th scope="col">Labels required</th><th scope="col">Model input and confidence</th></tr></thead><tbody>
+          <tr><th scope="row">Baseline</th><td>0</td><td>0</td><td>Unaligned CNN with global temperature</td></tr>
+          <tr><th scope="row">Personal temperature</th><td>10</td><td>10</td><td>Same CNN with personal temperature</td></tr>
+          <tr><th scope="row">Euclidean alignment</th><td>10</td><td>0</td><td>Aligned CNN with global temperature</td></tr>
+          <tr><th scope="row">Alignment + personal temperature</th><td>10</td><td>10</td><td>Same aligned CNN with personal temperature</td></tr>
+        </tbody></table>
+      </div>
+      <p>Euclidean alignment uses the inverse square root of each participant’s mean channel second-moment matrix, estimated from their ten initial preprocessed recordings. A fixed 1% isotropic shrinkage and relative eigenvalue floor of 10<sup>−6</sup> stabilise the matrix. The resulting transform is applied without refitting on later trials or renormalising after transformation. This is a regularised adaptation of He and Wu’s approach <a class="citation" href="#ref-1">[1]</a>; it does not implement Riemannian alignment.</p>
+      <p>Paired unaligned and aligned CNNs were fitted for seeds 2027, 2028 and 2029, with the same architecture, training participants, minibatch order and training settings within each pair. The aligned models were trained on consistently aligned data, rather than applying a new transform only at inference. All $train_people training participants contribute their eligible training epochs. Checkpoints are selected using participant-macro balanced accuracy on validation later runs, with all six models frozen before test scoring.</p>
+      <p>Global temperatures are fitted on validation later-run logits, while personal temperatures minimise binary log loss on each participant’s ten initial labelled trials, bounded to [0.5, 5.0]. Single-class initial blocks retain the global value. Temperature scaling follows the post-hoc calibration principle described by Guo and colleagues <a class="citation" href="#ref-2">[2]</a>; it leaves left/right decisions unchanged, so any benefit must be assessed through probability quality or command selection rather than a gain in ordinary classification accuracy.</p>
+    </section>
+
+    <section id="comparison">
+      <h2>2 Classification and probability quality</h2>
+      <div class="report-table-wrap" tabindex="0" role="region" aria-label="Mean model comparison, horizontally scrollable">
+        <table class="report-table"><caption>Table 2 · Test results averaged across three training seeds</caption><thead><tr><th scope="col">Condition</th><th scope="col">Balanced accuracy</th><th scope="col">Change from baseline<br />95% paired interval</th><th scope="col">Brier score</th><th scope="col">ECE</th></tr></thead><tbody>$comparison_rows</tbody></table>
+      </div>
+      <p>Balanced accuracy is calculated within each participant and then averaged, giving people equal weight. The change and interval are in percentage points: for each participant, scores are first averaged over the three seeds, then paired differences are bootstrapped over participants 2,000 times. These intervals condition on the chosen split and fitted models; the three seeds are not treated as additional independent people. Brier score is the mean squared error of the predicted right-hand probability against the binary label. Expected calibration error (ECE) uses ten equal-width confidence bins over [0, 1], weighted by the number of trials in each occupied bin. Both are pooled over trials within each seed before averaging across seeds, with smaller values indicating better probability quality under these metrics; ECE is sensitive to binning and sample size.</p>
+      <p>$calibration_finding</p>
+      <p>Among test-participant personal temperature fits, $unaligned_bounds of $personal_fits unaligned fits and $aligned_bounds of $personal_fits aligned fits reached a parameter bound; $personal_fallbacks fits used the single-class fallback. This count includes a separate fit for each seed and should not be read as a count of distinct people. A ten-trial confidence fit can be unstable, even though the parameter itself is only one-dimensional.</p>
+      <details class="report-details"><summary>Inspect each training seed</summary><div class="report-table-wrap" tabindex="0" role="region" aria-label="Per-seed classification scores"><table class="report-table"><caption>Table 3 · Separate scores for all predeclared seeds</caption><thead><tr><th scope="col">Condition</th><th scope="col">Seed</th><th scope="col">Balanced accuracy</th><th scope="col">Brier score</th><th scope="col">ECE</th></tr></thead><tbody>$seed_rows</tbody></table></div></details>
+    </section>
+
+    <section id="reliability">
+      <h2>3 Reliability, thresholds and coverage</h2>
+      <p>For each condition and seed, the threshold-selection rule uses validation later-run predictions only. It chooses the lowest threshold from 0.50 to 0.95 in steps of 0.05 that achieves at least 75% retained-trial accuracy, at least 20% coverage and at least 100 retained examples. If none qualifies, 0.75 is the declared fallback. Table 4 additionally applies the same fixed 0.75 confidence threshold to every condition, showing how probability rescaling affects the number of accepted commands.</p>
+      <div class="report-table-wrap" tabindex="0" role="region" aria-label="Fixed threshold results"><table class="report-table"><caption>Table 4 · Test operating points at a fixed 0.75 confidence threshold</caption><thead><tr><th scope="col">Condition</th><th scope="col">Mean coverage</th><th scope="col">Mean accepted<br />per seed</th><th scope="col">Accepted accuracy<br />pooled across seeds</th><th scope="col">Validation target<br />met seeds</th></tr></thead><tbody>$coverage_rows</tbody></table></div>
+      <p>Accepted accuracy pools correct and accepted predictions across the three seeds, so a trial can contribute up to three predictions. Those repeated predictions do not create $repeated_trials independent examples: the evaluation still contains $test_trials unique trials from $test_people people. High accuracy on a small selected subset cannot establish useful command throughput, and failure of the validation criterion is not reversed by a favourable test subset.</p>
+      <details class="report-details"><summary>Inspect validation-selected thresholds and test counts</summary><div class="report-table-wrap" tabindex="0" role="region" aria-label="Validation rule operating points"><table class="report-table"><caption>Table 5 · Validation threshold choices applied unchanged to later test trials</caption><thead><tr><th scope="col">Condition / seed</th><th scope="col">Threshold</th><th scope="col">Validation<br />target met</th><th scope="col">Test accepted</th><th scope="col">Test correct</th><th scope="col">Test accepted<br />accuracy</th></tr></thead><tbody>$threshold_rows</tbody></table></div></details>
+    </section>
+
+    <section id="limitations">
+      <h2>4 Interpretation and next steps</h2>
+      <p>$interpretation</p>
+      <p>This comparison changes the deployment assumption: personal adaptation has access to recordings from the new participant, whereas the baseline requires none. The same ten-trial budget is held fixed across adaptation conditions, but their need for labels differs. A later-run split also differs from the original all-run evaluation, so the scores above must not be presented as direct replacements for the original 61.1% result. The newly trained baseline provides the matched comparison.</p>
+      <p>The study uses one dataset and one participant partition, with repeated training seeds but no independent recording environment. Validation later-run data are reused for checkpoint selection, global calibration and threshold selection. Signal alignment cannot eliminate cue, eye-movement or muscle confounds, and confidence calibration on ten trials may overfit. Further work would need fresh evaluation data, repeated participant splits and, if studied, a separately specified regularised or hierarchical temperature estimator.</p>
+      <p>The original C3/C4 occlusion results still suggest that the existing decoder depends on those inputs, but do not identify an optimal reduced montage. All nine selected channels were originally referenced using 64 electrodes. A smaller headset would need an appropriate reference, new training and evaluation, causal filtering and a rest/no-intention condition before prospective testing. This follow-up introduces neither a live headset mode nor a claim of reliable assistive control.</p>
+      <p>The public discussion also highlighted neoxai’s interest in processing EEG on the user’s own device. This experiment publishes code and public-data outputs that can be reproduced locally, but the existing demonstration still serves inference from the server; a browser-only implementation remains future work.</p>
+    </section>
+
+    <section id="reproduce">
+      <h2>5 Reproduction and audit trail</h2>
+      <p>The protocol was frozen at commit <a href="$protocol_commit_url"><code>$protocol_commit</code></a> and the training implementation at <a href="$code_commit_url"><code>$code_commit</code></a>. The completed record includes file hashes, software versions, calibration/evaluation trial IDs, alignment matrices, bounded temperature fits, validation histories, six ONNX exports and trial-level probabilities. The maximum observed PyTorch-to-ONNX logit difference was $parity, below the predefined 10<sup>−4</sup> limit.</p>
+      <p>Reproduction requires the original preprocessed epoch archive, generated by the public acquisition pipeline, and the pinned training dependencies. The runner refuses to overwrite a completed evaluation. An interrupted run can be resumed only when its recorded implementation, protocol and data hashes match, preventing a silent change of method during an experiment.</p>
+      <pre class="report-code"><code>pip install -r requirements-training.txt
+python scripts/prepare_data.py
+python scripts/run_adaptation.py
+python scripts/render_adaptation_report.py
+pytest -q</code></pre>
+      <p>The repository already includes the completed study outputs, so a reproduction should use a separate checkout and move its supplied <code>artifacts/adaptation-v1</code> directory to an archive before running. Keep the archived published results for comparison. Source data and derivatives retain their <a href="https://github.com/shrut10/intentlab-bci/blob/main/NOTICE.md">PhysioNet attribution and licence requirements</a>.</p>
+      <ul class="source-files"><li><a href="$protocol_url">Protocol and fixed configuration</a></li><li><a href="https://github.com/shrut10/intentlab-bci/tree/main/artifacts/adaptation-v1">Results, models, calibration manifest and hashes</a></li><li><a href="https://github.com/shrut10/intentlab-bci/blob/main/scripts/run_adaptation.py">Training and evaluation runner</a></li><li><a href="https://github.com/shrut10/intentlab-bci/blob/main/src/intentlab/adaptation.py">Alignment, calibration and evaluation implementation</a></li><li><a href="/api/adaptation">Published evaluation JSON</a> · <a href="/api/adaptation/predictions">Prediction table (Parquet)</a></li></ul>
+    </section>
+    <section id="references" class="references"><h2>References</h2><ol>
+      <li id="ref-1">He, H. and Wu, D. (2020). Transfer learning for brain–computer interfaces: a Euclidean space data alignment approach. <cite>IEEE Transactions on Biomedical Engineering</cite>, 67(2), 399–410. <a href="https://doi.org/10.1109/TBME.2019.2913914">doi:10.1109/TBME.2019.2913914</a> · <a href="https://arxiv.org/abs/1808.05464">Open manuscript</a></li>
+      <li id="ref-2">Guo, C., Pleiss, G., Sun, Y. and Weinberger, K. Q. (2017). On calibration of modern neural networks. <cite>Proceedings of the 34th International Conference on Machine Learning</cite>, PMLR 70, 1321–1330. <a href="https://proceedings.mlr.press/v70/guo17a.html">Paper and proceedings</a></li>
+    </ol><p>Dataset, acquisition-system and architectural references are provided in the <a href="/research#references">original report</a>.</p></section>
+  </main>
+  <footer class="report-footer"><a href="/research">Original research report</a><a href="https://jayashruthi.com">Jayashruthi Rajesh Babu</a></footer>
+</body>
+</html>

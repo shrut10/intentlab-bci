@@ -1,0 +1,2582 @@
+[
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 3,
+    "labelled_trials": 10,
+    "temperature": 4.999993239133095,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 5,
+    "labelled_trials": 10,
+    "temperature": 1.9160827771777347,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 7,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 8,
+    "labelled_trials": 10,
+    "temperature": 1.5819889791272892,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 14,
+    "labelled_trials": 10,
+    "temperature": 4.9999957665878325,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 16,
+    "labelled_trials": 10,
+    "temperature": 0.8255345623215702,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 17,
+    "labelled_trials": 10,
+    "temperature": 4.970640659774121,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 24,
+    "labelled_trials": 10,
+    "temperature": 0.7561143738913664,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 36,
+    "labelled_trials": 10,
+    "temperature": 4.99999360646629,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 37,
+    "labelled_trials": 10,
+    "temperature": 4.999993498050381,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 39,
+    "labelled_trials": 10,
+    "temperature": 4.999996319946535,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 41,
+    "labelled_trials": 10,
+    "temperature": 0.6302869891089703,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 46,
+    "labelled_trials": 10,
+    "temperature": 4.9999936245315295,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 47,
+    "labelled_trials": 10,
+    "temperature": 0.8545714608603441,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 66,
+    "labelled_trials": 10,
+    "temperature": 4.999993210853952,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 67,
+    "labelled_trials": 10,
+    "temperature": 1.1523442173937941,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 69,
+    "labelled_trials": 10,
+    "temperature": 0.8895547405817028,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 83,
+    "labelled_trials": 10,
+    "temperature": 0.6704973707709463,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 90,
+    "labelled_trials": 10,
+    "temperature": 1.582467700187534,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 99,
+    "labelled_trials": 10,
+    "temperature": 4.999994868659445,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 107,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 109,
+    "labelled_trials": 10,
+    "temperature": 4.999993291822709,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 10,
+    "labelled_trials": 10,
+    "temperature": 0.543283269115149,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 20,
+    "labelled_trials": 10,
+    "temperature": 0.7483680210114403,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 26,
+    "labelled_trials": 10,
+    "temperature": 4.9999948719476555,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 28,
+    "labelled_trials": 10,
+    "temperature": 4.999993413231675,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 29,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 42,
+    "labelled_trials": 10,
+    "temperature": 4.688829573484793,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 48,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 49,
+    "labelled_trials": 10,
+    "temperature": 0.5446833462436838,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 50,
+    "labelled_trials": 10,
+    "temperature": 4.99999409550078,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 57,
+    "labelled_trials": 10,
+    "temperature": 4.999994472889571,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 68,
+    "labelled_trials": 10,
+    "temperature": 4.99999358776686,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 70,
+    "labelled_trials": 10,
+    "temperature": 0.5366374550224667,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 74,
+    "labelled_trials": 10,
+    "temperature": 4.999993265683663,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 79,
+    "labelled_trials": 10,
+    "temperature": 1.1609379339267194,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 81,
+    "labelled_trials": 10,
+    "temperature": 4.999994910745941,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 82,
+    "labelled_trials": 10,
+    "temperature": 1.6510501065723822,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 87,
+    "labelled_trials": 10,
+    "temperature": 4.999994256207346,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 102,
+    "labelled_trials": 10,
+    "temperature": 2.283094307392747,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 103,
+    "labelled_trials": 10,
+    "temperature": 0.706178780686145,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 105,
+    "labelled_trials": 10,
+    "temperature": 1.2002335823667696,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 108,
+    "labelled_trials": 10,
+    "temperature": 0.7024022150131752,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 3,
+    "labelled_trials": 10,
+    "temperature": 4.999996410079692,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 5,
+    "labelled_trials": 10,
+    "temperature": 4.999994121781239,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 7,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 8,
+    "labelled_trials": 10,
+    "temperature": 4.999995126339131,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 14,
+    "labelled_trials": 10,
+    "temperature": 4.999993936868828,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 16,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 17,
+    "labelled_trials": 10,
+    "temperature": 0.6196829646930235,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 24,
+    "labelled_trials": 10,
+    "temperature": 0.6462450887573162,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 36,
+    "labelled_trials": 10,
+    "temperature": 4.99999413794972,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 37,
+    "labelled_trials": 10,
+    "temperature": 2.1447889641368945,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 39,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 41,
+    "labelled_trials": 10,
+    "temperature": 4.9999956337066065,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 46,
+    "labelled_trials": 10,
+    "temperature": 4.999994015410479,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 47,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 66,
+    "labelled_trials": 10,
+    "temperature": 4.99999600732319,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 67,
+    "labelled_trials": 10,
+    "temperature": 0.6718814223662826,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 69,
+    "labelled_trials": 10,
+    "temperature": 4.999993306378616,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 83,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 90,
+    "labelled_trials": 10,
+    "temperature": 0.5752874500615013,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 99,
+    "labelled_trials": 10,
+    "temperature": 4.999996513421686,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 107,
+    "labelled_trials": 10,
+    "temperature": 0.601911255544025,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 109,
+    "labelled_trials": 10,
+    "temperature": 4.999993377742692,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 10,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 20,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 26,
+    "labelled_trials": 10,
+    "temperature": 1.386674462961888,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 28,
+    "labelled_trials": 10,
+    "temperature": 4.999993688968771,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 29,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 42,
+    "labelled_trials": 10,
+    "temperature": 0.7953375622811564,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 48,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 49,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 50,
+    "labelled_trials": 10,
+    "temperature": 4.999996421400218,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 57,
+    "labelled_trials": 10,
+    "temperature": 4.999994507621943,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 68,
+    "labelled_trials": 10,
+    "temperature": 2.956930035717074,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 70,
+    "labelled_trials": 10,
+    "temperature": 1.0616559353694652,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 74,
+    "labelled_trials": 10,
+    "temperature": 3.693035776274518,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 79,
+    "labelled_trials": 10,
+    "temperature": 0.9056847611000737,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 81,
+    "labelled_trials": 10,
+    "temperature": 1.0653060202406648,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 82,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 87,
+    "labelled_trials": 10,
+    "temperature": 4.999996474926134,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 102,
+    "labelled_trials": 10,
+    "temperature": 4.9999947641301805,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 103,
+    "labelled_trials": 10,
+    "temperature": 0.5596626181343307,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 105,
+    "labelled_trials": 10,
+    "temperature": 1.587411324502503,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2027,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 108,
+    "labelled_trials": 10,
+    "temperature": 0.5413880233151428,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 3,
+    "labelled_trials": 10,
+    "temperature": 4.999995148015392,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 5,
+    "labelled_trials": 10,
+    "temperature": 2.9357517655253718,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 7,
+    "labelled_trials": 10,
+    "temperature": 0.9108521398470225,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 8,
+    "labelled_trials": 10,
+    "temperature": 4.999993888686437,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 14,
+    "labelled_trials": 10,
+    "temperature": 4.999994623264094,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 16,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 17,
+    "labelled_trials": 10,
+    "temperature": 4.9999940174234245,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 24,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 36,
+    "labelled_trials": 10,
+    "temperature": 4.999994448643299,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 37,
+    "labelled_trials": 10,
+    "temperature": 4.999995778012929,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 39,
+    "labelled_trials": 10,
+    "temperature": 0.5930074520455337,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 41,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 46,
+    "labelled_trials": 10,
+    "temperature": 4.999996472495829,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 47,
+    "labelled_trials": 10,
+    "temperature": 0.5437181259937417,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 66,
+    "labelled_trials": 10,
+    "temperature": 4.180778364465367,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 67,
+    "labelled_trials": 10,
+    "temperature": 0.6525175032938911,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 69,
+    "labelled_trials": 10,
+    "temperature": 2.344857747845183,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 83,
+    "labelled_trials": 10,
+    "temperature": 4.999994146303126,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 90,
+    "labelled_trials": 10,
+    "temperature": 0.7888883340202518,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 99,
+    "labelled_trials": 10,
+    "temperature": 4.999995137447593,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 107,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 109,
+    "labelled_trials": 10,
+    "temperature": 4.999996583448814,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 10,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 20,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 26,
+    "labelled_trials": 10,
+    "temperature": 4.999994272341719,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 28,
+    "labelled_trials": 10,
+    "temperature": 4.999993604496717,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 29,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 42,
+    "labelled_trials": 10,
+    "temperature": 3.9330274685279147,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 48,
+    "labelled_trials": 10,
+    "temperature": 0.5593300137148483,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 49,
+    "labelled_trials": 10,
+    "temperature": 0.5828950147148835,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 50,
+    "labelled_trials": 10,
+    "temperature": 4.999995708075712,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 57,
+    "labelled_trials": 10,
+    "temperature": 4.9999941797699625,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 68,
+    "labelled_trials": 10,
+    "temperature": 4.999994717361288,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 70,
+    "labelled_trials": 10,
+    "temperature": 0.8529474174780344,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 74,
+    "labelled_trials": 10,
+    "temperature": 1.3273586241275372,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 79,
+    "labelled_trials": 10,
+    "temperature": 0.709188843874154,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 81,
+    "labelled_trials": 10,
+    "temperature": 4.99999420461583,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 82,
+    "labelled_trials": 10,
+    "temperature": 1.1843918913898974,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 87,
+    "labelled_trials": 10,
+    "temperature": 4.999994360179667,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 102,
+    "labelled_trials": 10,
+    "temperature": 1.3945466266691757,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 103,
+    "labelled_trials": 10,
+    "temperature": 0.7336835218841941,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 105,
+    "labelled_trials": 10,
+    "temperature": 0.8634440971852255,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 108,
+    "labelled_trials": 10,
+    "temperature": 0.8559799691461707,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 3,
+    "labelled_trials": 10,
+    "temperature": 4.999994002046053,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 5,
+    "labelled_trials": 10,
+    "temperature": 2.147945585532713,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 7,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 8,
+    "labelled_trials": 10,
+    "temperature": 4.999994339728194,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 14,
+    "labelled_trials": 10,
+    "temperature": 4.99999586032149,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 16,
+    "labelled_trials": 10,
+    "temperature": 0.5929922704685575,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 17,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 24,
+    "labelled_trials": 10,
+    "temperature": 1.589796908881964,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 36,
+    "labelled_trials": 10,
+    "temperature": 4.999994824539287,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 37,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 39,
+    "labelled_trials": 10,
+    "temperature": 0.5886097602518185,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 41,
+    "labelled_trials": 10,
+    "temperature": 4.999994943941298,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 46,
+    "labelled_trials": 10,
+    "temperature": 4.999996580724534,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 47,
+    "labelled_trials": 10,
+    "temperature": 0.6323569754753866,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 66,
+    "labelled_trials": 10,
+    "temperature": 4.999996010473363,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 67,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 69,
+    "labelled_trials": 10,
+    "temperature": 4.999995721894971,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 83,
+    "labelled_trials": 10,
+    "temperature": 2.231261062610131,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 90,
+    "labelled_trials": 10,
+    "temperature": 0.942672998974337,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 99,
+    "labelled_trials": 10,
+    "temperature": 4.999995168259715,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 107,
+    "labelled_trials": 10,
+    "temperature": 0.5170944699488259,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 109,
+    "labelled_trials": 10,
+    "temperature": 4.999993564677391,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 10,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 20,
+    "labelled_trials": 10,
+    "temperature": 0.7358766385635481,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 26,
+    "labelled_trials": 10,
+    "temperature": 1.637688682308788,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 28,
+    "labelled_trials": 10,
+    "temperature": 4.999994141612684,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 29,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 42,
+    "labelled_trials": 10,
+    "temperature": 0.8414517052609521,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 48,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 49,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 50,
+    "labelled_trials": 10,
+    "temperature": 4.999993976325205,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 57,
+    "labelled_trials": 10,
+    "temperature": 4.999994509269561,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 68,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 70,
+    "labelled_trials": 10,
+    "temperature": 1.0407336473711197,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 74,
+    "labelled_trials": 10,
+    "temperature": 1.229309557581666,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 79,
+    "labelled_trials": 10,
+    "temperature": 1.9048230043050292,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 81,
+    "labelled_trials": 10,
+    "temperature": 0.6541822790795015,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 82,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 87,
+    "labelled_trials": 10,
+    "temperature": 4.999993481911948,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 102,
+    "labelled_trials": 10,
+    "temperature": 4.9999936094135995,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 103,
+    "labelled_trials": 10,
+    "temperature": 0.503220458393182,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 105,
+    "labelled_trials": 10,
+    "temperature": 0.9981610066806733,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2028,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 108,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 3,
+    "labelled_trials": 10,
+    "temperature": 4.999996163523566,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 5,
+    "labelled_trials": 10,
+    "temperature": 1.6998694532746217,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 7,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 8,
+    "labelled_trials": 10,
+    "temperature": 1.0693122473286794,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 14,
+    "labelled_trials": 10,
+    "temperature": 4.999995251263363,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 16,
+    "labelled_trials": 10,
+    "temperature": 1.4011537602308954,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 17,
+    "labelled_trials": 10,
+    "temperature": 4.9999963530813085,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 24,
+    "labelled_trials": 10,
+    "temperature": 1.7142172124340425,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 36,
+    "labelled_trials": 10,
+    "temperature": 4.999995071216487,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 37,
+    "labelled_trials": 10,
+    "temperature": 4.99999597507075,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 39,
+    "labelled_trials": 10,
+    "temperature": 4.9999934294187245,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 41,
+    "labelled_trials": 10,
+    "temperature": 0.8378907191490339,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 46,
+    "labelled_trials": 10,
+    "temperature": 4.9999965400254425,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 47,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 66,
+    "labelled_trials": 10,
+    "temperature": 4.999996288350684,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 67,
+    "labelled_trials": 10,
+    "temperature": 1.165052929740752,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 69,
+    "labelled_trials": 10,
+    "temperature": 4.999995126053149,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 83,
+    "labelled_trials": 10,
+    "temperature": 1.3599979918124112,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 90,
+    "labelled_trials": 10,
+    "temperature": 1.7065070058878593,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 99,
+    "labelled_trials": 10,
+    "temperature": 4.999996084217161,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 107,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "validation",
+    "subject": 109,
+    "labelled_trials": 10,
+    "temperature": 4.999996440168567,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 10,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 20,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 26,
+    "labelled_trials": 10,
+    "temperature": 4.999994259583647,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 28,
+    "labelled_trials": 10,
+    "temperature": 4.999993444518011,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 29,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 42,
+    "labelled_trials": 10,
+    "temperature": 3.934389443080061,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 48,
+    "labelled_trials": 10,
+    "temperature": 0.517274643970187,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 49,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 50,
+    "labelled_trials": 10,
+    "temperature": 4.999993353854417,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 57,
+    "labelled_trials": 10,
+    "temperature": 4.999994431850289,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 68,
+    "labelled_trials": 10,
+    "temperature": 4.999996029656461,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 70,
+    "labelled_trials": 10,
+    "temperature": 0.7960044652552202,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 74,
+    "labelled_trials": 10,
+    "temperature": 3.787001244456885,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 79,
+    "labelled_trials": 10,
+    "temperature": 0.5289533141559445,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 81,
+    "labelled_trials": 10,
+    "temperature": 4.9999951097637085,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 82,
+    "labelled_trials": 10,
+    "temperature": 1.200455870196847,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 87,
+    "labelled_trials": 10,
+    "temperature": 4.9999961163106,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 102,
+    "labelled_trials": 10,
+    "temperature": 1.5528438845876913,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 103,
+    "labelled_trials": 10,
+    "temperature": 0.5884503734327197,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 105,
+    "labelled_trials": 10,
+    "temperature": 1.1310138963428267,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "unaligned",
+    "split": "test",
+    "subject": 108,
+    "labelled_trials": 10,
+    "temperature": 0.509787523794292,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 3,
+    "labelled_trials": 10,
+    "temperature": 4.999994437605867,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 5,
+    "labelled_trials": 10,
+    "temperature": 4.999994007630376,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 7,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 8,
+    "labelled_trials": 10,
+    "temperature": 1.3248918043897902,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 14,
+    "labelled_trials": 10,
+    "temperature": 4.131535377752875,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 16,
+    "labelled_trials": 10,
+    "temperature": 0.6862126455403156,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 17,
+    "labelled_trials": 10,
+    "temperature": 2.4678725782129014,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 24,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 36,
+    "labelled_trials": 10,
+    "temperature": 4.999994483382019,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 37,
+    "labelled_trials": 10,
+    "temperature": 2.5565611051153345,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 39,
+    "labelled_trials": 10,
+    "temperature": 4.999995921554393,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 41,
+    "labelled_trials": 10,
+    "temperature": 0.8986333440449764,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 46,
+    "labelled_trials": 10,
+    "temperature": 4.999994175367654,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 47,
+    "labelled_trials": 10,
+    "temperature": 0.6845768319146306,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 66,
+    "labelled_trials": 10,
+    "temperature": 4.999996581719279,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 67,
+    "labelled_trials": 10,
+    "temperature": 0.917150373364604,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 69,
+    "labelled_trials": 10,
+    "temperature": 4.999993299404371,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 83,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 90,
+    "labelled_trials": 10,
+    "temperature": 0.5689704313221099,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 99,
+    "labelled_trials": 10,
+    "temperature": 4.99999414125238,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 107,
+    "labelled_trials": 10,
+    "temperature": 0.8352410495709325,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "validation",
+    "subject": 109,
+    "labelled_trials": 10,
+    "temperature": 4.9999941881113115,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 10,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 20,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 26,
+    "labelled_trials": 10,
+    "temperature": 1.0129819784033487,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 28,
+    "labelled_trials": 10,
+    "temperature": 4.999993805844269,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 29,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 42,
+    "labelled_trials": 10,
+    "temperature": 0.9561580015300254,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 48,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 49,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 50,
+    "labelled_trials": 10,
+    "temperature": 4.999993885470173,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 57,
+    "labelled_trials": 10,
+    "temperature": 4.999993966300568,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 68,
+    "labelled_trials": 10,
+    "temperature": 4.9999939100502635,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 70,
+    "labelled_trials": 10,
+    "temperature": 0.7238051702616354,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 74,
+    "labelled_trials": 10,
+    "temperature": 1.8668360790503833,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 79,
+    "labelled_trials": 10,
+    "temperature": 1.0306190083049587,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 81,
+    "labelled_trials": 10,
+    "temperature": 1.1780972718303613,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 82,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 87,
+    "labelled_trials": 10,
+    "temperature": 4.999996358040391,
+    "fallback": null,
+    "at_bound": true
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 102,
+    "labelled_trials": 10,
+    "temperature": 1.7236065226182362,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 103,
+    "labelled_trials": 10,
+    "temperature": 0.6964353624445347,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 105,
+    "labelled_trials": 10,
+    "temperature": 1.2385622277987363,
+    "fallback": null,
+    "at_bound": false
+  },
+  {
+    "seed": 2029,
+    "kind": "aligned",
+    "split": "test",
+    "subject": 108,
+    "labelled_trials": 10,
+    "temperature": 0.5000063322577876,
+    "fallback": null,
+    "at_bound": true
+  }
+]

@@ -40,6 +40,12 @@ Removing C3 or C4 reduced test participant-macro balanced accuracy to **52.8%** 
 
 [Full metrics](artifacts/evaluation.json) · [Model card](docs/MODEL_CARD.md) · [Protocol recorded before training](docs/PROTOCOL.md) · [Data card](docs/DATA_CARD.md)
 
+## Calibration and alignment follow-up
+
+The [follow-up to issue #1](https://intentlab-bci.vercel.app/research/adaptation) compares a matched baseline, ten-trial personal temperature scaling, Euclidean alignment, and their combination across three training seeds. Evaluation uses later runs from the same 21 test participants, with all conditions, uncertainty and command coverage reported. This is an exploratory comparison on an already inspected benchmark; the original deployed model and the results above are unchanged.
+
+[Study protocol and reproduction guide](experiments/adaptation-v1/README.md) · [Archived results](artifacts/adaptation-v1/evaluation.json) · [Prediction data](artifacts/adaptation-v1/predictions.parquet)
+
 ## Architecture
 
 ```mermaid

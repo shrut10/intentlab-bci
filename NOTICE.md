@@ -22,4 +22,6 @@ Changes made: common-average referencing, selection of nine channels, extraction
 
 The CNN's architectural inspiration is Lawhern et al. (2018), *EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces*, https://doi.org/10.1088/1741-2552/aace8c. IntentLab implements an adapted small network with odd temporal kernels, adaptive average pooling and a single binary output; it does not claim to reproduce the paper's architecture or results.
 
+The follow-up in `artifacts/adaptation-v1/` derives trial identifiers, labels, probabilities and participant-specific transforms from the same source dataset, retaining the attribution above. It uses regularised Euclidean alignment inspired by He, H. and Wu, D. (2020), *Transfer Learning for Brain–Computer Interfaces: A Euclidean Space Data Alignment Approach*, DOI https://doi.org/10.1109/TBME.2019.2913914, and temperature scaling following Guo et al. (2017), https://proceedings.mlr.press/v70/guo17a.html. Neither reference endorses this implementation or its results.
+
 The MIT licence in this repository covers original application code only. Third-party dependencies retain their own licences.
