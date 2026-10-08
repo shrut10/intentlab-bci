@@ -85,9 +85,11 @@ The container runs as an unprivileged user. GitHub Actions checks source formatt
 
 **Try:** run `python scripts/smoke_test.py --url https://intentlab-bci.vercel.app`. Then read `tests/test_api.py`, especially the test that changes a recorded label and checks that the prediction stays the same.
 
-## A sensible next experiment
+## The completed follow-up and a sensible next experiment
 
-Freeze this version. Design participant-specific calibration using separate calibration and evaluation runs, and compare it with the current model. Write the protocol before examining the new evaluation. Alternatively, test transfer to another appropriately licensed dataset with equivalent task labels and electrode definitions.
+The [adaptation follow-up](../experiments/adaptation-v1/README.md) now compares personal temperature scaling, Euclidean alignment and their combination using ten early trials and evaluation on later runs, repeated across three training seeds. Alignment's mean balanced accuracy was higher, but the paired interval included no improvement, and none of the conditions met the validation reliability target. The deployed decoder is unchanged. Read the full comparison before using its numbers, because it has a different evaluation block from the original result above.
+
+An informative next experiment would test the fixed method on fresh participants or an independently sourced dataset with equivalent task labels and electrode definitions. Write its protocol and stopping rule before evaluating it. The existing benchmark has now been inspected repeatedly, so further improvements on it cannot be described as a new independent confirmation.
 
 Streaming support would need causal filtering, window timing, artefact handling and a new evaluation. Connecting a headset without redesigning those parts would not turn this offline model into a validated live BCI.
 

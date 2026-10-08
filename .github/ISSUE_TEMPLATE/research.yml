@@ -1,0 +1,26 @@
+name: Research or teaching feedback
+description: Share a reproduction, methodological observation or teaching experience
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What did you try?
+      options:
+        - Teaching exercise or demo
+        - Reproducing a published result
+        - Methodological review
+        - Proposed new experiment
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: Observation and evidence
+      description: Include the commit, trial IDs or published result you inspected, and describe what worked or did not work
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested change or research question
+      description: For a new experiment, state the data split and adaptation budget; distinguish existing evidence from a hypothesis

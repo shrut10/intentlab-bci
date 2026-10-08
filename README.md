@@ -8,6 +8,8 @@ IntentLab is an interactive motor-imagery EEG experiment. Participants imagined 
 
 [![Tests and container](https://github.com/shrut10/intentlab-bci/actions/workflows/ci.yml/badge.svg)](https://github.com/shrut10/intentlab-bci/actions/workflows/ci.yml)
 
+For students and educators, the [20-minute teaching exercise](docs/TEACHING.md) explains confidence, abstention and personal calibration through the demo. The [worked coverage audit](examples/coverage_audit.py) reconstructs operating points from saved predictions without downloading EEG or training a model. Reuse and methodological feedback are welcome through [the contribution guide](CONTRIBUTING.md).
+
 ## What you can do
 
 - Explore 126 real EEG epochs from 21 people excluded from training and model selection.
@@ -125,6 +127,8 @@ curl https://intentlab-bci.vercel.app/api/predict \
 | `GET /api/trials/{id}/csv` | All 480 normalised samples for a demo epoch |
 | `POST /api/predict` | Live model inference, abstention, spectrum and occlusion |
 | `GET /api/evaluation` | Frozen validation/test results and robustness analysis |
+| `GET /api/adaptation` | Archived calibration/alignment comparison |
+| `GET /api/adaptation/predictions` | Downloadable trial-level predictions for that comparison |
 | `GET /docs` | Interactive API specification |
 
 The public API accepts only bundled trial IDs and bounded perturbations. It does not accept private EEG uploads. The recorded label is returned for comparison **after** inference and is not a model input.
