@@ -75,3 +75,6 @@ The report at `/research` is a standalone HTML page in `web/research.html`, whic
 ## Calibration and alignment page
 
 The follow-up is published at `/research/adaptation`. Its editable prose is in `experiments/adaptation-v1/report.template.html`, with the conclusion in `interpretation.txt` beside it. After editing those files, run `python scripts/render_adaptation_report.py` to regenerate `web/adaptation.html`; commit both the source and generated page. Do not edit the generated numerical tables by hand, since CI compares them with the saved study results. The original report in `web/research.html` remains a separately editable account of experiment v1.0.0.
+# Reliability audit additions
+
+Edit `web/reliability.html` for the audit page's explanatory text, `web/reliability.js` for dynamic labels and `web/reliability.css` for its appearance. Reuse instructions are in `docs/RELIABILITY.md`, with proposed research work in `docs/ROADMAP.md`. The report `web/reliability.json` is generated from archived predictions; change the analysis code and regenerate with a reviewed explanation rather than editing numerical results by hand. CI checks it against the source artefacts.

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Audit EEG decoder reliability by participant, with command coverage, errors, uncertainty and a reusable local prediction audit." />
+  <title>Reliability audit | IntentLab</title>
+  <link rel="canonical" href="https://intentlab-bci.vercel.app/research/reliability" />
+  <meta property="og:title" content="IntentLab participant reliability audit" />
+  <meta property="og:description" content="See who receives commands, who receives none, and how uncertain the results are; reuse the audit with your own saved predictions." />
+  <meta property="og:url" content="https://intentlab-bci.vercel.app/research/reliability" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://intentlab-bci.vercel.app/static/reliability-preview.jpg" />
+  <meta property="og:image:alt" content="IntentLab baseline audit showing 9 of 630 trials accepted, zero accepted errors and 18 of 21 participants receiving no commands" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/reliability.css" />
+  <script src="/static/reliability.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#report">Skip to the audit</a>
+  <header class="report-nav"><a class="report-brand" href="/">IntentLab</a><nav aria-label="Main navigation"><a href="/">Experiment</a><a href="/research">Research</a><a href="/research/reliability" aria-current="page">Reliability</a></nav></header>
+  <main id="report" class="report audit">
+    <header class="report-heading">
+      <p class="report-kicker">Reusable evaluation tool · Recorded EEG</p>
+      <h1>Who receives a command when the decoder is uncertain?</h1>
+      <p class="report-subtitle">Compare accepted errors, coverage and differences between participants, then use the same audit with your own saved predictions</p>
+      <div class="report-links"><a href="https://github.com/shrut10/intentlab-bci/blob/main/docs/RELIABILITY.md">Method and local CSV guide</a><a href="/static/reliability.json" download>Download the published audit</a><a href="https://github.com/shrut10/intentlab-bci/issues/new?template=research.yml">Give methodological feedback</a></div>
+    </header>
+    <aside class="study-update"><p id="provenance">This is a descriptive reanalysis of the archived calibration and alignment experiment, with the trained models kept fixed. The same 21 test participants appear in each seed; seeds do not add independent participants, and no condition met the original validation reliability target.</p></aside>
+    <p id="loading" role="status">Loading the archived predictions audit…</p>
+    <noscript><p>The interactive audit needs JavaScript. The method guide and downloadable JSON above remain available.</p></noscript>
+    <section id="explorer" hidden aria-labelledby="explorer-title">
+      <h2 id="explorer-title">Inspect an operating point</h2>
+      <div class="audit-controls">
+        <label>Condition<select id="condition"></select></label>
+        <label>Training seed<select id="seed"></select></label>
+        <label>Evaluation split<select id="split"><option value="test">Test</option><option value="validation">Validation</option></select></label>
+        <label>Confidence threshold<select id="threshold"></select></label>
+      </div>
+      <p id="selection-note" class="audit-note" aria-live="polite"></p>
+      <div id="summary" class="audit-summary" aria-live="polite"></div>
+      <div class="audit-plot"><svg id="curve" viewBox="0 0 650 340" role="img" aria-labelledby="curve-title curve-description"><title id="curve-title">Error and coverage across confidence thresholds</title><desc id="curve-description">Each point represents one fixed threshold. Full values are provided in the operating-points table below.</desc></svg></div>
+      <p class="audit-note">Coverage is the fraction of trials accepted; selective risk is the fraction of accepted predictions that are wrong. The curve is descriptive, and inspecting test results does not validate a newly chosen threshold.</p>
+      <p id="uncertainty" class="audit-note"></p>
+      <p class="audit-note">Intervals resample whole participants with the model and threshold fixed. Accepted-accuracy intervals condition on resamples containing accepted trials; undefined resamples are counted below. A 100–100% interval when every observed accepted trial was correct cannot account for unseen errors and is not evidence of perfect reliability.</p>
+      <details class="report-details"><summary>All operating points and bootstrap counts</summary><div class="report-table-wrap" tabindex="0" role="region" aria-label="Operating points"><table class="report-table"><thead><tr><th scope="col">Threshold</th><th scope="col">Accepted / total</th><th scope="col">Errors</th><th scope="col">Coverage</th><th scope="col">Accepted accuracy</th><th scope="col">People with commands</th><th scope="col">Valid accuracy resamples</th></tr></thead><tbody id="operating-rows"></tbody></table></div></details>
+      <h2>Participant-level results</h2>
+      <p class="audit-note">Every participant is included, including people with no accepted commands. Balanced accuracy uses all their trials and is undefined if a participant has only one class; accepted accuracy is undefined when no trials are accepted.</p>
+      <div class="report-table-wrap" tabindex="0" role="region" aria-label="Participant results"><table class="report-table"><thead><tr><th scope="col">Participant</th><th scope="col">Accepted / total</th><th scope="col">Errors</th><th scope="col">Coverage</th><th scope="col">Accepted accuracy</th><th scope="col">All-trial balanced accuracy</th></tr></thead><tbody id="participant-rows"></tbody></table></div>
+    </section>
+    <section aria-labelledby="reuse-title">
+      <h2 id="reuse-title">Audit your own predictions</h2>
+      <p>Run the local CSV tool described in the <a href="https://github.com/shrut10/intentlab-bci/blob/main/docs/RELIABILITY.md">reuse guide</a>, then open its JSON report here. File contents are read in your browser and are not uploaded; the report must use the same documented schema.</p>
+      <label class="audit-file">Open a local audit JSON <input id="local-report" type="file" accept=".json,application/json" /></label>
+      <p id="file-status" role="status" class="audit-note"></p>
+      <button id="reset-report" type="button">Restore the published study</button>
+    </section>
+    <section>
+      <h2>What would make the evidence stronger?</h2>
+      <p>This audit does not improve the decoder or establish live control. The next research priorities are a protocol evaluated on an independent dataset, preprocessing that only uses samples already received, and explicit assessment of unintended commands during rest. The <a href="https://github.com/shrut10/intentlab-bci/blob/main/docs/ROADMAP.md">research roadmap</a> defines what each improvement would need to demonstrate.</p>
+      <p>Feedback is particularly useful on the treatment of participants who receive no commands, the limits of the bootstrap intervals and the design of an independent evaluation. A small reproduction or a concrete counterexample would help improve the project more than a general endorsement.</p>
+    </section>
+  </main>
+  <footer class="report-footer"><span>IntentLab · Jayashruthi Rajesh Babu</span><a href="/research/adaptation">Original adaptation study</a><a href="https://github.com/shrut10/intentlab-bci">Code and licences</a></footer>
+</body>
+</html>

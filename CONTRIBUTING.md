@@ -6,6 +6,7 @@ IntentLab is a recorded-data teaching and research project. Contributions should
 
 - Try the [20-minute teaching exercise](docs/TEACHING.md) and report where the explanation or interface was confusing.
 - Rebuild the coverage table with [the small worked example](examples/coverage_audit.py), recording the commit and environment you used.
+- Reproduce a [participant reliability audit](docs/RELIABILITY.md), or propose a synthetic counterexample to its handling of sparse accepted predictions, bootstrap uncertainty or cohort boundaries.
 - Check keyboard navigation, small screens and the clarity of error messages.
 - Propose an independently evaluated extension with a fixed data split, adaptation budget and stopping rule before running it.
 
@@ -19,7 +20,9 @@ Use Python 3.12 and install `requirements-dev.txt` in a virtual environment. Tra
 ruff check .
 ruff format --check .
 node --check web/app.js
+node --check web/reliability.js
 python scripts/render_adaptation_report.py --check
+python examples/reliability_audit.py --check
 pytest -q
 ```
 

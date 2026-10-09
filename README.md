@@ -10,6 +10,8 @@ IntentLab is an interactive motor-imagery EEG experiment. Participants imagined 
 
 For students and educators, the [20-minute teaching exercise](docs/TEACHING.md) explains confidence, abstention and personal calibration through the demo. The [worked coverage audit](examples/coverage_audit.py) reconstructs operating points from saved predictions without downloading EEG or training a model. Reuse and methodological feedback are welcome through [the contribution guide](CONTRIBUTING.md).
 
+The new [participant reliability audit](https://intentlab-bci.vercel.app/research/reliability) shows who receives commands, who receives none, errors among accepted predictions and participant-bootstrap uncertainty. You can [audit your own prediction CSV locally](docs/RELIABILITY.md) and open its report in the browser without uploading it. The [research roadmap](docs/ROADMAP.md) prioritises independent evaluation, causal processing and unintended-command assessment.
+
 ## What you can do
 
 - Explore 126 real EEG epochs from 21 people excluded from training and model selection.
