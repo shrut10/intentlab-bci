@@ -19,7 +19,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from scipy.signal import welch
 
-from intentlab import __version__
+from intentlab import __model_version__, __version__
 from intentlab.inference import Predictor
 from intentlab.signal import CHANNELS, SFREQ, perturb
 
@@ -239,7 +239,8 @@ def predict(payload: PredictionRequest):
         "trial_id": payload.trial_id,
         "model": name,
         "model_name": predictor.config["models"][name]["name"],
-        "model_version": __version__,
+        "model_version": __model_version__,
+        "app_version": __version__,
         "right_probability": right,
         "left_probability": 1 - right,
         "confidence": confidence,
@@ -274,6 +275,11 @@ def research():
 @app.get("/research/adaptation", include_in_schema=False)
 def adaptation_research():
     return FileResponse(ROOT / "web/adaptation.html")
+
+
+@app.get("/research/reliability", include_in_schema=False)
+def reliability_research():
+    return FileResponse(ROOT / "web/reliability.html")
 
 
 @app.get("/favicon.svg", include_in_schema=False)

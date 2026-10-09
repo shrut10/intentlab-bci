@@ -8,6 +8,7 @@ body:
       options:
         - Teaching exercise or demo
         - Reproducing a published result
+        - Reliability audit or synthetic counterexample
         - Methodological review
         - Proposed new experiment
     validations:

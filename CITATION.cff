@@ -1,6 +1,8 @@
 cff-version: 1.2.0
 message: "If you use IntentLab in teaching or research, cite this software and the original data and methods listed in NOTICE.md."
 type: software
+version: "1.1.0"
+date-released: "2026-10-09"
 title: "IntentLab: recorded motor-imagery EEG decoding and selective prediction"
 authors:
   - name: "Jayashruthi Rajesh Babu"
