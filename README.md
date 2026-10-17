@@ -50,6 +50,8 @@ The [follow-up to issue #1](https://intentlab-bci.vercel.app/research/adaptation
 
 [Study protocol and reproduction guide](experiments/adaptation-v1/README.md) · [Archived results](artifacts/adaptation-v1/evaluation.json) · [Prediction data](artifacts/adaptation-v1/predictions.parquet)
 
+The [runnable MOABB example](examples/moabb_chronological/README.md) demonstrates a custom chronological splitter: ten early target trials for adaptation, unused early trials excluded, and later runs reserved for evaluation. It uses generated data and tests both labelled and unlabelled calibration routing; it is an integration example rather than a new EEG benchmark.
+
 ## Architecture
 
 ```mermaid

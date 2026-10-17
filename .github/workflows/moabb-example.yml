@@ -1,0 +1,28 @@
+name: Test chronological MOABB example
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      MNE_DONTWRITE_HOME: 'true'
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: examples/moabb_chronological/requirements.txt
+      - run: pip install -r examples/moabb_chronological/requirements.txt
+      - run: python -m pytest -q examples/moabb_chronological/test_example.py
+      - run: python examples/moabb_chronological/example.py
