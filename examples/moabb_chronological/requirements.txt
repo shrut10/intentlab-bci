@@ -1,0 +1,8 @@
+# Exact MOABB revision with the top-level metadata-aware splitter interface.
+moabb @ git+https://github.com/NeuroTechX/moabb.git@ed1aacdb39a445efe13a4f026673b14cc2913b85
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.0.6
+scikit-learn==1.9.1
+mne==1.13.2
+pytest==9.0.3
