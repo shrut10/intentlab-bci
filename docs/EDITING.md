@@ -84,3 +84,7 @@ Edit `web/reliability.html` for the audit page's explanatory text, `web/reliabil
 The demo uses locally served Pixelify Sans headings and DM Sans body text. `web/base.css` contains the shared palette and font definitions. `web/pixel.css` styles the demo's wooden menu buttons, square panels, layout and responsive sizes. `web/eeg-scene.svg` is the original pixel EEG illustration; it is decorative and does not show a live prediction. The real EEG plots still come from the saved recordings and prediction API. Font licences are kept with the files under `web/fonts/`.
 
 Quick links: [edit the demo wording](https://github.com/shrut10/intentlab-bci/edit/main/web/index.html), [edit dynamic messages](https://github.com/shrut10/intentlab-bci/edit/main/web/app.js), [edit the palette](https://github.com/shrut10/intentlab-bci/edit/main/web/base.css), [edit the demo style](https://github.com/shrut10/intentlab-bci/edit/main/web/pixel.css).
+
+## Creator identity and search metadata
+
+The head of `web/index.html` contains the demo's title, description, author, canonical URL, Open Graph/Twitter previews and JSON-LD. It identifies Jayashruthi Rajesh Babu (Shruthi / Jaya) as the creator and links back to the same Person identity at `https://jayashruthi.com/#person`. Keep the canonical URL on the demo itself, since the demo and portfolio case study have different content. The portfolio's editable metadata is in `content/search.js` in `shrut10/NoctraMind-Site`.
