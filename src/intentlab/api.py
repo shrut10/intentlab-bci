@@ -18,6 +18,8 @@ from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from scipy.signal import welch
+from starlette.datastructures import Headers
+from starlette.staticfiles import NotModifiedResponse
 
 from intentlab import __model_version__, __version__
 from intentlab.inference import Predictor
@@ -26,6 +28,18 @@ from intentlab.signal import CHANNELS, SFREQ, perturb
 ROOT = Path(__file__).resolve().parents[2]
 ModelName = Literal["bandpower", "csp_lda", "compact_eeg", "majority"]
 ChannelName = Literal["FC3", "FCz", "FC4", "C3", "Cz", "C4", "CP3", "CPz", "CP4"]
+
+
+class ContentStaticFiles(StaticFiles):
+    """Validate assets by bytes: Vercel normalises file timestamps between builds."""
+
+    def file_response(self, full_path, stat_result, scope, status_code=200):
+        response = FileResponse(full_path, status_code=status_code, stat_result=stat_result)
+        response.headers["ETag"] = f'"{hashlib.sha256(Path(full_path).read_bytes()).hexdigest()}"'
+        del response.headers["Last-Modified"]
+        if self.is_not_modified(response.headers, Headers(scope=scope)):
+            return NotModifiedResponse(response.headers)
+        return response
 
 
 @lru_cache(maxsize=1)
@@ -87,7 +101,12 @@ async def request_bounds(request: Request, call_next):
         response.headers["Content-Security-Policy"] = (
             "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
         )
-    response.headers["Cache-Control"] = "no-store" if request.url.path.startswith("/api") else "no-cache"
+    is_document = response.headers.get("Content-Type", "").startswith("text/html")
+    response.headers["Cache-Control"] = (
+        "no-store" if is_document or request.url.path.startswith("/api") else "no-cache"
+    )
+    if is_document and "Last-Modified" in response.headers:
+        del response.headers["Last-Modified"]
     return response
 
 
@@ -287,4 +306,4 @@ def favicon():
     return FileResponse(ROOT / "web/favicon.svg", media_type="image/svg+xml")
 
 
-app.mount("/static", StaticFiles(directory=ROOT / "web"), name="static")
+app.mount("/static", ContentStaticFiles(directory=ROOT / "web"), name="static")

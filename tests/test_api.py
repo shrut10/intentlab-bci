@@ -100,6 +100,8 @@ def test_signal_download_matches_the_served_data(client, identifier):
 def test_static_app_and_docs_are_available(client):
     page = client.get("/")
     assert page.status_code == 200 and 'id="subject-select"' in page.text
+    assert page.headers["Cache-Control"] == "no-store"
+    assert "Last-Modified" not in page.headers
     assert client.get("/static/app.js").status_code == 200
     assert client.get("/static/pixel.css").status_code == 200
     assert client.get("/static/eeg-scene.svg").status_code == 200
