@@ -99,8 +99,10 @@ def test_signal_download_matches_the_served_data(client, identifier):
 
 def test_static_app_and_docs_are_available(client):
     page = client.get("/")
-    assert page.status_code == 200 and "Decode imagined movement" in page.text
+    assert page.status_code == 200 and 'id="subject-select"' in page.text
     assert client.get("/static/app.js").status_code == 200
+    assert client.get("/static/pixel.css").status_code == 200
+    assert client.get("/static/eeg-scene.svg").status_code == 200
     assert client.get("/favicon.svg").status_code == 200
     assert "/api/predict" in client.get("/openapi.json").json()["paths"]
     assert client.get("/docs").status_code == 200

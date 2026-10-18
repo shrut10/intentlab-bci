@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#11242b" />
+    <meta name="theme-color" content="#595282" />
     <meta
       name="description"
       content="An EEG experiment by Shruthi that classifies recorded imagined hand movements and evaluates predictions on participants unseen during training."
@@ -11,6 +11,7 @@
     <title>IntentLab | Motor-imagery EEG decoding</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/pixel.css" />
     <script src="/static/app.js" defer></script>
   </head>
   <body>
@@ -38,61 +39,22 @@
       <section class="hero page-width">
         <div class="hero-copy">
           <p class="eyebrow">
-            <span class="live-dot"></span> MOTOR-IMAGERY EEG
+            <span class="live-dot"></span> INTENTLAB / EEG EXPERIMENT
           </p>
-          <h1>
-            Decode imagined movement<br />from recorded<br /><em
-              >brain signals</em
-            >
-          </h1>
-          <p class="hero-description">
-            This experiment classifies EEG recorded while people imagined moving their left or right fist, letting you inspect each prediction and see how confidence affects whether the model sends a cursor command
-          </p>
+          <h1>Imagining left.<br />Imagining right.<br /><em>Can EEG tell?</em></h1>
+          <p class="hero-description">I trained a model on recorded EEG from people imagining hand movements. Try a recording and see what it predicts, how sure it is, and what happens when it gets things wrong.</p>
+          <p class="hero-context">Recorded data from PhysioNet. No headset needed.</p>
           <div class="hero-actions">
             <a class="button primary" href="#studio"
-              >Open the experiment <span aria-hidden="true">↓</span></a
-            ><a class="text-button" href="/research">Read the research report ↗</a>
+              >Try a recording <span aria-hidden="true">↓</span></a
+            ><a class="text-button" href="/research">My research notes ↗</a>
           </div>
         </div>
         <div
           class="hero-visual"
           aria-label="Project dataset and held-out evaluation"
         >
-          <div class="orbital" aria-hidden="true">
-            <svg viewBox="0 0 420 310">
-              <defs>
-                <radialGradient id="glow">
-                  <stop offset="0" stop-color="#8bdfc4" stop-opacity=".25" />
-                  <stop offset="1" stop-color="#8bdfc4" stop-opacity="0" />
-                </radialGradient>
-              </defs>
-              <circle cx="210" cy="150" r="150" fill="url(#glow)" />
-              <g class="orbit-lines">
-                <ellipse cx="210" cy="148" rx="133" ry="105" />
-                <ellipse cx="210" cy="148" rx="95" ry="105" />
-                <ellipse cx="210" cy="148" rx="47" ry="105" />
-                <ellipse cx="210" cy="148" rx="133" ry="43" />
-                <path d="M77 148h266M210 43v210" />
-                <path d="M113 76l194 144M113 220L307 76" />
-              </g>
-              <g class="electrode-dots">
-                <circle cx="148" cy="105" r="5" />
-                <circle cx="210" cy="97" r="5" />
-                <circle cx="272" cy="105" r="5" />
-                <circle cx="132" cy="148" r="7" />
-                <circle cx="210" cy="148" r="5" />
-                <circle cx="288" cy="148" r="7" />
-                <circle cx="148" cy="191" r="5" />
-                <circle cx="210" cy="200" r="5" />
-                <circle cx="272" cy="191" r="5" />
-              </g>
-              <g class="diagram-labels">
-                <text x="94" y="153">C3</text>
-                <text x="302" y="153">C4</text>
-                <text x="165" y="280">9 ELECTRODES</text>
-              </g>
-            </svg>
-          </div>
+          <div class="pixel-recording" aria-hidden="true"><img src="/static/eeg-scene.svg" alt="" width="420" height="260" /></div>
           <div class="hero-data">
             <div>
               <strong id="people-count">—</strong
@@ -129,11 +91,11 @@
         <div class="page-width">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">01 / DECODING STUDIO</p>
-              <h2>EEG decoding</h2>
+              <p class="eyebrow">01 / TRY IT</p>
+              <h2>Pick a recording</h2>
             </div>
             <p>
-              Run the model on a held-out recording to inspect its prediction and confidence
+              Choose a participant the model did not train on, then press Run decoder.
             </p>
           </div>
           <div class="control-strip">
@@ -173,7 +135,7 @@
             <div class="signal-panel card">
               <div class="card-heading">
                 <div>
-                  <span class="eyebrow">THE RECORDING</span>
+                  <span class="eyebrow">EEG RECORDING</span>
                   <h3>Three-second EEG recording</h3>
                 </div>
                 <span class="badge" id="trial-badge">HELD-OUT EEG</span>
@@ -221,7 +183,7 @@
             <div class="decision-panel card">
               <div class="card-heading">
                 <div>
-                  <span class="eyebrow">THE DECISION</span>
+                  <span class="eyebrow">PREDICTION</span>
                   <h3 id="decision-title">Ready to decode</h3>
                 </div>
                 <span id="latency" class="mono">— ms</span>
@@ -282,7 +244,7 @@
             <div class="card sensitivity-panel">
               <div class="card-heading">
                 <div>
-                  <span class="eyebrow">MODEL SENSITIVITY</span>
+                  <span class="eyebrow">CHANNEL CHECK</span>
                   <h3>Which channels change the answer?</h3>
                 </div>
                 <span class="badge">LIVE OCCLUSION</span>
@@ -308,7 +270,7 @@
             <div class="card spectrum-panel">
               <div class="card-heading">
                 <div>
-                  <span class="eyebrow">THE RHYTHMS</span>
+                  <span class="eyebrow">FREQUENCIES</span>
                   <h3>Power across frequencies</h3>
                 </div>
               </div>
@@ -333,8 +295,8 @@
       <section id="evidence" class="page-width evidence-section">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">02 / THE EVIDENCE</p>
-            <h2>Evaluation on unseen participants</h2>
+            <p class="eyebrow">02 / RESULTS</p>
+            <h2>How well did it work?</h2>
           </div>
           <p>
             Participants remain separate across training, validation and testing so the evaluation measures generalisation to unfamiliar people
@@ -363,7 +325,7 @@
           <div class="card model-comparison">
             <div class="card-heading">
               <div>
-                <span class="eyebrow">FOUR FIXED CANDIDATES</span>
+                <span class="eyebrow">FOUR MODELS</span>
                 <h3>Model comparison</h3>
               </div>
             </div>
@@ -387,7 +349,7 @@
           <div class="card">
             <div class="card-heading">
               <div>
-                <span class="eyebrow">ACCURACY AND COVERAGE</span>
+                <span class="eyebrow">ACCURACY / COVERAGE</span>
                 <h3>Confidence thresholds</h3>
               </div>
             </div>
@@ -406,7 +368,7 @@
           <div class="card">
             <div class="card-heading">
               <div>
-                <span class="eyebrow">PARTICIPANT VARIATION</span>
+                <span class="eyebrow">BY PARTICIPANT</span>
                 <h3>Results by participant</h3>
               </div>
             </div>
@@ -418,8 +380,8 @@
           <div class="card">
             <div class="card-heading">
               <div>
-                <span class="eyebrow">CONTROLLED STRESS TESTS</span>
-                <h3>Signal perturbation analysis</h3>
+                <span class="eyebrow">NOISE / MISSING CHANNELS</span>
+                <h3>What changes with the signal?</h3>
               </div>
             </div>
             <div id="robustness-chart" class="robustness-chart"></div>
@@ -467,16 +429,16 @@
         <div class="page-width">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">03 / RESEARCH</p>
-              <h2>Methods and interpretation</h2>
+              <p class="eyebrow">03 / NOTES</p>
+              <h2>What I learned</h2>
             </div>
           </div>
           <div class="notes-grid">
             <article>
               <span class="note-number">01</span>
-              <h3>Research question</h3>
+              <h3>What I wanted to test</h3>
               <p>
-                IntentLab investigates whether models can distinguish cued left and right fist imagery in previously unseen participants, using a fixed EEG window and allowing uncertain predictions to be rejected.
+                I wanted to know whether a model could recognise imagined left and right hand movements in someone it had never trained on. I used a fixed EEG window and let the model hold back when it was unsure.
               </p>
               <p>
                 The comparison includes common spatial patterns <a href="/research#ref-4">[4]</a> and a compact convolutional model inspired by EEGNet <a href="/research#ref-5">[5]</a>, with selection based on validation participants.
@@ -484,9 +446,9 @@
             </article>
             <article>
               <span class="note-number">02</span>
-              <h3>Interpretation</h3>
+              <h3>Where it falls short</h3>
               <p>
-                The selected model reaches 61.1% participant-macro balanced accuracy, although its confidence threshold fails the validation target for reliable control, as assessed in the <a href="/research#results">research report</a>.
+                The selected model reached 61.1% participant-macro balanced accuracy. That is above chance, but its confidence threshold did not meet the validation target for reliable control. The <a href="/research#results">report</a> explains the gap.
               </p>
               <p>
                 Visual cues, eye movements and muscle artefacts may contribute to the predictions, so classification performance alone cannot demonstrate that the model has isolated motor intention.
@@ -494,20 +456,20 @@
             </article>
             <article>
               <span class="note-number">03</span>
-              <h3>Further evaluation</h3>
+              <h3>What still needs testing</h3>
               <p>
-                A stronger evaluation would use repeated participant splits, an independent dataset and causal filtering for streaming signals, with a new untouched test set for each subsequent development.
+                I would need repeated participant splits, a separate dataset and filtering suited to streaming signals before making claims about live use. Each new experiment also needs a fresh, untouched test set.
               </p>
               <p>
-                The present results are restricted to a two-class, cued motor-imagery task and provide no evidence for decoding arbitrary thoughts, reconstructing dreams or measuring consciousness.
+                This experiment only compares two cued, imagined movements. It does not decode arbitrary thoughts.
               </p>
             </article>
           </div>
           <div class="reading-list">
             <div>
-              <h3>Research documentation</h3>
+              <h3>Notes, code and follow-ups</h3>
               <p>
-                Read the methods, cited literature and critical assessment of the recorded results
+                The original experiment, later calibration work and a participant reliability audit.
               </p>
             </div>
             <div><a href="/research">Research report and references ↗</a><a href="/research/adaptation">Calibration and alignment comparison ↗</a><a href="/research/reliability">Participant reliability audit ↗</a><a href="https://github.com/shrut10/intentlab-bci/blob/main/docs/TEACHING.md">20-minute teaching exercise ↗</a><a href="https://physionet.org/content/eegmmidb/1.0.0/"

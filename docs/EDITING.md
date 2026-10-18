@@ -8,11 +8,11 @@ Local project folder: `/Users/shruthi/Documents/ChatGPT/Career/intentlab-bci`
 
 | What you want to change | File | Search for |
 |---|---|---|
-| Main title at the very top | `web/index.html` | `Decode imagined movement` |
-| Short explanation below it | `web/index.html` | `This experiment classifies EEG` |
+| Main title at the very top | `web/index.html` | `Imagining left.` |
+| Short explanation below it | `web/index.html` | `I trained a model` |
 | Browser-tab title and search description | `web/index.html` | `<title>` and `name="description"` |
-| Section headings | `web/index.html` | `DECODING STUDIO`, `THE EVIDENCE`, `RESEARCH` |
-| Your motivation and future ideas | `web/index.html` | `Research question` and `Further evaluation` |
+| Section headings | `web/index.html` | `TRY IT`, `RESULTS`, `NOTES` |
+| Your motivation and future ideas | `web/index.html` | `What I wanted to test` and `What still needs testing` |
 | Chart explanations and labels | `web/index.html` | The exact sentence visible on the page |
 | Text that changes after a prediction | `web/app.js` | `renderPrediction`, `decision-explanation` |
 | Confidence warning and result explanations | `web/app.js` | `operating-caveat`, `threshold-note` |
@@ -23,7 +23,7 @@ Local project folder: `/Users/shruthi/Documents/ChatGPT/Career/intentlab-bci`
 | Downloadable academic references | `web/references.bib` | The matching author or title |
 | Report typography and print layout | `web/research.css` | The relevant CSS rule |
 | GitHub project description and technical overview | `README.md` | The paragraph you want to change |
-| Colours, spacing and fonts | `web/base.css`, `web/styles.css` | Colour variables at the start of `base.css` |
+| Colours, spacing and fonts | `web/base.css`, `web/pixel.css`, `web/styles.css` | Colour variables at the start of `base.css` |
 
 In HTML, edit the words between tags. For example:
 
@@ -55,7 +55,7 @@ python -m uvicorn app:app --reload
 Open `http://127.0.0.1:8000`. Save your changes and refresh the page. When you are happy:
 
 ```sh
-git add web/index.html web/app.js web/styles.css web/base.css
+git add web/index.html web/app.js web/styles.css web/base.css web/pixel.css
 git commit -m "Rewrite the website copy in my own voice"
 git push
 ```
@@ -78,3 +78,9 @@ The follow-up is published at `/research/adaptation`. Its editable prose is in `
 # Reliability audit additions
 
 Edit `web/reliability.html` for the audit page's explanatory text, `web/reliability.js` for dynamic labels and `web/reliability.css` for its appearance. Reuse instructions are in `docs/RELIABILITY.md`, with proposed research work in `docs/ROADMAP.md`. The report `web/reliability.json` is generated from archived predictions; change the analysis code and regenerate with a reviewed explanation rather than editing numerical results by hand. CI checks it against the source artefacts.
+
+## Pixel theme
+
+The demo uses locally served Pixelify Sans headings and DM Sans body text. `web/base.css` contains the shared palette and font definitions. `web/pixel.css` styles the demo's wooden menu buttons, square panels, layout and responsive sizes. `web/eeg-scene.svg` is the original pixel EEG illustration; it is decorative and does not show a live prediction. The real EEG plots still come from the saved recordings and prediction API. Font licences are kept with the files under `web/fonts/`.
+
+Quick links: [edit the demo wording](https://github.com/shrut10/intentlab-bci/edit/main/web/index.html), [edit dynamic messages](https://github.com/shrut10/intentlab-bci/edit/main/web/app.js), [edit the palette](https://github.com/shrut10/intentlab-bci/edit/main/web/base.css), [edit the demo style](https://github.com/shrut10/intentlab-bci/edit/main/web/pixel.css).
