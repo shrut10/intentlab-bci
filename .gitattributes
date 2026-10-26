@@ -1,0 +1,3 @@
+# Keep archived CSV bytes intact so published SHA-256 checks remain portable.
+# Python's standard CSV writer uses CRLF line endings.
+artifacts/pretraining-v1/predictions.csv -text whitespace=cr-at-eol
