@@ -88,3 +88,9 @@ Quick links: [edit the demo wording](https://github.com/shrut10/intentlab-bci/ed
 ## Creator identity and search metadata
 
 The head of `web/index.html` contains the demo's title, description, author, canonical URL, Open Graph/Twitter previews and JSON-LD. It identifies Jayashruthi Rajesh Babu (Shruthi / Jaya) as the creator and links back to the same Person identity at `https://jayashruthi.com/#person`. Keep the canonical URL on the demo itself, since the demo and portfolio case study have different content. The portfolio's editable metadata is in `content/search.js` in `shrut10/NoctraMind-Site`.
+
+## Unlabelled EEG study and timing explanations
+
+The new report at `/research/pretraining` takes its wording from `experiments/pretraining-v1/report.template.html`. Edit that template, then run `python scripts/render_pretraining_report.py` to regenerate `web/pretraining.html`. Numerical tables come from `artifacts/pretraining-v1/evaluation.json`; do not hand-edit them. The script also generates the result-summary paragraph from those values. The methodology, dataset access and source-discussion paragraphs in the template are directly editable.
+
+Timing explanations beside the demo's prediction are in `web/index.html`; the dynamic `Server processing` and `Browser round-trip` labels are in `web/app.js`. Keep their meanings distinct from the three-second recorded input and avoid describing any of these as live intention-to-action latency.

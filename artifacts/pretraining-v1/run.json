@@ -1,0 +1,24 @@
+{
+  "started_utc": "2026-10-26T15:54:02.619921+00:00",
+  "code_revision_at_start": "7c094e5ce19d476f51191baf3781e0231437bbcc",
+  "input_and_code_sha256": {
+    "experiments/pretraining-v1/protocol.json": "3efc98bf6c2025a4000dbd9f2234972b4e5d60c12ed3c8b44c11ebef0a5b6d96",
+    "experiments/pretraining-v1/PROTOCOL.md": "edb16351ca920796847dc6e74427cd0d9cb1effdf92907a8a90eb44e7b7db9b9",
+    "scripts/run_pretraining.py": "36554ba870125e27f3e359e8379277ec928ad3b748ea35eb36ac03d039733d95",
+    "src/intentlab/pretraining.py": "ea70a0356fe8d5178728a5ce6c831a867d3668655ef46ae1999e8d44bfff24ff",
+    "data/derived/epochs.npz": "9bf589951029469d594b3faec7a18bb0208301cb49f808184c5f23b71e2added",
+    "data/derived/trials.parquet": "ef1f5805997fa6822ef0d714796edd1b9c5d34d867ca71efcd610ed8cc933295",
+    "data/derived/manifest.json": "6824f94163c4070cee1ba6a61e44ac477e1d16debbb599a58d3255e3cbfb3f30"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "numpy": "2.5.3",
+    "torch": "2.14.1",
+    "device": "cpu"
+  },
+  "production_artifacts_sha256": {
+    "artifacts/models.json": "cf28e8f4461fdb646af59203c79b57e49f4f8f66765df17254a1e2b2cb06c469",
+    "artifacts/evaluation.json": "7d030d5e293c380dfc1203079c59edc99a257933e3b51cafc634558e36e3e474",
+    "artifacts/compact_eeg.onnx": "511856467b1ab8acbe905286164be60c2936a49930a1bd3d25e8440742edbd8d"
+  }
+}
