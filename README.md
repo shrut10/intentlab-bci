@@ -52,6 +52,16 @@ The [follow-up to issue #1](https://intentlab-bci.vercel.app/research/adaptation
 
 The [runnable MOABB example](examples/moabb_chronological/README.md) demonstrates a custom chronological splitter: ten early target trials for adaptation, unused early trials excluded, and later runs reserved for evaluation. It uses generated data and tests both labelled and unlabelled calibration routing; it is an integration example rather than a new EEG benchmark.
 
+## Learning from unlabelled EEG
+
+The [pretraining follow-up](https://intentlab-bci.vercel.app/research/pretraining) tests masked-channel reconstruction before movement classification, using only the original source-training people and a matched randomly initialised model. Three fixed seeds and two supervised-label budgets are reported in full. This is an exploratory analysis on the existing validation cohort, with no new test-set result or change to the live decoder. [Protocol and reproduction](experiments/pretraining-v1/README.md) · [Archived outputs](artifacts/pretraining-v1).
+
+Pretraining did not improve this configuration: mean participant balanced accuracy was 52.51% versus 53.73% from scratch with 252 labels, and 55.43% versus 56.18% with all 2,832 source labels. These means cover three seeds and 22 validation participants; the report includes paired participant intervals, all predictions and the limitations of an already inspected cohort.
+
+The accompanying [NoMAD data-access audit](docs/NOMAD_DATA.md) records the provenance, licence and published checksums of a separate intracortical dataset. Its recording downloads were unavailable during this review; no NoMAD or Neuralink recordings are used by the EEG model.
+
+The demo distinguishes server processing from browser round-trip time and the three-second recorded input. To measure a deployment reproducibly, run `python scripts/benchmark_latency.py --url https://intentlab-bci.vercel.app --requests 20 --output /tmp/intentlab-latency.json`. The report separates first-observed and measured requests, reports p50/p95 and failures, and does not label the first request a controlled cold start.
+
 ## Architecture
 
 ```mermaid
@@ -133,6 +143,8 @@ curl https://intentlab-bci.vercel.app/api/predict \
 | `GET /api/evaluation` | Frozen validation/test results and robustness analysis |
 | `GET /api/adaptation` | Archived calibration/alignment comparison |
 | `GET /api/adaptation/predictions` | Downloadable trial-level predictions for that comparison |
+| `GET /api/pretraining` | Archived validation-only masked-channel pretraining results |
+| `GET /research/pretraining` | Methods, generated result tables and primary research sources |
 | `GET /docs` | Interactive API specification |
 
 The public API accepts only bundled trial IDs and bounded perturbations. It does not accept private EEG uploads. The recorded label is returned for comparison **after** inference and is not a model input.

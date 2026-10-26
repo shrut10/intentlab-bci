@@ -1,0 +1,3288 @@
+{
+  "experiment": "pretraining-v1",
+  "status": "exploratory_validation_only",
+  "production_model_changed": false,
+  "test_evaluated": false,
+  "counts": {
+    "training_participants": 63,
+    "training_trials": 2832,
+    "training_epoch_hours": 2.36,
+    "validation_participants": 22,
+    "validation_trials": 989
+  },
+  "protocol": {
+    "experiment": "pretraining-v1",
+    "status": "exploratory_validation_only",
+    "seeds": [
+      2027,
+      2028,
+      2029
+    ],
+    "label_fractions": [
+      0.1,
+      1.0
+    ],
+    "masked_channels": 2,
+    "pretraining_epochs": 20,
+    "supervised_epochs": 20,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "threads": 4,
+    "bootstrap_samples": 2000,
+    "bootstrap_seed": 5027,
+    "encoder_channels": 16,
+    "encoder_kernel": 7,
+    "pretraining_split": "train",
+    "evaluation_split": "validation",
+    "test_evaluation": false,
+    "model_selection": "none: fixed final epoch",
+    "temperature_calibration": "none",
+    "primary_metric": "participant-macro balanced accuracy",
+    "comparison": "same classifier architecture, initial weights, labelled subset, supervised batches and update count; pretraining adds compute"
+  },
+  "run": {
+    "started_utc": "2026-10-26T15:54:02.619921+00:00",
+    "code_revision_at_start": "7c094e5ce19d476f51191baf3781e0231437bbcc",
+    "input_and_code_sha256": {
+      "experiments/pretraining-v1/protocol.json": "3efc98bf6c2025a4000dbd9f2234972b4e5d60c12ed3c8b44c11ebef0a5b6d96",
+      "experiments/pretraining-v1/PROTOCOL.md": "edb16351ca920796847dc6e74427cd0d9cb1effdf92907a8a90eb44e7b7db9b9",
+      "scripts/run_pretraining.py": "36554ba870125e27f3e359e8379277ec928ad3b748ea35eb36ac03d039733d95",
+      "src/intentlab/pretraining.py": "ea70a0356fe8d5178728a5ce6c831a867d3668655ef46ae1999e8d44bfff24ff",
+      "data/derived/epochs.npz": "9bf589951029469d594b3faec7a18bb0208301cb49f808184c5f23b71e2added",
+      "data/derived/trials.parquet": "ef1f5805997fa6822ef0d714796edd1b9c5d34d867ca71efcd610ed8cc933295",
+      "data/derived/manifest.json": "6824f94163c4070cee1ba6a61e44ac477e1d16debbb599a58d3255e3cbfb3f30"
+    },
+    "environment": {
+      "python": "3.12.6",
+      "numpy": "2.5.3",
+      "torch": "2.14.1",
+      "device": "cpu"
+    },
+    "production_artifacts_sha256": {
+      "artifacts/models.json": "cf28e8f4461fdb646af59203c79b57e49f4f8f66765df17254a1e2b2cb06c469",
+      "artifacts/evaluation.json": "7d030d5e293c380dfc1203079c59edc99a257933e3b51cafc634558e36e3e474",
+      "artifacts/compact_eeg.onnx": "511856467b1ab8acbe905286164be60c2936a49930a1bd3d25e8440742edbd8d"
+    }
+  },
+  "results": [
+    {
+      "seed": 2027,
+      "arm": "scratch",
+      "label_fraction": 0.1,
+      "labelled_trials": 252,
+      "realised_label_fraction": 0.08898305084745763,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5521688867785707,
+        "participant_brier": 0.24803015197623407,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.4041501976284585,
+            "brier": 0.2595545403716422
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.4583333333333333,
+            "brier": 0.24960466180658025
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.8438735177865613,
+            "brier": 0.21493423655284308
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.6037549407114624,
+            "brier": 0.24540901571163734
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5938735177865613,
+            "brier": 0.24145783140135046
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.5938735177865613,
+            "brier": 0.2449521934691344
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.541501976284585,
+            "brier": 0.25024400591381374
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5266798418972332,
+            "brier": 0.24702112665917586
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.5731225296442688,
+            "brier": 0.2516692865347731
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2504665150803848
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.5177865612648221,
+            "brier": 0.2537347766808407
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.5476190476190476,
+            "brier": 0.24020730146553046
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.6729249011857708,
+            "brier": 0.23927543015595473
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5625,
+            "brier": 0.24864895564621972
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.5088932806324111,
+            "brier": 0.24576825611487957
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.5523715415019763,
+            "brier": 0.24821642588694326
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5148809523809523,
+            "brier": 0.24773696711905033
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.6067193675889329,
+            "brier": 0.24102443246992375
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5296442687747036,
+            "brier": 0.24660272326125524
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.5279503105590062,
+            "brier": 0.24687216710561588
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.46726190476190477,
+            "brier": 0.2528724706640506
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2903900234055501
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.7005028346228221
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6961648776417687
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6940479004193866
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.693422467935653
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6914473904503716
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6910148092678615
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6902248755333915
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6892952947389512
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6883708758959695
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6874214968984089
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6859155864942641
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6843740315664382
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6826631663337587
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.6804347558627053
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6776968278582134
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.675002910788097
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6720371738312736
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6678810772441682
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6637224555015564
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6614783037276495
+        }
+      ]
+    },
+    {
+      "seed": 2027,
+      "arm": "masked_pretraining",
+      "label_fraction": 0.1,
+      "labelled_trials": 252,
+      "realised_label_fraction": 0.08898305084745763,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5417682613828858,
+        "participant_brier": 0.24892596818698004,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.4505928853754941,
+            "brier": 0.2512238642456971
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.4791666666666667,
+            "brier": 0.2492462517975818
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.7816205533596838,
+            "brier": 0.23890461994111897
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.5316205533596838,
+            "brier": 0.24886203243588764
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5227272727272727,
+            "brier": 0.2467336293592787
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.591897233201581,
+            "brier": 0.24825878605751758
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.6067193675889329,
+            "brier": 0.2494551635339647
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5434782608695652,
+            "brier": 0.2487711213354251
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.5207509881422925,
+            "brier": 0.2505597685002273
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5247035573122529,
+            "brier": 0.24959668647722502
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.4772727272727273,
+            "brier": 0.2517735541395663
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.5625,
+            "brier": 0.24872771955592307
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.5217391304347826,
+            "brier": 0.24750293014755426
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.49404761904761907,
+            "brier": 0.25029607009328697
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.45652173913043476,
+            "brier": 0.24689021114082912
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.48814229249011853,
+            "brier": 0.24986131199399617
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5208333333333334,
+            "brier": 0.24947095464448082
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.6887351778656126,
+            "brier": 0.24550130297580314
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5454545454545454,
+            "brier": 0.2482705145274377
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.6252587991718426,
+            "brier": 0.24628836833853243
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.4851190476190476,
+            "brier": 0.25314129575840005
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2570351431138264
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.706796924273173
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6958641334185525
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.694748876586793
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6958701165895613
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6932865343396626
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6923433211114671
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6914808248716687
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6912462730256338
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6915270033336821
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6913335928841243
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6898733708593581
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6895430551634895
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6886847823385208
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.6878574452702961
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6868200557572501
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.6862246848288036
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6852307149342128
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6837125609791468
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6824741098615859
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6833109070384313
+        }
+      ]
+    },
+    {
+      "seed": 2027,
+      "arm": "scratch",
+      "label_fraction": 1.0,
+      "labelled_trials": 2832,
+      "realised_label_fraction": 1.0,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5564417466591378,
+        "participant_brier": 0.2615808764540033,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.5088932806324111,
+            "brier": 0.2994312700626099
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.4851190476190476,
+            "brier": 0.2680985974863107
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.8409090909090908,
+            "brier": 0.11517758543068396
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.650197628458498,
+            "brier": 0.22811613227493166
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5770750988142292,
+            "brier": 0.23142715344815007
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.6185770750988142,
+            "brier": 0.2229895440018529
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.4782608695652174,
+            "brier": 0.2750368290742002
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5543478260869565,
+            "brier": 0.23349628826164234
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.4209486166007905,
+            "brier": 0.2779389399643813
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.3532578896874953
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.4199604743083004,
+            "brier": 0.26678933735985744
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.5267857142857143,
+            "brier": 0.2380131575845712
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.7529644268774703,
+            "brier": 0.19278075688481522
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5744047619047619,
+            "brier": 0.23977421551350353
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.5128458498023716,
+            "brier": 0.28275060284423154
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.5217391304347826,
+            "brier": 0.28669995452306196
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.6130952380952381,
+            "brier": 0.24242526774233933
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.6294466403162056,
+            "brier": 0.22335211791639628
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5138339920948617,
+            "brier": 0.26285642945766735
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.5631469979296067,
+            "brier": 0.2541200167371971
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.47916666666666663,
+            "brier": 0.2538608316232177
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.5063863641089557
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.6935789012639536
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6809477795988826
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6559828701665846
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6343993345896403
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6222463637422033
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6186136455185669
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6167266830212652
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6151240336692939
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6122255089592799
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6147737146097388
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6090018196968036
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6080037247663164
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6066539799426235
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.6061687469482422
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6034339093892588
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.6020699207392116
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6024818097130727
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6012756124054645
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.5982549550843104
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.5975139484567157
+        }
+      ]
+    },
+    {
+      "seed": 2027,
+      "arm": "masked_pretraining",
+      "label_fraction": 1.0,
+      "labelled_trials": 2832,
+      "realised_label_fraction": 1.0,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5515160070496038,
+        "participant_brier": 0.2603066001331132,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.4407114624505929,
+            "brier": 0.29707740929315957
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.49404761904761907,
+            "brier": 0.2606151655623038
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.8636363636363636,
+            "brier": 0.1201162404089115
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.5849802371541502,
+            "brier": 0.23167704481836332
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5523715415019763,
+            "brier": 0.23529215173810697
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.6650197628458498,
+            "brier": 0.22768077631338363
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.4782608695652174,
+            "brier": 0.26552648773469956
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5207509881422925,
+            "brier": 0.2471964432117043
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.441699604743083,
+            "brier": 0.27045780804014546
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.3536714108224428
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.48616600790513836,
+            "brier": 0.254669167195589
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.5535714285714286,
+            "brier": 0.22571302761001624
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.7065217391304348,
+            "brier": 0.20268623390411128
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5982142857142857,
+            "brier": 0.23915230957792813
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.46936758893280633,
+            "brier": 0.28461305176801566
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.4980237154150198,
+            "brier": 0.2708248289041483
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5952380952380952,
+            "brier": 0.2434787773403921
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.6304347826086957,
+            "brier": 0.22953577614193715
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.49209486166007904,
+            "brier": 0.25699593386604397
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.5652173913043478,
+            "brier": 0.2505696851620343
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.49702380952380953,
+            "brier": 0.2597986724235207
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.4993968010915332
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.6942752350521626
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6888158112595983
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6808239218205382
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6659165533248987
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6489225211790053
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.637843153571005
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6315370340131771
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6284462395360915
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6237232718764052
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6266594667219173
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6202113231023153
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.619210708612776
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6169819825113156
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.6173410540246694
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.614588625350241
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.61301173800129
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6136049372328203
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6125622883354876
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6100136908770954
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6091052260102525
+        }
+      ]
+    },
+    {
+      "seed": 2028,
+      "arm": "scratch",
+      "label_fraction": 0.1,
+      "labelled_trials": 252,
+      "realised_label_fraction": 0.08898305084745763,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5427120228256592,
+        "participant_brier": 0.24806041976235882,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.49308300395256915,
+            "brier": 0.25068362431534796
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.37797619047619047,
+            "brier": 0.2512256623603426
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.6699604743083004,
+            "brier": 0.23077865398547767
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.6254940711462451,
+            "brier": 0.2464553008887687
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5464426877470356,
+            "brier": 0.2409691922209664
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.6413043478260869,
+            "brier": 0.2482083258741915
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.5523715415019763,
+            "brier": 0.2488594151604294
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5434782608695652,
+            "brier": 0.2464126100338521
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.4199604743083004,
+            "brier": 0.25325099516348865
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2534297573485779
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.49604743083003955,
+            "brier": 0.2538035248832313
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.6666666666666666,
+            "brier": 0.24024989043135953
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.7519762845849802,
+            "brier": 0.24132827825252892
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5505952380952381,
+            "brier": 0.24569438745003877
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.4357707509881423,
+            "brier": 0.25122529628487683
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.516798418972332,
+            "brier": 0.24964853980652188
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5178571428571428,
+            "brier": 0.24913017538344326
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.6027667984189724,
+            "brier": 0.24152332542836724
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5286561264822134,
+            "brier": 0.24672725507420776
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.582815734989648,
+            "brier": 0.2463672378010304
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.4196428571428571,
+            "brier": 0.2539189496337473
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2674388369910985
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.6932631797260709
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6928074984323411
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6925501539593651
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6917670369148254
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6917303166692219
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6909877676812429
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6900882843940978
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6895094797724769
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6886225550893753
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6875625555477445
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6871005637305123
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6853499090860761
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6838678689230056
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.682252686175089
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6803020276720562
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.678274825451866
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6764964858690897
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.672622233156174
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6698373139850677
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6671681943393889
+        }
+      ]
+    },
+    {
+      "seed": 2028,
+      "arm": "masked_pretraining",
+      "label_fraction": 0.1,
+      "labelled_trials": 252,
+      "realised_label_fraction": 0.08898305084745763,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5165011207501325,
+        "participant_brier": 0.24961856792903533,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2508948920743055
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2496784269273688
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.6304347826086957,
+            "brier": 0.24477200657621379
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.5227272727272727,
+            "brier": 0.2490800098433984
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.24854074526459277
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.24924260497133746
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.5207509881422925,
+            "brier": 0.25029021807423185
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.24886657599140127
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2510196691791026
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.45750988142292487,
+            "brier": 0.2501314335716961
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.25074333571974927
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.5416666666666666,
+            "brier": 0.248598689118773
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.5217391304347826,
+            "brier": 0.2492227942648242
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.49404761904761907,
+            "brier": 0.2500088898620789
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.5009881422924901,
+            "brier": 0.2494274619843718
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.5227272727272727,
+            "brier": 0.24978365712625641
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.25040236638086116
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.5454545454545454,
+            "brier": 0.24800514951459995
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5454545454545454,
+            "brier": 0.24937716559821163
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.5952380952380952,
+            "brier": 0.24855248084489204
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.46428571428571425,
+            "brier": 0.2511519010068949
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.25381802054361563
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.6947146332453168
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6943660529832991
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6947981923345535
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6933556832964458
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6932750438886975
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6932648136502221
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6926835832141695
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6923391658162313
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.691896571053399
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6915491403095306
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6930627179524255
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6914772996826778
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6911185374335637
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.6910536137838212
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6904878095974998
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.6901641270470997
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6896978673480806
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6882783496190631
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6878945808562021
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6876320110427009
+        }
+      ]
+    },
+    {
+      "seed": 2028,
+      "arm": "scratch",
+      "label_fraction": 1.0,
+      "labelled_trials": 2832,
+      "realised_label_fraction": 1.0,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5656232354601921,
+        "participant_brier": 0.2590527559686844,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.48814229249011853,
+            "brier": 0.29416136891992706
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.5327380952380952,
+            "brier": 0.2630493199164231
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.8636363636363636,
+            "brier": 0.11276945106515904
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.6284584980237153,
+            "brier": 0.23040722603075564
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.575098814229249,
+            "brier": 0.2335708316099645
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.6413043478260869,
+            "brier": 0.22618775811737823
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.45652173913043476,
+            "brier": 0.261345833401533
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5839920948616601,
+            "brier": 0.23920287875120758
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.42193675889328064,
+            "brier": 0.2775344052175135
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.3465263295626905
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.5553359683794465,
+            "brier": 0.25602915951575506
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.5773809523809523,
+            "brier": 0.220680121456492
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.7312252964426877,
+            "brier": 0.1973374364431604
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.6011904761904763,
+            "brier": 0.24285806562554388
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.5118577075098814,
+            "brier": 0.28400898479203857
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.4990118577075099,
+            "brier": 0.27451000786270074
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5982142857142857,
+            "brier": 0.26082330601794157
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.6511857707509882,
+            "brier": 0.2171032932611664
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.46837944664031617,
+            "brier": 0.25910887245926634
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.5610766045548654,
+            "brier": 0.251866466577546
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.49702380952380953,
+            "brier": 0.25719160383721706
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.4928879108696762
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.6928233527867808
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6872351795940076
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6690292940974909
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6456105042312105
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6348708117075559
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6249323682596455
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6208924277354095
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6193485310522177
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6161920498993437
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6140523219512681
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6104917398280343
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6129368193405497
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6112129765715303
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.6102049051031555
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.606794962101737
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.6059236997938425
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.60423081540792
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6024146474013894
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.601466953754425
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.606556628720235
+        }
+      ]
+    },
+    {
+      "seed": 2028,
+      "arm": "masked_pretraining",
+      "label_fraction": 1.0,
+      "labelled_trials": 2832,
+      "realised_label_fraction": 1.0,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5609985370360865,
+        "participant_brier": 0.2608712899504406,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.4624505928853755,
+            "brier": 0.29659233275886226
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.49404761904761907,
+            "brier": 0.2619195759854035
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.8636363636363636,
+            "brier": 0.1197522493960435
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.5632411067193676,
+            "brier": 0.24037551229513937
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5306324110671937,
+            "brier": 0.2316231058371586
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.6413043478260869,
+            "brier": 0.23256848610588562
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.4782608695652174,
+            "brier": 0.2749530201678206
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5632411067193676,
+            "brier": 0.24260711831731666
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.44466403162055335,
+            "brier": 0.2719331873074791
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.3561072077762019
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.5098814229249011,
+            "brier": 0.2515212189601131
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.6011904761904762,
+            "brier": 0.22102806552439283
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.7302371541501976,
+            "brier": 0.20417572580082863
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5982142857142857,
+            "brier": 0.24098308737139018
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.5118577075098814,
+            "brier": 0.27688202665302636
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.5217391304347826,
+            "brier": 0.2785525166663513
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5773809523809523,
+            "brier": 0.2525885809671394
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.6729249011857708,
+            "brier": 0.21789568719164445
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5148221343873518,
+            "brier": 0.259429674025162
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.5652173913043478,
+            "brier": 0.2573507105919376
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.49702380952380953,
+            "brier": 0.2638662236904584
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.4864630655199381
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.6954210363538925
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6930284543899493
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6866885810922094
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.677054115944663
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.664652020244275
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6484377397655767
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6377839829962132
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6326491623948522
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6266277786028587
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.623357517571099
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6194286929012018
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6211861715478412
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6217140053625161
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.620457745541287
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6160443034549218
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.614645766673115
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6132087572819769
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6113128601494482
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6105512427744892
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6172160940655207
+        }
+      ]
+    },
+    {
+      "seed": 2029,
+      "arm": "scratch",
+      "label_fraction": 0.1,
+      "labelled_trials": 252,
+      "realised_label_fraction": 0.08898305084745763,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5169374433208426,
+        "participant_brier": 0.24890497226157404,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.5079051383399209,
+            "brier": 0.25195502119582663
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.49404761904761907,
+            "brier": 0.25110009174915787
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.7519762845849802,
+            "brier": 0.23274640919226358
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.5177865612648221,
+            "brier": 0.24761276513346747
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5553359683794465,
+            "brier": 0.24574393443428733
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.5128458498023716,
+            "brier": 0.24867594739980853
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.45750988142292487,
+            "brier": 0.2479480604758747
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5642292490118577,
+            "brier": 0.24873696577379995
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.5049407114624506,
+            "brier": 0.2508225641583184
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.25204117373294954
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.3982213438735178,
+            "brier": 0.2517041629885556
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.5029761904761905,
+            "brier": 0.24475229514131033
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.5464426877470356,
+            "brier": 0.2445744006028667
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5297619047619048,
+            "brier": 0.24508992172284766
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.4634387351778656,
+            "brier": 0.25172185761434934
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.4535573122529644,
+            "brier": 0.25032665837546825
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5297619047619048,
+            "brier": 0.24751327927845052
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.5365612648221344,
+            "brier": 0.2448712219232536
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5780632411067194,
+            "brier": 0.24819880692375962
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.5,
+            "brier": 0.24955261003801577
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.46726190476190477,
+            "brier": 0.25134909318698706
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.26887214871300985
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.694470345027863
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.692864109599401
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6924867374556405
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6920222318361676
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6918216697753422
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6913107434908549
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6906987967945281
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6904149131169395
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6894817740198166
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6886973144516112
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6880781593776885
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6867753428126139
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6859586333471631
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.685399645850772
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6830663737796602
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.6820425939938378
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.679758418174017
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.678005836312733
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6760180270861066
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6740215628866165
+        }
+      ]
+    },
+    {
+      "seed": 2029,
+      "arm": "masked_pretraining",
+      "label_fraction": 0.1,
+      "labelled_trials": 252,
+      "realised_label_fraction": 0.08898305084745763,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5169497416285954,
+        "participant_brier": 0.24927834732737342,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.45948616600790515,
+            "brier": 0.2525134731081658
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.45535714285714285,
+            "brier": 0.24999638278889058
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.7964426877470356,
+            "brier": 0.24017211007163156
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.47430830039525695,
+            "brier": 0.24936756018328946
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.6205533596837944,
+            "brier": 0.24723792123031807
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.5088932806324111,
+            "brier": 0.2495907591993576
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.46936758893280633,
+            "brier": 0.2505995264286716
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.24931992874250986
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.4377470355731225,
+            "brier": 0.25084433696287617
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.4782608695652174,
+            "brier": 0.25000187473981017
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.4634387351778656,
+            "brier": 0.25059574902395154
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.5119047619047619,
+            "brier": 0.247659708823131
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.5059288537549407,
+            "brier": 0.24851286616003243
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5089285714285714,
+            "brier": 0.24796964428890506
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.5148221343873518,
+            "brier": 0.2504790239189804
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.4851778656126482,
+            "brier": 0.24983291524598852
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5625,
+            "brier": 0.24884092713355266
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.6047430830039526,
+            "brier": 0.24816955714653494
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5158102766798419,
+            "brier": 0.25093816178888306
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.505175983436853,
+            "brier": 0.24960155816299537
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.49404761904761907,
+            "brier": 0.24951296153453903
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2523666945191998
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.7021651636986506
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6965789757077656
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6923196495525421
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6936091156232924
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6934595685156565
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6921234670139494
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6913434380576724
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6911016655346703
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6902555170513335
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6899053180028522
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.690279986177172
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6886725501408653
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6884706266342647
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.6888237746935042
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6867044473451281
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.6867504517237345
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6854794451168605
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6843497242246356
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6832061523482913
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6824725591947162
+        }
+      ]
+    },
+    {
+      "seed": 2029,
+      "arm": "scratch",
+      "label_fraction": 1.0,
+      "labelled_trials": 2832,
+      "realised_label_fraction": 1.0,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5634512473692316,
+        "participant_brier": 0.25997560395702257,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.47035573122529645,
+            "brier": 0.30331252300091754
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.5238095238095238,
+            "brier": 0.2750014461536913
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.8646245059288538,
+            "brier": 0.10362243782078884
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.5958498023715415,
+            "brier": 0.23039455314528784
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5494071146245059,
+            "brier": 0.25946155178049585
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.5464426877470356,
+            "brier": 0.24551406736278664
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.5039525691699605,
+            "brier": 0.24601456281434209
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5474308300395256,
+            "brier": 0.24268649445274418
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.4980237154150198,
+            "brier": 0.2835742881952577
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.29661873451923687
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.49604743083003955,
+            "brier": 0.2617250108495728
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.6994047619047619,
+            "brier": 0.2184693217091581
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.7341897233201581,
+            "brier": 0.1977623967393457
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5505952380952381,
+            "brier": 0.24995647098092055
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.3725296442687747,
+            "brier": 0.2998335719379577
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.49703557312252966,
+            "brier": 0.2552917429138283
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5208333333333334,
+            "brier": 0.2917842377395435
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.7371541501976284,
+            "brier": 0.19615775441008892
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5958498023715415,
+            "brier": 0.25585227181528114
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.598343685300207,
+            "brier": 0.242047765171952
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.49404761904761907,
+            "brier": 0.26002016040198267
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.5043619231393169
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.6919965626156263
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6827492599433425
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6618472250167933
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6418580049175328
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.629527938567986
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6248674045848308
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6216821296740387
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6144336499063309
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6168896306706013
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6164974001167858
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6141526786621008
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6099744974556616
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.6082102275837613
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.6073836118487989
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6070612746443452
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.6059305617364786
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6039791959153731
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.60419768364416
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.604390887890832
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6029999512063582
+        }
+      ]
+    },
+    {
+      "seed": 2029,
+      "arm": "masked_pretraining",
+      "label_fraction": 1.0,
+      "labelled_trials": 2832,
+      "realised_label_fraction": 1.0,
+      "classifier_parameters": 2849,
+      "validation": {
+        "participant_balanced_accuracy": 0.5502690655852711,
+        "participant_brier": 0.2599341435582349,
+        "participants": [
+          {
+            "subject": 3,
+            "trials": 45,
+            "balanced_accuracy": 0.5345849802371542,
+            "brier": 0.29470696859761136
+          },
+          {
+            "subject": 5,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.2734909876156192
+          },
+          {
+            "subject": 7,
+            "trials": 45,
+            "balanced_accuracy": 0.8656126482213439,
+            "brier": 0.1114727930082255
+          },
+          {
+            "subject": 8,
+            "trials": 45,
+            "balanced_accuracy": 0.6660079051383399,
+            "brier": 0.2310766667357855
+          },
+          {
+            "subject": 14,
+            "trials": 45,
+            "balanced_accuracy": 0.5484189723320158,
+            "brier": 0.2399866572493654
+          },
+          {
+            "subject": 16,
+            "trials": 45,
+            "balanced_accuracy": 0.5247035573122529,
+            "brier": 0.23964684735344524
+          },
+          {
+            "subject": 17,
+            "trials": 45,
+            "balanced_accuracy": 0.45652173913043476,
+            "brier": 0.26069294571139234
+          },
+          {
+            "subject": 24,
+            "trials": 45,
+            "balanced_accuracy": 0.5494071146245059,
+            "brier": 0.24149212664359396
+          },
+          {
+            "subject": 36,
+            "trials": 45,
+            "balanced_accuracy": 0.38537549407114624,
+            "brier": 0.2780265176141123
+          },
+          {
+            "subject": 37,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.33563217045774835
+          },
+          {
+            "subject": 39,
+            "trials": 45,
+            "balanced_accuracy": 0.5405138339920948,
+            "brier": 0.2627096809572854
+          },
+          {
+            "subject": 41,
+            "trials": 45,
+            "balanced_accuracy": 0.6369047619047619,
+            "brier": 0.21574555892380212
+          },
+          {
+            "subject": 46,
+            "trials": 45,
+            "balanced_accuracy": 0.6264822134387352,
+            "brier": 0.21272492529333265
+          },
+          {
+            "subject": 47,
+            "trials": 45,
+            "balanced_accuracy": 0.5238095238095238,
+            "brier": 0.24784404365750481
+          },
+          {
+            "subject": 66,
+            "trials": 45,
+            "balanced_accuracy": 0.441699604743083,
+            "brier": 0.27963536779345244
+          },
+          {
+            "subject": 67,
+            "trials": 45,
+            "balanced_accuracy": 0.47529644268774707,
+            "brier": 0.2573970064872584
+          },
+          {
+            "subject": 69,
+            "trials": 45,
+            "balanced_accuracy": 0.5625,
+            "brier": 0.2743521879437557
+          },
+          {
+            "subject": 83,
+            "trials": 45,
+            "balanced_accuracy": 0.7164031620553359,
+            "brier": 0.2016179600412613
+          },
+          {
+            "subject": 90,
+            "trials": 45,
+            "balanced_accuracy": 0.5098814229249011,
+            "brier": 0.2607920170980339
+          },
+          {
+            "subject": 99,
+            "trials": 44,
+            "balanced_accuracy": 0.5507246376811594,
+            "brier": 0.23524152989637487
+          },
+          {
+            "subject": 107,
+            "trials": 45,
+            "balanced_accuracy": 0.4910714285714286,
+            "brier": 0.2630139664078184
+          },
+          {
+            "subject": 109,
+            "trials": 45,
+            "balanced_accuracy": 0.5,
+            "brier": 0.5012522327943887
+          }
+        ]
+      },
+      "supervised_history": [
+        {
+          "epoch": 1,
+          "binary_cross_entropy": 0.6957312297012846
+        },
+        {
+          "epoch": 2,
+          "binary_cross_entropy": 0.6892903457253666
+        },
+        {
+          "epoch": 3,
+          "binary_cross_entropy": 0.6776095291988998
+        },
+        {
+          "epoch": 4,
+          "binary_cross_entropy": 0.6632376905888487
+        },
+        {
+          "epoch": 5,
+          "binary_cross_entropy": 0.6491083775536489
+        },
+        {
+          "epoch": 6,
+          "binary_cross_entropy": 0.6382811503895258
+        },
+        {
+          "epoch": 7,
+          "binary_cross_entropy": 0.6322284091663899
+        },
+        {
+          "epoch": 8,
+          "binary_cross_entropy": 0.6235441929202968
+        },
+        {
+          "epoch": 9,
+          "binary_cross_entropy": 0.6244621404820243
+        },
+        {
+          "epoch": 10,
+          "binary_cross_entropy": 0.6245142046341114
+        },
+        {
+          "epoch": 11,
+          "binary_cross_entropy": 0.6214259741669994
+        },
+        {
+          "epoch": 12,
+          "binary_cross_entropy": 0.6177034199574573
+        },
+        {
+          "epoch": 13,
+          "binary_cross_entropy": 0.616288188487123
+        },
+        {
+          "epoch": 14,
+          "binary_cross_entropy": 0.615927818804811
+        },
+        {
+          "epoch": 15,
+          "binary_cross_entropy": 0.6153680958316825
+        },
+        {
+          "epoch": 16,
+          "binary_cross_entropy": 0.6145219530089426
+        },
+        {
+          "epoch": 17,
+          "binary_cross_entropy": 0.6125505600271925
+        },
+        {
+          "epoch": 18,
+          "binary_cross_entropy": 0.6128285934696089
+        },
+        {
+          "epoch": 19,
+          "binary_cross_entropy": 0.6137516862255031
+        },
+        {
+          "epoch": 20,
+          "binary_cross_entropy": 0.6122741584723952
+        }
+      ]
+    }
+  ],
+  "pretraining_histories": [
+    {
+      "seed": 2027,
+      "history": [
+        {
+          "epoch": 1,
+          "masked_channel_mse": 0.7535350262108496
+        },
+        {
+          "epoch": 2,
+          "masked_channel_mse": 0.4716980901815124
+        },
+        {
+          "epoch": 3,
+          "masked_channel_mse": 0.4008325922623866
+        },
+        {
+          "epoch": 4,
+          "masked_channel_mse": 0.3880461422400286
+        },
+        {
+          "epoch": 5,
+          "masked_channel_mse": 0.37227017125167416
+        },
+        {
+          "epoch": 6,
+          "masked_channel_mse": 0.3687412898756016
+        },
+        {
+          "epoch": 7,
+          "masked_channel_mse": 0.3585742834934407
+        },
+        {
+          "epoch": 8,
+          "masked_channel_mse": 0.35441687972532154
+        },
+        {
+          "epoch": 9,
+          "masked_channel_mse": 0.3570741532886096
+        },
+        {
+          "epoch": 10,
+          "masked_channel_mse": 0.3522119281318902
+        },
+        {
+          "epoch": 11,
+          "masked_channel_mse": 0.35635988405868835
+        },
+        {
+          "epoch": 12,
+          "masked_channel_mse": 0.3553787683699764
+        },
+        {
+          "epoch": 13,
+          "masked_channel_mse": 0.3491861001919892
+        },
+        {
+          "epoch": 14,
+          "masked_channel_mse": 0.3524601063822622
+        },
+        {
+          "epoch": 15,
+          "masked_channel_mse": 0.35004299155062873
+        },
+        {
+          "epoch": 16,
+          "masked_channel_mse": 0.33964558964395253
+        },
+        {
+          "epoch": 17,
+          "masked_channel_mse": 0.3469564810311053
+        },
+        {
+          "epoch": 18,
+          "masked_channel_mse": 0.3447413791370931
+        },
+        {
+          "epoch": 19,
+          "masked_channel_mse": 0.3527767188468222
+        },
+        {
+          "epoch": 20,
+          "masked_channel_mse": 0.3477864588721324
+        }
+      ]
+    },
+    {
+      "seed": 2028,
+      "history": [
+        {
+          "epoch": 1,
+          "masked_channel_mse": 0.7489999997413764
+        },
+        {
+          "epoch": 2,
+          "masked_channel_mse": 0.465941850916814
+        },
+        {
+          "epoch": 3,
+          "masked_channel_mse": 0.394613050134842
+        },
+        {
+          "epoch": 4,
+          "masked_channel_mse": 0.37942231795882103
+        },
+        {
+          "epoch": 5,
+          "masked_channel_mse": 0.3665965512647467
+        },
+        {
+          "epoch": 6,
+          "masked_channel_mse": 0.36293922238430737
+        },
+        {
+          "epoch": 7,
+          "masked_channel_mse": 0.361892430290664
+        },
+        {
+          "epoch": 8,
+          "masked_channel_mse": 0.3578305922995853
+        },
+        {
+          "epoch": 9,
+          "masked_channel_mse": 0.3548054624412019
+        },
+        {
+          "epoch": 10,
+          "masked_channel_mse": 0.3492016026192466
+        },
+        {
+          "epoch": 11,
+          "masked_channel_mse": 0.3467684452143093
+        },
+        {
+          "epoch": 12,
+          "masked_channel_mse": 0.34475530456688447
+        },
+        {
+          "epoch": 13,
+          "masked_channel_mse": 0.34836674224858905
+        },
+        {
+          "epoch": 14,
+          "masked_channel_mse": 0.3486143345549955
+        },
+        {
+          "epoch": 15,
+          "masked_channel_mse": 0.3471856004437484
+        },
+        {
+          "epoch": 16,
+          "masked_channel_mse": 0.34561872532812216
+        },
+        {
+          "epoch": 17,
+          "masked_channel_mse": 0.3453837400775845
+        },
+        {
+          "epoch": 18,
+          "masked_channel_mse": 0.34636509182762965
+        },
+        {
+          "epoch": 19,
+          "masked_channel_mse": 0.34605314553120714
+        },
+        {
+          "epoch": 20,
+          "masked_channel_mse": 0.35002919846335373
+        }
+      ]
+    },
+    {
+      "seed": 2029,
+      "history": [
+        {
+          "epoch": 1,
+          "masked_channel_mse": 0.7004563966713383
+        },
+        {
+          "epoch": 2,
+          "masked_channel_mse": 0.43192368897341066
+        },
+        {
+          "epoch": 3,
+          "masked_channel_mse": 0.3972148637650377
+        },
+        {
+          "epoch": 4,
+          "masked_channel_mse": 0.3775333251993535
+        },
+        {
+          "epoch": 5,
+          "masked_channel_mse": 0.3703192994419464
+        },
+        {
+          "epoch": 6,
+          "masked_channel_mse": 0.365953327235529
+        },
+        {
+          "epoch": 7,
+          "masked_channel_mse": 0.3575023185398619
+        },
+        {
+          "epoch": 8,
+          "masked_channel_mse": 0.3548109191285688
+        },
+        {
+          "epoch": 9,
+          "masked_channel_mse": 0.3484206376439434
+        },
+        {
+          "epoch": 10,
+          "masked_channel_mse": 0.3532251291355844
+        },
+        {
+          "epoch": 11,
+          "masked_channel_mse": 0.35850353715783456
+        },
+        {
+          "epoch": 12,
+          "masked_channel_mse": 0.3469075979822773
+        },
+        {
+          "epoch": 13,
+          "masked_channel_mse": 0.35455092686717793
+        },
+        {
+          "epoch": 14,
+          "masked_channel_mse": 0.34872709475668134
+        },
+        {
+          "epoch": 15,
+          "masked_channel_mse": 0.3546564552070057
+        },
+        {
+          "epoch": 16,
+          "masked_channel_mse": 0.3482440757212666
+        },
+        {
+          "epoch": 17,
+          "masked_channel_mse": 0.34874591483908185
+        },
+        {
+          "epoch": 18,
+          "masked_channel_mse": 0.34949578588965247
+        },
+        {
+          "epoch": 19,
+          "masked_channel_mse": 0.3522663779851407
+        },
+        {
+          "epoch": 20,
+          "masked_channel_mse": 0.340062624906416
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "label_fraction": 0.1,
+      "labelled_trials_per_seed": {
+        "2027": 252,
+        "2028": 252,
+        "2029": 252
+      },
+      "seeds": [
+        2027,
+        2028,
+        2029
+      ],
+      "participants": 22,
+      "scratch_mean_balanced_accuracy": 0.5372727843083575,
+      "pretrained_mean_balanced_accuracy": 0.5250730412538712,
+      "paired_difference": -0.01219974305448614,
+      "paired_difference_95_ci": [
+        -0.030062304296494025,
+        0.0036424022837066327
+      ],
+      "participant_differences": [
+        {
+          "subject": 3,
+          "difference": 0.0016469038208168918
+        },
+        {
+          "subject": 5,
+          "difference": 0.03472222222222223
+        },
+        {
+          "subject": 7,
+          "difference": -0.01910408432147559
+        },
+        {
+          "subject": 8,
+          "difference": -0.0727931488801054
+        },
+        {
+          "subject": 14,
+          "difference": -0.01745718050065877
+        },
+        {
+          "subject": 16,
+          "difference": -0.04907773386034253
+        },
+        {
+          "subject": 17,
+          "difference": 0.015151515151515174
+        },
+        {
+          "subject": 24,
+          "difference": -0.030303030303030276
+        },
+        {
+          "subject": 36,
+          "difference": -0.013175230566534931
+        },
+        {
+          "subject": 37,
+          "difference": -0.013175230566534931
+        },
+        {
+          "subject": 39,
+          "difference": 0.009552042160737795
+        },
+        {
+          "subject": 41,
+          "difference": -0.03373015873015872
+        },
+        {
+          "subject": 46,
+          "difference": -0.14064558629776025
+        },
+        {
+          "subject": 47,
+          "difference": -0.048611111111111126
+        },
+        {
+          "subject": 66,
+          "difference": 0.021409749670619222
+        },
+        {
+          "subject": 67,
+          "difference": -0.008893280632411108
+        },
+        {
+          "subject": 69,
+          "difference": 0.0069444444444444935
+        },
+        {
+          "subject": 83,
+          "difference": 0.030961791831356982
+        },
+        {
+          "subject": 90,
+          "difference": -0.009881422924901203
+        },
+        {
+          "subject": 99,
+          "difference": 0.038302277432712195
+        },
+        {
+          "subject": 107,
+          "difference": 0.029761904761904767
+        },
+        {
+          "subject": 109,
+          "difference": 0.0
+        }
+      ]
+    },
+    {
+      "label_fraction": 1.0,
+      "labelled_trials_per_seed": {
+        "2027": 2832,
+        "2028": 2832,
+        "2029": 2832
+      },
+      "seeds": [
+        2027,
+        2028,
+        2029
+      ],
+      "participants": 22,
+      "scratch_mean_balanced_accuracy": 0.5618387431628538,
+      "pretrained_mean_balanced_accuracy": 0.5542612032236538,
+      "paired_difference": -0.00757753993920002,
+      "paired_difference_95_ci": [
+        -0.014435544212594601,
+        -0.0011577475417643421
+      ],
+      "participant_differences": [
+        {
+          "subject": 3,
+          "difference": -0.009881422924901184
+        },
+        {
+          "subject": 5,
+          "difference": -0.01785714285714285
+        },
+        {
+          "subject": 7,
+          "difference": 0.007905138339920978
+        },
+        {
+          "subject": 8,
+          "difference": -0.020092226613965775
+        },
+        {
+          "subject": 14,
+          "difference": -0.023386034255599448
+        },
+        {
+          "subject": 16,
+          "difference": 0.008234519104084312
+        },
+        {
+          "subject": 17,
+          "difference": -0.008563899868247682
+        },
+        {
+          "subject": 24,
+          "difference": -0.01745718050065881
+        },
+        {
+          "subject": 36,
+          "difference": -0.023056653491436114
+        },
+        {
+          "subject": 37,
+          "difference": 0.0
+        },
+        {
+          "subject": 39,
+          "difference": 0.02173913043478261
+        },
+        {
+          "subject": 41,
+          "difference": -0.003968253968253954
+        },
+        {
+          "subject": 46,
+          "difference": -0.0517127799736495
+        },
+        {
+          "subject": 47,
+          "difference": -0.001984126984127014
+        },
+        {
+          "subject": 66,
+          "difference": 0.008563899868247682
+        },
+        {
+          "subject": 67,
+          "difference": -0.007575757575757569
+        },
+        {
+          "subject": 69,
+          "difference": 0.0009920634920634515
+        },
+        {
+          "subject": 83,
+          "difference": 0.000658761528326742
+        },
+        {
+          "subject": 90,
+          "difference": -0.02042160737812913
+        },
+        {
+          "subject": 99,
+          "difference": -0.013802622498274686
+        },
+        {
+          "subject": 107,
+          "difference": 0.00496031746031748
+        },
+        {
+          "subject": 109,
+          "difference": 0.0
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 1225.1822966670006
+}

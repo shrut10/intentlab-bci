@@ -45,6 +45,12 @@ def main():
     assert len(study["summary"]) == 4 and study["counts"]["test"]["evaluation_trials"] == 630
     with urllib.request.urlopen(base + "/research/adaptation", timeout=25) as response:
         assert "Personal calibration and signal alignment" in response.read().decode()
+    pretraining = request("/api/pretraining")
+    assert pretraining["experiment"] == "pretraining-v1"
+    assert not pretraining["production_model_changed"] and not pretraining["test_evaluated"]
+    assert len(pretraining["results"]) == 12
+    with urllib.request.urlopen(base + "/research/pretraining", timeout=25) as response:
+        assert "Can unlabelled EEG help" in response.read().decode()
     print(
         json.dumps(
             {

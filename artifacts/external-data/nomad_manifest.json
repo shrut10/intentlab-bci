@@ -1,0 +1,46 @@
+{
+  "dataset_title": "Data from: Stabilizing brain-computer interfaces through alignment of latent dynamics",
+  "dataset_doi": "10.5061/dryad.q83bk3jtp",
+  "dataset_url": "https://doi.org/10.5061/dryad.q83bk3jtp",
+  "paper_doi": "10.1038/s41467-025-59652-y",
+  "licence": "CC0-1.0",
+  "licence_url": "https://spdx.org/licenses/CC0-1.0.html",
+  "version_id": 355813,
+  "version_number": 5,
+  "version_status_reported": "submitted",
+  "publication_date": "2025-04-01",
+  "metadata_checked_on": "2026-10-26",
+  "metadata_source": "https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.q83bk3jtp",
+  "file_metadata_source": "https://datadryad.org/api/v2/versions/355813/files",
+  "inspection_status": "metadata_verified_recording_bytes_not_available",
+  "availability_note": "On 2026-10-26 the metadata API was accessible, but the API download returned HTTP 401 and the published website download returned HTTP 403. Recording bytes were not obtained, inspected or used for model training.",
+  "modality": "Intracortical threshold-crossing spike counts, not scalp EEG",
+  "participant_count_reported": 1,
+  "participant_identifier_reported": "T11",
+  "channels_reported": 192,
+  "bin_width_seconds_reported": 0.02,
+  "recording_count_reported": 2,
+  "recording_bytes_total": 247179216,
+  "files": [
+    {
+      "filename": "session1.nwb",
+      "file_id": 3993226,
+      "size_bytes": 104323928,
+      "published_sha256": "5c3237688a49d9bdfa034f9715d4ab89cd105c933e41d4c828717b3f9c8a1123",
+      "public_download_url": "https://datadryad.org/downloads/file_stream/3993226",
+      "api_download_url": "https://datadryad.org/api/v2/files/3993226/download",
+      "computed_sha256": null,
+      "inspection": null
+    },
+    {
+      "filename": "session2.nwb",
+      "file_id": 3993227,
+      "size_bytes": 142855288,
+      "published_sha256": "8d203364522ae67c93cc2de60b1c5349657a082b653d757042463cf55bda2b8a",
+      "public_download_url": "https://datadryad.org/downloads/file_stream/3993227",
+      "api_download_url": "https://datadryad.org/api/v2/files/3993227/download",
+      "computed_sha256": null,
+      "inspection": null
+    }
+  ]
+}

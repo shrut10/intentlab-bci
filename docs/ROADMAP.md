@@ -1,6 +1,12 @@
 # IntentLab research and community roadmap
 
-Updated 9 October 2026. This is a prioritised plan, not a report of completed experiments or a preregistration. Completed evidence lives in the original and adaptation reports; neither establishes reliable live control.
+Updated 26 October 2026. This is a prioritised plan, not a preregistration. Completed evidence lives in the original, adaptation and pretraining reports; none establishes reliable live control.
+
+## October research update
+
+The [masked-channel pretraining study](../experiments/pretraining-v1/README.md) adds an exploratory comparison using only source-training EEG, two supervised-label budgets and three fixed seeds. Its evaluation is restricted to the previously inspected validation cohort, so independent data remain the highest scientific priority. The deployed decoder is unchanged. The site now distinguishes server processing, browser round-trip and recorded-window duration, with a reproducible request-latency benchmark.
+
+The [NoMAD metadata audit](NOMAD_DATA.md) records a separately licensed intracortical resource and its expected checksums. The tested recording endpoints rejected access; no NoMAD recordings have been ingested. This is preparation for a distinct future study, not an additional EEG benchmark.
 
 ## 1. Make existing evidence useful to other people — implemented, external validation pending
 
@@ -33,7 +39,7 @@ Acceptance evidence: a reproducible hardware bill, clear replay labelling, measu
 | Community | Useful contribution | Ask | Current boundary |
 | --- | --- | --- | --- |
 | NeuroTechX and educators | Existing teaching demo, now with participant audit | Try one exercise and identify one unclear concept or reproduce one operating point | Already listed in awesome-bci; do not resubmit the same listing |
-| MOABB developers | Chronological calibration use case and future tested integration | Review the split contract before a benchmark extension | A use-case comment was posted on issue #1077; wait for discussion rather than repeatedly bumping it |
+| MOABB developers | Tested chronological calibration example | Review the split contract before a benchmark extension | A runnable synthetic example with 16 tests was shared on issue #1077 after a maintainer's invitation; it is not a real-data MOABB benchmark |
 | neoxai curator | Local prediction-audit method with licence/provenance | Consider a methods entry and review the sparse-coverage treatment | Respect the repository's documented PR format; catalogue inclusion is not endorsement |
 | Open Neuroscience | Open-source teaching/evaluation resource | Consider a resource entry under the site's submission process | Submission is distinct from acceptance |
 | NeuroTechX London / Slack | Short practical demonstration and a focused question | Find a peer willing to reproduce one result or test the teaching exercise | Requires community access and checking the actual channel rules |

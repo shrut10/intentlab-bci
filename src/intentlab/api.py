@@ -301,6 +301,17 @@ def reliability_research():
     return FileResponse(ROOT / "web/reliability.html")
 
 
+@app.get("/research/pretraining", include_in_schema=False)
+def pretraining_research():
+    return FileResponse(ROOT / "web/pretraining.html")
+
+
+@app.get("/api/pretraining")
+def pretraining_results():
+    """Archived exploratory validation study; does not change the live model."""
+    return FileResponse(ROOT / "artifacts/pretraining-v1/evaluation.json", media_type="application/json")
+
+
 @app.get("/favicon.svg", include_in_schema=False)
 def favicon():
     return FileResponse(ROOT / "web/favicon.svg", media_type="image/svg+xml")

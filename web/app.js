@@ -25,10 +25,11 @@ const state = {
 const svgText = (x, y, value, anchor = "start", extra = "") =>
   `<text x="${x}" y="${y}" text-anchor="${anchor}" class="svg-label" ${extra}>${escapeHTML(value)}</text>`;
 
-async function api(path, options = {}) {
+async function api(path, options = {}, onTiming = null) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 25000);
   try {
+    const started = performance.now();
     const response = await fetch(path, {
       ...options,
       signal: controller.signal,
@@ -37,7 +38,9 @@ async function api(path, options = {}) {
       throw new Error(
         `The server returned ${response.status}; please try again`,
       );
-    return await response.json();
+    const result = await response.json();
+    if (onTiming) onTiming(performance.now() - started);
+    return result;
   } catch (error) {
     if (error.name === "AbortError")
       throw new Error("The server took too long to respond; please try again");
@@ -101,21 +104,30 @@ async function decode(moveCursor = false) {
   $("decode-button").disabled = true;
   $("decode-button").textContent = "Decoding…";
   $("error-banner").hidden = true;
+  $("latency").textContent = "Server processing —";
+  $("request-latency").textContent = "Browser round trip —";
   try {
-    const prediction = await api("/api/predict", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        trial_id: trial.id,
-        model: $("model-select").value,
-        threshold: Number($("threshold").value) / 100,
-        noise: Number($("noise-select").value),
-        drop_channel: $("drop-select").value || null,
-      }),
-    });
+    let roundTripMs;
+    const prediction = await api(
+      "/api/predict",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          trial_id: trial.id,
+          model: $("model-select").value,
+          threshold: Number($("threshold").value) / 100,
+          noise: Number($("noise-select").value),
+          drop_channel: $("drop-select").value || null,
+        }),
+      },
+      (elapsed) => {
+        roundTripMs = elapsed;
+      },
+    );
     if (sequence !== state.request) return false;
     state.prediction = prediction;
-    renderPrediction(prediction, moveCursor);
+    renderPrediction(prediction, moveCursor, roundTripMs);
     return true;
   } catch (error) {
     if (sequence === state.request) {
@@ -142,11 +154,12 @@ async function decode(moveCursor = false) {
   }
 }
 
-function renderPrediction(prediction, moveCursor) {
+function renderPrediction(prediction, moveCursor, roundTripMs) {
   $("left-prob").textContent = pct(prediction.left_probability, 0);
   $("right-prob").textContent = pct(prediction.right_probability, 0);
   $("left-fill").style.width = pct(prediction.left_probability, 3);
-  $("latency").textContent = `${prediction.latency_ms.toFixed(1)} ms`;
+  $("latency").textContent = `Server processing ${prediction.latency_ms.toFixed(1)} ms`;
+  $("request-latency").textContent = `Browser round trip ${roundTripMs.toFixed(1)} ms`;
   const label = prediction.predicted_label === 0 ? "left" : "right";
   const agrees = prediction.predicted_label === prediction.recorded_label;
   $("decision-title").textContent = prediction.accepted

@@ -29,6 +29,7 @@ jobs:
       - run: node --check web/app.js
       - run: node --check web/reliability.js
       - run: python scripts/render_adaptation_report.py --check
+      - run: python scripts/render_pretraining_report.py --check
       - run: python examples/reliability_audit.py --check
       - run: pytest -q
       - name: Build actual serving image
