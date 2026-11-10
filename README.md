@@ -124,6 +124,8 @@ python scripts/train.py --overwrite
 
 `--overwrite` is explicit because a frozen evaluation is already included. Use it to reproduce the same experiment, not to tune against its test set. Subsequent acquisition can use `python scripts/prepare_data.py --offline`. Source hashes, quality exclusions and split IDs are in [manifest.json](data/derived/manifest.json). CPU/backend differences may slightly change floating-point outputs; this is one training seed, not a multi-seed benchmark.
 
+To check cached source files without regenerating data or retraining, run `python scripts/audit_edf_timing.py`. This verifies their hashes, file structure and continuous EDF+C record timestamps. Preparation now stops on unsupported timing or gaps before writing derived outputs. The [filtering and recording-time note](docs/FILTERING.md) explains the exact existing two-pass filter and these later safeguards; the deployed model and original results are unchanged.
+
 ## API example
 
 ```sh
