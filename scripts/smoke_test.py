@@ -50,7 +50,7 @@ def main():
     assert not pretraining["production_model_changed"] and not pretraining["test_evaluated"]
     assert len(pretraining["results"]) == 12
     with urllib.request.urlopen(base + "/research/pretraining", timeout=25) as response:
-        assert "Can unlabelled EEG help" in response.read().decode()
+        assert "Learning from unlabelled EEG with limited movement labels" in response.read().decode()
     print(
         json.dumps(
             {
