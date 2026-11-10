@@ -103,11 +103,18 @@ def test_static_app_and_docs_are_available(client):
     assert page.headers["Cache-Control"] == "no-store"
     assert "Last-Modified" not in page.headers
     assert client.get("/static/app.js").status_code == 200
-    assert client.get("/static/pixel.css").status_code == 200
-    assert client.get("/static/eeg-scene.svg").status_code == 200
+    assert client.get("/static/styles.css").status_code == 200
+    assert client.get("/static/base.css").status_code == 200
+    assert client.get("/static/fonts/comic-neue-latin-400-normal.woff2").status_code == 200
     assert client.get("/favicon.svg").status_code == 200
     assert "/api/predict" in client.get("/openapi.json").json()["paths"]
-    assert client.get("/docs").status_code == 200
+    for path in ("/docs", "/redoc"):
+        documentation = client.get(path)
+        assert documentation.status_code == 200
+        assert "/openapi.json" in documentation.text
+        assert "/static/api-docs.css" in documentation.text
+    assert client.get("/static/api-docs.css").status_code == 200
+    assert client.get("/docs/oauth2-redirect").status_code == 200
 
 
 def test_model_artifact_corruption_fails_closed(tmp_path, monkeypatch):

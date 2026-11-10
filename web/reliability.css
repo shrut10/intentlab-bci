@@ -1,18 +1,23 @@
 @import url('/static/research.css');
-.audit { max-width: 1060px; }
-.audit-controls { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 18px; margin: 26px 0; }
+.audit { max-width: 1030px; }
+.audit-controls { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 16px; margin: 26px 0; }
 .audit-controls label, .audit-file { font-size: 13px; line-height: 1.7; }
-.audit select { display: block; width: 100%; min-height: 44px; margin-top: 7px; padding: 10px; color: var(--ink); background: white; border: 1px solid var(--green); border-radius: 0; }
-.audit section .audit-note, .audit-note { font: 14px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #42574c; }
-.audit-summary { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--green); margin: 24px 0; background: var(--wash); }
-.audit-stat { padding: 22px 18px; }
-.audit-stat strong { font-size: 28px; display: block; font-variant-numeric: tabular-nums; }
-.audit-stat span { font-size: 13px; display: block; margin-top: 8px; }
+.audit select { display: block; width: 100%; min-height: 44px; margin-top: 7px; padding: 10px; color: var(--ink); background: #111; border: 1px solid #353535; border-radius: 3px; }
+.audit section .audit-note, .audit-note { font: 14px/1.8 var(--comic); color: var(--muted); }
+.audit-summary { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); margin: 24px 0; background: var(--wash); }
+.audit-stat { padding: 20px 18px; }
+.audit-stat + .audit-stat { border-left: 1px solid var(--line); }
+.audit-stat strong { font-size: 28px; display: block; font-weight: 400; color: var(--green); font-variant-numeric: tabular-nums; }
+.audit-stat span { font-size: 13px; display: block; margin-top: 8px; line-height: 1.7; }
 .audit-plot { max-width: 700px; margin: 24px auto; }
-.audit-plot svg { width: 100%; display: block; background: white; border: 1px solid var(--line); }
-.audit-plot text { font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: var(--ink); }
+.audit-plot svg { width: 100%; display: block; background: #080808; border: 1px solid var(--line); }
+.audit-plot text { font: 13px var(--comic); fill: var(--ink); }
 .audit-file input { display: block; max-width: 100%; margin-block: 12px 20px; }
-.audit button { border: 2px solid var(--ink); border-radius: 0; box-shadow: 3px 3px 0 var(--ink); background: var(--wash); padding: 12px 18px; color: var(--ink); cursor: pointer; }
-.audit button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.audit button, .audit-file input::file-selector-button { min-height: 44px; border: 1px solid #353535; border-radius: 3px; box-shadow: none; background: #161616; padding: 10px 15px; color: var(--ink); font: inherit; cursor: pointer; }
+.audit-file input::file-selector-button { margin-right: 12px; }
+.audit button:hover, .audit-file input::file-selector-button:hover { color: var(--green); background: #202020; }
+.audit button:active { background: #0d1912; }
 .audit .report-table caption { color: var(--ink); }
-@media (max-width: 650px) { .audit-controls { grid-template-columns: 1fr 1fr; } .audit-summary { grid-template-columns: 1fr; } .audit-stat { padding: 16px; } .audit-stat + .audit-stat { border-top: 1px solid var(--line); } }
+@media (max-width: 760px) { .audit-controls { grid-template-columns: 1fr 1fr; } .audit-summary { grid-template-columns: 1fr; } .audit-stat { padding: 16px; } .audit-stat + .audit-stat { border-left: 0; border-top: 1px solid var(--line); } }
+@media (max-width: 380px) { .audit-controls { grid-template-columns: 1fr; } }
+@media print { .audit-controls, .audit-file, .audit button { display: none; } .audit-plot svg { background: white; } .audit-plot text { fill: black; } }

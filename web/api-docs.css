@@ -1,0 +1,65 @@
+/* Additive branding for the standard Swagger UI and ReDoc interfaces */
+.api-docs { background: #000; color: var(--ink); }
+.api-docs-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 24px max(24px, calc((100vw - 1240px) / 2)); border-bottom: 1px solid var(--line); }
+.api-docs-brand { color: var(--ink); font-size: 1.65rem; font-weight: 700; text-decoration: none; }
+.api-docs-header nav { display: flex; flex-wrap: wrap; gap: 10px; }
+.api-docs-header nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 13px; border: 1px solid #353535; border-radius: 3px; background: #161616; color: var(--green); text-decoration: none; }
+.api-docs-header nav a:hover { background: #202020; }
+.swagger-ui { color: var(--ink); font-family: var(--comic); }
+.swagger-ui .wrapper { max-width: 1288px; padding: 0 24px; }
+.swagger-ui .info { margin: 36px 0; }
+.swagger-ui .info .title { color: var(--ink); font: 400 2rem/1.4 var(--comic); }
+.swagger-ui .info p, .swagger-ui .info li, .swagger-ui .info a,
+.swagger-ui .opblock-tag, .swagger-ui .opblock-tag small,
+.swagger-ui .opblock .opblock-summary-description,
+.swagger-ui .opblock .opblock-section-header h4,
+.swagger-ui .opblock-description-wrapper p, .swagger-ui .opblock-external-docs-wrapper p,
+.swagger-ui .opblock-title_normal, .swagger-ui .responses-inner h4,
+.swagger-ui .responses-inner h5, .swagger-ui .response-col_status,
+.swagger-ui .response-col_description, .swagger-ui .parameter__name,
+.swagger-ui .parameter__type, .swagger-ui .parameter__in,
+.swagger-ui table thead tr th, .swagger-ui table thead tr td,
+.swagger-ui .tab li, .swagger-ui .btn, .swagger-ui label,
+.swagger-ui .model-title, .swagger-ui .model {
+  color: var(--ink); font-family: var(--comic);
+}
+.swagger-ui .info a, .swagger-ui a.nostyle, .swagger-ui .model-title { color: var(--green); }
+.swagger-ui .opblock-tag { border-bottom-color: var(--line); font-size: 1.3rem; }
+.swagger-ui .opblock-tag:hover { background: #101010; }
+.swagger-ui .opblock { background: #0b0b0b; border-color: var(--line); border-radius: 3px; box-shadow: none; }
+.swagger-ui .opblock.opblock-get { background: #0b100b; border-color: #2d5625; }
+.swagger-ui .opblock.opblock-post { background: #100e17; border-color: #51466c; }
+.swagger-ui .opblock.opblock-get .opblock-summary-method { background: var(--green); color: #000; }
+.swagger-ui .opblock.opblock-post .opblock-summary-method { background: #b5a3ff; color: #000; }
+.swagger-ui .opblock .opblock-summary-path, .swagger-ui .opblock .opblock-summary-path__deprecated { color: var(--ink); }
+.swagger-ui .opblock .opblock-section-header { background: #161616; box-shadow: none; }
+.swagger-ui .opblock .opblock-section-header label { color: var(--ink); }
+.swagger-ui .opblock .opblock-summary { border-color: var(--line); }
+.swagger-ui .btn { background: #161616; color: var(--green); border: 1px solid #353535; border-radius: 3px; box-shadow: none; text-shadow: none; }
+.swagger-ui .btn.execute { background: #12200e; border-color: #2d5625; color: var(--green); }
+.swagger-ui .btn.cancel { color: #ffaaa5; border-color: #7b4944; }
+.swagger-ui input[type=text], .swagger-ui input[type=password], .swagger-ui input[type=email],
+.swagger-ui input[type=search], .swagger-ui input[type=number], .swagger-ui select, .swagger-ui textarea {
+  background: #161616; color: var(--ink); border: 1px solid #535353; border-radius: 3px; box-shadow: none;
+}
+.swagger-ui input, .swagger-ui select { font-family: var(--comic); }
+.swagger-ui .responses-table .response-col_links, .swagger-ui .parameter__extension, .swagger-ui .parameter__deprecated { color: var(--muted); }
+.swagger-ui table tbody tr td { border-color: var(--line); }
+.swagger-ui .model-box, .swagger-ui section.models .model-container { background: #101010; }
+.swagger-ui section.models { border-color: var(--line); border-radius: 3px; }
+.swagger-ui section.models h4, .swagger-ui section.models h5 { color: var(--ink); font-family: var(--comic); border-color: var(--line); }
+.swagger-ui section.models .model-container:hover, .swagger-ui section.models h4:hover { background: #161616; }
+.swagger-ui .model-toggle::after, .swagger-ui .expand-operation svg, .swagger-ui .opblock-control-arrow svg { filter: invert(1); }
+.swagger-ui .prop-type { color: #b5a3ff; }
+.swagger-ui .prop-format { color: var(--muted); }
+.swagger-ui .markdown code, .swagger-ui .renderedMarkdown code { background: #161616; color: var(--ink); }
+.swagger-ui pre, .swagger-ui code, .swagger-ui textarea, .swagger-ui .microlight { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+.swagger-ui .highlight-code, .swagger-ui .highlight-code pre { background: #111; }
+.api-docs redoc { display: block; }
+@media (max-width: 600px) {
+  .api-docs-header { padding: 18px 16px; }
+  .api-docs-header nav { gap: 7px; }
+  .api-docs-header nav a { padding: 8px 10px; font-size: .85rem; }
+  .swagger-ui .wrapper { padding: 0 16px; }
+  .swagger-ui .info .title { font-size: 1.6rem; }
+}

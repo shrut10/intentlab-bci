@@ -3,7 +3,7 @@
 const $ = (id) => document.getElementById(id);
 const names = { baseline: "Baseline", personal_temperature: "Personal temperature", alignment: "Euclidean alignment", alignment_temperature: "Alignment + personal temperature" };
 const percent = (value) => value == null ? "Undefined" : `${(value * 100).toFixed(1)}%`;
-const interval = (value) => value == null ? "not reported (fewer than two contributing participants)" : `${percent(value[0])}–${percent(value[1])}`;
+const interval = (value) => value == null ? "not reported (fewer than two contributing participants)" : `${percent(value[0])} to ${percent(value[1])}`;
 let report;
 
 function options(id, values, label = (x) => x) {
@@ -43,16 +43,16 @@ function plot(points, selected) {
   const x = (value) => 70 + value * 540;
   const y = (value) => 280 - value * 240;
   for (let value = 0; value <= 1.001; value += 0.25) {
-    svg.append(svgElement("line", {x1:70, y1:y(value), x2:610, y2:y(value), stroke:"#e2e7df"}));
+    svg.append(svgElement("line", {x1:70, y1:y(value), x2:610, y2:y(value), stroke:"var(--line)"}));
     svg.append(svgElement("text", {x:55, y:y(value)+4, "text-anchor":"end"}, `${Math.round(value*100)}%`));
     svg.append(svgElement("text", {x:x(value), y:301, "text-anchor":"middle"}, `${Math.round(value*100)}%`));
   }
   svg.append(svgElement("text", {x:340, y:328, "text-anchor":"middle"}, "Trials receiving a command (coverage)"));
   svg.append(svgElement("text", {x:70, y:22}, "Errors among accepted predictions (selective risk)"));
   const valid = points.filter(p => p.selective_risk != null);
-  svg.append(svgElement("polyline", {points:valid.map(p => `${x(p.coverage)},${y(p.selective_risk)}`).join(" "), fill:"none", stroke:"#346f5a", "stroke-width":2}));
+  svg.append(svgElement("polyline", {points:valid.map(p => `${x(p.coverage)},${y(p.selective_risk)}`).join(" "), fill:"none", stroke:"var(--green)", "stroke-width":2}));
   valid.forEach(point => {
-    const dot = svgElement("circle", {cx:x(point.coverage), cy:y(point.selective_risk), r:point === selected ? 7 : 4, fill:point === selected ? "#9b482a" : "#346f5a", stroke:"white", "stroke-width":1});
+    const dot = svgElement("circle", {cx:x(point.coverage), cy:y(point.selective_risk), r:point === selected ? 7 : 4, fill:point === selected ? "var(--orange)" : "var(--green)", stroke:"var(--paper)", "stroke-width":1});
     dot.append(svgElement("title", {}, `Threshold ${percent(point.threshold)}, coverage ${percent(point.coverage)}, error ${percent(point.selective_risk)}`));
     svg.append(dot);
   });
@@ -63,7 +63,7 @@ function update() {
   const group = report.groups.find(g => g.condition === $("condition").value && g.seed === $("seed").value && g.split === $("split").value);
   options("threshold", group.points.map(p => p.threshold), percent);
   const point = group.points.find(p => p.threshold === Number($("threshold").value));
-  $("selection-note").textContent = `Validation target ${group.validation_target_met ? "met" : "not met"}; the validation rule ${group.validation_target_met ? "selected" : "fell back to"} ${percent(group.selected_threshold)}. ${point.threshold === group.selected_threshold ? "The displayed threshold matches that rule" : "This displayed threshold is exploratory"}. Model seeds are shown separately.`;
+  $("selection-note").textContent = `Validation target ${group.validation_target_met ? "met" : "not met"}; the validation rule ${group.validation_target_met ? "selected" : "fell back to"} ${percent(group.selected_threshold)}; ${point.threshold === group.selected_threshold ? "the displayed threshold matches that rule" : "the displayed threshold is exploratory"}, with model seeds shown separately`;
   $("summary").replaceChildren(...[
     [`${point.accepted} / ${point.trials}`, `trials accepted (${percent(point.coverage)})`],
     [`${point.accepted - point.correct}`, `wrong commands among ${point.accepted} accepted`],
@@ -74,7 +74,7 @@ function update() {
     const span = document.createElement("span"); span.textContent = label;
     block.append(strong, span); return block;
   }));
-  $("uncertainty").textContent = `Accepted accuracy: ${percent(point.accepted_accuracy)}; participant-bootstrap 95% interval: ${interval(point.accepted_accuracy_ci95)}. Coverage interval: ${interval(point.coverage_ci95)}. Accuracy is defined in ${point.accuracy_bootstrap_valid}/${report.bootstrap.repeats} resamples. Median participant coverage: ${percent(point.median_participant_coverage)}.`;
+  $("uncertainty").textContent = `Accepted accuracy: ${percent(point.accepted_accuracy)}; participant bootstrap 95% interval: ${interval(point.accepted_accuracy_ci95)}; coverage interval: ${interval(point.coverage_ci95)}; accuracy is defined in ${point.accuracy_bootstrap_valid}/${report.bootstrap.repeats} resamples; median participant coverage: ${percent(point.median_participant_coverage)}`;
   plot(group.points, point);
   cells("operating-rows", group.points.map(p => [percent(p.threshold), `${p.accepted} / ${p.trials}`, p.accepted-p.correct, percent(p.coverage), percent(p.accepted_accuracy), `${p.participants_with_commands} / ${group.participant_count}`, `${p.accuracy_bootstrap_valid} / ${report.bootstrap.repeats}`]));
   cells("participant-rows", point.participants.map(p => [p.subject, `${p.accepted} / ${p.trials}`, p.accepted-p.correct, percent(p.coverage), percent(p.accepted_accuracy), percent(p.balanced_accuracy)]));
@@ -117,7 +117,7 @@ function show(data, local) {
   const thresholds = [...$("threshold").options].map(o => o.value);
   if (thresholds.includes(String(report.rule.fallback_threshold))) $("threshold").value = report.rule.fallback_threshold;
   update();
-  $("provenance").textContent = local ? "You are viewing a local report, not the published IntentLab results. These values are supplied by the file and are not independently verified by this page; data remain in this browser. Returning to the published study restores the archived comparison." : "This is a descriptive reanalysis of the archived calibration and alignment experiment, with the trained models kept fixed. The same 21 test participants appear in each seed; seeds do not add independent participants, and no condition met the original validation reliability target.";
+  $("provenance").textContent = local ? "This local report contains values supplied by the selected file rather than the published IntentLab results; they are not independently verified by this page and remain in this browser; returning to the published study restores the archived comparison" : "This is a descriptive reanalysis of the archived calibration and alignment experiment, with the trained models kept fixed; the same 21 test participants appear in each seed, so seeds do not add independent participants, and no condition met the original validation reliability target";
   $("explorer").hidden = false;
   $("loading").hidden = true;
 }
@@ -129,7 +129,7 @@ async function loadPublished() {
     show(await response.json(), false);
     $("file-status").textContent = "";
     $("local-report").value = "";
-  } catch (error) { $("loading").hidden = false; $("loading").textContent = `${error.message}. The local tool and downloadable report are linked above.`; }
+  } catch (error) { $("loading").hidden = false; $("loading").textContent = `${error.message}; the local tool and downloadable report are linked above`; }
 }
 
 for (const id of ["condition", "seed", "split", "threshold"]) $(id).addEventListener("change", update);

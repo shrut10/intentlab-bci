@@ -1,19 +1,16 @@
-@font-face { font-family: 'Pixelify Sans'; src: url('/static/fonts/pixelify-sans-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'DM Sans'; src: url('/static/fonts/dm-sans-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'DM Sans'; src: url('/static/fonts/dm-sans-latin-600-normal.woff2') format('woff2'); font-weight: 600 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Comic Neue'; src: url('/static/fonts/comic-neue-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Comic Neue'; src: url('/static/fonts/comic-neue-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
 :root {
-  --paper: #f4edda;
-  --wash: #e1dfed;
-  --ink: #323343;
-  --muted: #666273;
-  --green: #595282;
-  --orange: #bd7357;
-  --line: #c6bfd0;
-  --pixel: 'Pixelify Sans', monospace;
-  --wood: #746080;
-  --wood-dark: #413346;
-  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  color-scheme: light;
+  --paper: #000;
+  --wash: #0b0b0b;
+  --ink: #ededed;
+  --muted: #b1b1b1;
+  --green: #39ff14;
+  --orange: #b5a3ff;
+  --line: #2c2c2c;
+  --comic: 'Comic Sans MS', 'Comic Neue', cursive;
+  --mono: var(--comic);
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -26,11 +23,15 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: var(--comic);
+  font-size: 16px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 a {
-  color: inherit;
+  color: var(--green);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
 }
 button,
 input,
@@ -42,7 +43,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 summary:focus-visible {
-  outline: 3px solid #559c80;
+  outline: 2px solid var(--green);
   outline-offset: 4px;
 }
 .page-width {
@@ -61,14 +62,15 @@ summary:focus-visible {
   left: 20px;
   z-index: 100;
   padding: 12px;
-  background: var(--ink);
-  color: white;
+  background: #161616;
+  color: var(--green);
 }
 .skip-link:focus {
   top: 10px;
 }
 ::selection {
-  background: #c5ddc8;
+  background: #b5a3ff;
+  color: #000;
 }
 strong {
   font-weight: 600;

@@ -91,7 +91,7 @@ function renderTrialMeta() {
     `Cued imagery: ${trial.label === 0 ? "left" : "right"} fist`;
   $("recording-id").textContent = trial.id;
   $("trial-badge").textContent =
-    `S${String(trial.subject).padStart(3, "0")} · UNSEEN PERSON`;
+    `S${String(trial.subject).padStart(3, "0")} · Unseen participant`;
   $("csv-link").href = `/api/trials/${encodeURIComponent(trial.id)}/csv`;
   $("csv-link").removeAttribute("aria-disabled");
 }
@@ -102,10 +102,10 @@ async function decode(moveCursor = false) {
   if (!trial) return false;
   renderTrialMeta();
   $("decode-button").disabled = true;
-  $("decode-button").textContent = "Decoding…";
+  $("decode-button").textContent = "Decoding";
   $("error-banner").hidden = true;
-  $("latency").textContent = "Server processing —";
-  $("request-latency").textContent = "Browser round trip —";
+  $("latency").textContent = "Server processing pending";
+  $("request-latency").textContent = "Browser round trip pending";
   try {
     let roundTripMs;
     const prediction = await api(
@@ -134,8 +134,8 @@ async function decode(moveCursor = false) {
       showError(`Unable to decode the recording: ${error.message}`);
       state.prediction = null;
       drawWaveform();
-      $("left-prob").textContent = "—";
-      $("right-prob").textContent = "—";
+      $("left-prob").textContent = "N/A";
+      $("right-prob").textContent = "N/A";
       $("occlusion-bars").replaceChildren();
       $("scalp").replaceChildren();
       $("spectrum").replaceChildren();
@@ -167,7 +167,7 @@ function renderPrediction(prediction, moveCursor, roundTripMs) {
     : "No command";
   $("decision-explanation").textContent = prediction.accepted
     ? `${pct(prediction.confidence, 0)} confidence · ${agrees ? "matches" : "does not match"} the recorded cue`
-    : `The model leans ${label} at ${pct(prediction.confidence, 0)} confidence, below your ${pct(prediction.threshold, 0)} threshold`;
+    : `The predicted movement is ${label}, with ${pct(prediction.confidence, 0)} confidence below the selected ${pct(prediction.threshold, 0)} threshold`;
   $("command-state").textContent = prediction.accepted
     ? `${label} ${label === "left" ? "←" : "→"}`
     : "Abstained";
@@ -198,21 +198,23 @@ function drawWaveform() {
     right = w - 8,
     top = 7,
     bottom = h - 25;
-  ctx.font = '8px "SFMono-Regular", Consolas, monospace';
-  ctx.lineWidth = 0.5;
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0, 0, w, h);
+  ctx.font = '11px "Comic Sans MS", "Comic Neue", cursive';
+  ctx.lineWidth = 1;
   for (let i = 0; i <= 6; i++) {
     const x = left + ((right - left) * i) / 6;
-    ctx.strokeStyle = "#a6cbb51b";
+    ctx.strokeStyle = "#2c2c2c";
     ctx.beginPath();
     ctx.moveTo(x, top);
     ctx.lineTo(x, bottom + 4);
     ctx.stroke();
-    ctx.fillStyle = "#8aaea1";
+    ctx.fillStyle = "#b1b1b1";
     ctx.textAlign = "center";
     ctx.fillText((1 + i / 2).toFixed(1), x, h - 9);
   }
   if (!state.prediction || !state.overview) {
-    ctx.fillStyle = "#aec6ba";
+    ctx.fillStyle = "#b1b1b1";
     ctx.fillText("No signal to display yet", w / 2, h / 2);
     return;
   }
@@ -222,10 +224,10 @@ function drawWaveform() {
     const y = top + spacing * (index + 0.5);
     const name = state.overview.channels[index];
     const dropped = state.prediction.drop_channel === name;
-    ctx.fillStyle = dropped ? "#64746c" : "#a8c6b9";
+    ctx.fillStyle = dropped ? "#777777" : "#ededed";
     ctx.textAlign = "left";
     ctx.fillText(name, 2, y + 3);
-    ctx.strokeStyle = "#a6cbb517";
+    ctx.strokeStyle = "#202020";
     ctx.beginPath();
     ctx.moveTo(left, y);
     ctx.lineTo(right, y);
@@ -235,11 +237,11 @@ function drawWaveform() {
     ctx.rect(left, top, right - left, bottom - top);
     ctx.clip();
     ctx.strokeStyle = dropped
-      ? "#687a70"
+      ? "#777777"
       : name === "C3" || name === "C4"
-        ? "#e1ab88"
-        : "#90cdb2";
-    ctx.lineWidth = 0.8;
+        ? "#b5a3ff"
+        : "#39ff14";
+    ctx.lineWidth = 1.1;
     ctx.beginPath();
     values.forEach((value, i) => {
       const px = left + ((right - left) * i) / values.length;
@@ -269,7 +271,7 @@ function drawOcclusion(rows) {
     bar.style.left = `${bar.dataset.left}%`;
   });
   let svg =
-    '<path d="M111 31l14-17 14 17" fill="none" stroke="#a7b6a4"/><ellipse cx="125" cy="125" rx="85" ry="94" fill="#f0f2e9" stroke="#b9c5b4"/><path d="M39 102q-20 23 0 43M211 102q20 23 0 43" fill="none" stroke="#b9c5b4"/>';
+    '<path d="M111 31l14-17 14 17" fill="none" stroke="#b1b1b1"/><ellipse cx="125" cy="125" rx="85" ry="94" fill="#080808" stroke="#b1b1b1"/><path d="M39 102q-20 23 0 43M211 102q20 23 0 43" fill="none" stroke="#b1b1b1"/>';
   const positions = [
     [77, 72],
     [125, 66],
@@ -285,7 +287,7 @@ function drawOcclusion(rows) {
     const [x, y] = positions[i];
     const strength = Math.abs(row.right_probability_change) / maximum;
     const radius = 8 + strength * 6;
-    svg += `<circle cx="${x}" cy="${y}" r="${radius}" fill="${row.right_probability_change >= 0 ? "#73a78d" : "#d79f7b"}" fill-opacity="${0.3 + strength * 0.6}"/><circle cx="${x}" cy="${y}" r="3" fill="#426553"/>${svgText(x, y + 25, row.channel, "middle")}`;
+    svg += `<circle cx="${x}" cy="${y}" r="${radius}" fill="${row.right_probability_change >= 0 ? "#39ff14" : "#b5a3ff"}" fill-opacity="${0.3 + strength * 0.6}"/><circle cx="${x}" cy="${y}" r="3" fill="#ededed"/>${svgText(x, y + 25, row.channel, "middle")}`;
   });
   $("scalp").innerHTML = svg;
 }
@@ -294,7 +296,7 @@ function drawSpectrum(data) {
   const x = (hz) => 38 + ((hz - 4) / 36) * 380;
   const max = Math.max(...data.power, 1e-8);
   const y = (power) => 166 - (power / max) * 130;
-  let svg = `<rect x="${x(8)}" y="23" width="${x(13) - x(8)}" height="143" fill="#c8ddcd" fill-opacity=".5"/><rect x="${x(13)}" y="23" width="${x(30) - x(13)}" height="143" fill="#eadfbd" fill-opacity=".5"/>`;
+  let svg = `<rect x="${x(8)}" y="23" width="${x(13) - x(8)}" height="143" fill="#39ff14" fill-opacity=".08"/><rect x="${x(13)}" y="23" width="${x(30) - x(13)}" height="143" fill="#b5a3ff" fill-opacity=".08"/>`;
   [0, 0.5, 1].forEach((value) => {
     svg += `<path d="M38 ${y(value * max)}H418" class="svg-grid"/>${svgText(30, y(value * max) + 3, value === 1 ? "peak" : value, "end")}`;
   });
@@ -359,20 +361,20 @@ function renderEvidence() {
   $("metric-score").innerHTML =
     `${(result.participant_balanced_accuracy * 100).toFixed(1)}<span>%</span>`;
   $("metric-ci").textContent =
-    `95% participant-bootstrap interval: ${pct(result.bootstrap_95_ci[0])}–${pct(result.bootstrap_95_ci[1])}`;
+    `95% bootstrap interval across participants: ${pct(result.bootstrap_95_ci[0])} to ${pct(result.bootstrap_95_ci[1])}`;
   $("metric-accuracy").innerHTML =
     overview.operating_point.accuracy == null
-      ? "—"
+      ? "N/A"
       : `${(overview.operating_point.accuracy * 100).toFixed(1)}<span>%</span>`;
   $("metric-coverage").textContent =
     `${pct(overview.operating_point.coverage)} coverage · ${overview.operating_point.retained} of ${result.n} test trials · ${pct(overview.threshold, 0)} threshold`;
   $("operating-caveat").textContent = overview.threshold_target_met
-    ? "The confidence threshold was chosen on validation participants, with test performance and retained-trial accuracy reported as estimates from an offline experiment"
-    : "The model failed to achieve 75% retained-trial accuracy at the required validation coverage, so the 75% confidence threshold is a declared fallback whose limited coverage does not support reliable device control";
+    ? "The confidence threshold was chosen on validation participants, with test performance and accuracy on retained trials reported as estimates from an offline experiment"
+    : "The model failed to achieve 75% accuracy on retained trials at the required validation coverage, so the 75% confidence threshold is a declared fallback whose limited coverage does not support reliable device control";
   $("models-table").innerHTML = Object.entries(report.models)
     .map(
       ([key, model]) =>
-        `<tr><td>${escapeHTML(model.name)}${key === report.selected ? '<span class="selected-tag">SELECTED ON VALIDATION</span>' : ""}</td><td>${pct(model.validation_participant_balanced_accuracy)}</td><td>${pct(model.test.participant_balanced_accuracy)}</td></tr>`,
+        `<tr><td>${escapeHTML(model.name)}${key === report.selected ? '<span class="selected-tag">Selected on validation</span>' : ""}</td><td>${pct(model.validation_participant_balanced_accuracy)}</td><td>${pct(model.test.participant_balanced_accuracy)}</td></tr>`,
     )
     .join("");
   $("split-strip").innerHTML = Object.entries(overview.counts)
@@ -455,7 +457,7 @@ async function replay() {
   if (token === state.replay) {
     stopReplay();
     $("replay-status").textContent =
-      "Replay complete — the cursor moved only for accepted commands";
+      "Replay complete; the cursor moved only for accepted commands";
   }
 }
 
@@ -512,7 +514,7 @@ async function initialise() {
     await decode(false);
   } catch (error) {
     showError(
-      `Unable to load the experiment: ${error.message} — refresh to retry`,
+      `Unable to load the experiment: ${error.message}; refresh to retry`,
     );
   }
 }
@@ -551,4 +553,5 @@ $("reset-button").addEventListener("click", () => {
   $("decode-button").textContent = "Run decoder ↗";
 });
 new ResizeObserver(drawWaveform).observe($("waveform"));
+document.fonts.ready.then(drawWaveform);
 initialise();
