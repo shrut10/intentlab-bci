@@ -38,6 +38,12 @@ Acquisition failures abort the pipeline; they are not silently counted as qualit
 
 Membership is fixed by a seed-2027 permutation of all 109 source IDs before exclusions. No person appears in more than one split. No personal, employer or private user data is included.
 
+## Additional recording-time safeguards
+
+On 10 November 2026, a separate EDF timing preflight was added to future data preparation. It accepts the corpus's continuous EDF+C recordings with a zero initial time offset, checks the declared header and file structure, and verifies every record's timekeeping onset against the declared record duration. Missing or malformed timestamps, gaps, overlaps, repeated or out-of-order records, and file-size inconsistencies stop preparation before derived outputs are written. EDF+D and ordinary EDF without the required timekeeping metadata are unsupported; the pipeline does not interpolate missing samples or compress gaps.
+
+These are later acquisition safeguards, not changes to the original eligibility rules, participant membership or published data. Publisher checksums verify file identity, while the timing preflight checks stored continuity; neither establishes that the original hardware never lost samples. See [filtering and recording time](FILTERING.md) for the supported subset, limitations and read-only audit command.
+
 ## Interpretation limits
 
 Public availability does not turn EEG into a general thought-reading resource. Labels describe the experimental cue, not independently observed thought content. The analysis has not established demographic representativeness, clinical transfer or performance on a new headset. The app never infers identity, diagnosis, dreams or consciousness.

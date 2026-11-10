@@ -6,7 +6,7 @@ Offline exploration of cued left- versus right-fist motor imagery in the PhysioN
 
 ## Data and input
 
-Nine sensorimotor electrodes, 480 samples at 160 Hz, from 1–4 seconds after an imagery cue. Common average reference over the original 64 channels; 8–30 Hz fourth-order Butterworth zero-phase filtering within each completed epoch; one RMS normalisation value per epoch. No participant identifiers, labels or trial indices are model inputs.
+Nine sensorimotor electrodes, 480 samples at 160 Hz, from 1–4 seconds after an imagery cue. Common average reference over the original 64 channels; an 8–30 Hz Butterworth bandpass designed with SciPy `N=4` and applied forwards and backwards within each completed epoch; one RMS normalisation value per epoch. The band-pass filter has order eight per pass and an effective combined order of 16, with approximately −6.02 dB gain at both design boundaries before normalisation. This clarifies the existing implementation without changing it; see [filtering and recording time](FILTERING.md). No participant identifiers, labels or trial indices are model inputs.
 
 The original source has 109 participant IDs. Three participants' selected recordings used 128 Hz and were excluded by the fixed 160 Hz rule. One high-amplitude epoch and one incomplete interval were excluded. The result is 4,766 epochs from 106 participants: 2,832 train / 989 validation / 945 test. See the data card and manifest.
 
@@ -33,12 +33,14 @@ Single-channel occlusion recomputes the selected model after zeroing one process
 
 The dataset is cue-driven. Cue-evoked responses and artefacts may be predictive even after skipping the first second and selecting motor-region electrodes. No independent EMG/eye-movement control was implemented. The quality checks are simple and do not guarantee clean recordings. Demographic representativeness was not assessed; dataset subject IDs are not diagnoses.
 
-Zero-phase filtering uses future samples within the completed epoch. The system requires a three-second window and does not provide causal, sample-by-sample online predictions. API latency excludes recording acquisition, preprocessing and network travel; the displayed timing includes inference, explanation variants and spectrum computation.
+Zero-phase filtering, channel-mean removal and RMS scaling use the completed epoch. A delayed system could process such a window once it finishes, but the current replay does not provide causal, sample-by-sample online predictions. Its three-second input ends four seconds after the cue. API latency excludes recording acquisition, preprocessing and network travel; the displayed timing includes inference, explanation variants and spectrum computation. Finite-window filter edges and temporal spreading also limit interpretation of event-onset timing in the processed trace.
 
 Only one dataset, one subject split and one CNN training seed were evaluated. Per-person performance varies substantially. There is no external-dataset test, personal calibration, drift monitor, headset integration or treatment claim. Future experiments must use a new untouched holdout or a separately designed nested evaluation.
 
 ## Reproducibility and serving
 
 Acquisition validates publisher checksums. Source manifests, frozen reports and split membership are versioned. Artifacts are loaded without pickle and verified at app startup. PyTorch-to-ONNX numerical parity was checked on validation examples before test evaluation; the maximum logit error is recorded in the report. Demo epochs are the first six eligible test trials per participant, selected without looking at correctness.
+
+Additional EDF continuity checks introduced on 10 November 2026 stop future preparation when a source file has unsupported or inconsistent timing. They do not alter this model's inputs, weights or reported evaluation; the original protocol and artefacts remain frozen. The [data card](DATA_CARD.md) distinguishes these safeguards from the original eligibility rules.
 
 See `docs/PROTOCOL.md`, `scripts/prepare_data.py`, `scripts/train.py`, `artifacts/checksums.json`, and `docs/OPERATIONS.md`.

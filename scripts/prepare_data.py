@@ -13,13 +13,13 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-import mne
 import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+from intentlab.edf_timing import audit_edf_timing  # noqa: E402
 from intentlab.signal import CHANNELS, SAMPLES, SFREQ, bandpower, preprocess  # noqa: E402
 
 SOURCE = "https://physionet.org/files/eegmmidb/1.0.0"
@@ -86,6 +86,14 @@ def main():
             future.result()  # A failed acquisition aborts; it is not a silent quality exclusion.
             if i % 30 == 0 or i == len(records):
                 print(f"Verified {i}/{len(records)} recordings", flush=True)
+
+    # Validate the stored clock before MNE or any sample-index slicing can flatten gaps.
+    # A timing failure aborts preparation; it must not silently change the study cohort.
+    for rel in records:
+        audit_edf_timing(ROOT / "data/raw" / Path(rel).name)
+    print(f"Verified continuous EDF+C timing for {len(records)} recordings", flush=True)
+
+    import mne
 
     splits = subject_splits()
     split_for = {subject: split for split, subjects in splits.items() for subject in subjects}

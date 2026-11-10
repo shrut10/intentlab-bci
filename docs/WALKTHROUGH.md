@@ -29,6 +29,10 @@ EEG contains activity outside the frequency range of interest, reference effects
 
 Read `src/intentlab/signal.py`. Notice that there is no learned preprocessing fitted on all participants. The filter is applied independently to each completed epoch. Zero-phase filtering sees later samples in that epoch, so this pipeline cannot be described as sample-by-sample live decoding.
 
+The filter's `N=4` setting is a design parameter: creating a band-pass doubles the order, and applying it forwards and backwards doubles the effective order again. Its 8 Hz and 30 Hz boundaries have approximately −6 dB gain before normalisation. You do not need to memorise the arithmetic to explain the project; the key point is that both filter passes and the whole-window scaling must be included when describing what the model receives. [The filtering note](FILTERING.md) explains the details and why a completed-window demo differs from immediate headset control.
+
+An additional preflight now checks recording time before future data preparation. Imagine removing frames from a video and joining the remaining frames together: the apparent timing after the gap would be wrong. EEG sample counts can have the same problem, so the preflight checks each EDF record's stored start time and stops if continuity cannot be established. It does not change the data already used to train this model. To audit the cached source recordings without retraining, run `python scripts/audit_edf_timing.py`.
+
 **Try:** run `pytest tests/test_signal.py -q`. The tests include known 10 Hz and 25 Hz signals to verify that the bandpower features distinguish alpha and beta energy.
 
 ## 3. The most important modelling choice: split by person
