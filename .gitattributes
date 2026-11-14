@@ -4,3 +4,6 @@ artifacts/pretraining-v1/predictions.csv -text whitespace=cr-at-eol
 artifacts/command-replay-v1/*.csv -text whitespace=cr-at-eol
 artifacts/command-replay-v1/* linguist-generated=true
 web/commands-study.json linguist-generated=true
+artifacts/unseen-v1/*.csv -text whitespace=cr-at-eol
+artifacts/unseen-v1/* linguist-generated=true
+web/unseen-study.json linguist-generated=true

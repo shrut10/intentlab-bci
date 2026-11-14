@@ -9,6 +9,7 @@ __pycache__/
 .DS_Store
 data/raw/
 data/derived/epochs.npz
+data/derived/unseen-v1/
 artifacts/*.pt
 *.log
 *.ses
