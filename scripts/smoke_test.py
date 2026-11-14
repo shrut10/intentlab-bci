@@ -51,6 +51,11 @@ def main():
     assert len(pretraining["results"]) == 12
     with urllib.request.urlopen(base + "/research/pretraining", timeout=25) as response:
         assert "Learning from unlabelled EEG with limited movement labels" in response.read().decode()
+    commands = request("/static/commands-study.json")
+    assert commands["kind"] == "command_study" and commands["participants"] == 4
+    assert not commands["production_model_changed"] and len(commands["conditions"]) == 2
+    with urllib.request.urlopen(base + "/research/commands", timeout=25) as response:
+        assert 'id="local-command-audit"' in response.read().decode()
     print(
         json.dumps(
             {

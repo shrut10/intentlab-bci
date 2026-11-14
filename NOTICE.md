@@ -25,3 +25,11 @@ The CNN's architectural inspiration is Lawhern et al. (2018), *EEGNet: A Compact
 The follow-up in `artifacts/adaptation-v1/` derives trial identifiers, labels, probabilities and participant-specific transforms from the same source dataset, retaining the attribution above. It uses regularised Euclidean alignment inspired by He, H. and Wu, D. (2020), *Transfer Learning for Brain–Computer Interfaces: A Euclidean Space Data Alignment Approach*, DOI https://doi.org/10.1109/TBME.2019.2913914, and temperature scaling following Guo et al. (2017), https://proceedings.mlr.press/v70/guo17a.html. Neither reference endorses this implementation or its results.
 
 The MIT licence in this repository covers original application code only. Third-party dependencies retain their own licences.
+
+## Zhou2016 command study
+
+The separate experiment in `artifacts/command-replay-v1/` uses the original CNT archive associated with Zhou, B., Wu, X., Lv, Z., Zhang, L. and Guo, X. (2016), *A Fully Automated Trial Selection Method for Optimization of Motor Imagery Based Brain-Computer Interface*, [PLOS ONE, 11(9), e0162657](https://doi.org/10.1371/journal.pone.0162657).
+
+The [original Figshare release](https://doi.org/10.6084/m9.figshare.2061654) declares CC0 in its [source metadata](https://api.figshare.com/v2/articles/2061654). The study uses that release, rather than the later BIDS conversion with a separate licence. The raw archive remains outside Git; published derivatives contain event intervals, decision scores, command logs and aggregated results. Instructed rest intervals are inferred from the published protocol with explicit buffers, rather than supplied as direct measurements of intention. The original investigators do not endorse this analysis.
+
+Changes comprise selecting the 14 EEG channels, common average referencing, causal filtering, trailing window features, participant specific fitting on the first session, policy selection on the second session and fixed evaluation on the third session. Provenance records the source checksums, protocol commit, software and output hashes. The original PhysioNet model and its attribution remain separate.

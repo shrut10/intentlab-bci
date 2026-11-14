@@ -1,0 +1,1706 @@
+{
+  "source": {
+    "url": "https://ndownloader.figshare.com/files/3662952",
+    "metadata_url": "https://api.figshare.com/v2/articles/2061654",
+    "doi": "10.6084/m9.figshare.2061654",
+    "license": "CC0 as stated by the original Figshare record",
+    "bytes": 156181084,
+    "md5": "c48c82db4c51330285d513c4dbfd11a5",
+    "sha256": "1cf9c47c55c18f3bc272b86e1849ebfb7a2dca08159409de67b53a8a9263c41b"
+  },
+  "source_records": [
+    {
+      "file": "S1_1A.cnt",
+      "sha256": "1c168c3b3f6540d0378f73636b6a3c7d499b918fabeb213b07ccf428a1159b24",
+      "participant": "S1",
+      "session": "1A",
+      "session_number": 1,
+      "samples": 305030,
+      "duration_seconds": 1220.12,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 30,
+        "1": 30,
+        "2": 30,
+        "255": 5
+      },
+      "cue_counts": {
+        "other": 30,
+        "left": 30,
+        "right": 30
+      },
+      "complete_window_counts": {
+        "unknown": 1717,
+        "other": 180,
+        "idle": 180,
+        "left": 180,
+        "right": 180
+      },
+      "rest_intervals": 90,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S1_1B.cnt",
+      "sha256": "59af85a62eb7b15960f83feea307cf09838e2a9c1727f22c623733f64d77bf7b",
+      "participant": "S1",
+      "session": "1B",
+      "session_number": 1,
+      "samples": 430480,
+      "duration_seconds": 1721.92,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 30,
+        "1": 30,
+        "2": 29,
+        "255": 17,
+        "207": 8,
+        "223": 4,
+        "15": 1
+      },
+      "cue_counts": {
+        "other": 30,
+        "left": 30,
+        "right": 29
+      },
+      "complete_window_counts": {
+        "unknown": 2728,
+        "other": 180,
+        "idle": 178,
+        "left": 180,
+        "right": 174
+      },
+      "rest_intervals": 89,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S1_2A.cnt",
+      "sha256": "4a2ec477dec89d4dc790a2e1c1c876bf3086780884f61f31c75302788242b2b2",
+      "participant": "S1",
+      "session": "2A",
+      "session_number": 2,
+      "samples": 252600,
+      "duration_seconds": 1010.4,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 10,
+        "207": 5
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1415,
+        "other": 150,
+        "idle": 151,
+        "left": 151,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S1_2B.cnt",
+      "sha256": "5fe1cb81b4049b94f40da2f48cf3590a68f9d4a559a70847d226ae2523acbd0c",
+      "participant": "S1",
+      "session": "2B",
+      "session_number": 2,
+      "samples": 296650,
+      "duration_seconds": 1186.6,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 10,
+        "223": 2,
+        "15": 1,
+        "207": 2
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1768,
+        "other": 150,
+        "idle": 151,
+        "left": 151,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S1_3A.cnt",
+      "sha256": "15449cd6b3c3ed943143049e0827718a7a4ae256b40d97c35cfb46250def8d20",
+      "participant": "S1",
+      "session": "3A",
+      "session_number": 3,
+      "samples": 233250,
+      "duration_seconds": 933.0,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 7,
+        "207": 3
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1260,
+        "other": 151,
+        "idle": 151,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S1_3B.cnt",
+      "sha256": "5cebd39988cb71502d513408b89043ee266396698890c41d3e104cf38b11043f",
+      "participant": "S1",
+      "session": "3B",
+      "session_number": 3,
+      "samples": 226220,
+      "duration_seconds": 904.88,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 5,
+        "207": 1,
+        "223": 3,
+        "15": 3
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1206,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S2_1A.cnt",
+      "sha256": "5319b416bcff2c5196f15b35312d1c4f8066293240ae6c998167dc6f4390478a",
+      "participant": "S2",
+      "session": "1A",
+      "session_number": 1,
+      "samples": 227540,
+      "duration_seconds": 910.16,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 3,
+        "207": 3
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1215,
+        "other": 151,
+        "idle": 151,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S2_1B.cnt",
+      "sha256": "c74d78332437e8db1bf94b47872968f047d83c8294e8c50a6c47bd7c6e68c59b",
+      "participant": "S2",
+      "session": "1B",
+      "session_number": 1,
+      "samples": 216080,
+      "duration_seconds": 864.32,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 4,
+        "223": 2,
+        "207": 2
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1125,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S2_2A.cnt",
+      "sha256": "5d40b0cb1255fb08cbfdce8d92b5e02be43b620a04095dbf24b862a43c2f77ac",
+      "participant": "S2",
+      "session": "2A",
+      "session_number": 2,
+      "samples": 213940,
+      "duration_seconds": 855.76,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 4,
+        "207": 3
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1106,
+        "other": 150,
+        "idle": 151,
+        "left": 150,
+        "right": 151
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S2_2B.cnt",
+      "sha256": "c7473f4bbe6da9c67f27d78024a1910b70e9883fa8abf02f8dc31194e8efb9b5",
+      "participant": "S2",
+      "session": "2B",
+      "session_number": 2,
+      "samples": 175270,
+      "duration_seconds": 701.08,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "1": 20,
+        "2": 20,
+        "3": 20,
+        "255": 9,
+        "207": 10,
+        "223": 2
+      },
+      "cue_counts": {
+        "left": 20,
+        "right": 20,
+        "other": 20
+      },
+      "complete_window_counts": {
+        "unknown": 919,
+        "left": 120,
+        "idle": 120,
+        "right": 120,
+        "other": 120
+      },
+      "rest_intervals": 60,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S2_3A.cnt",
+      "sha256": "7541c5d4c7086358c20f8b1922802c6493b9c2efde2a7d88624508177b4ff058",
+      "participant": "S2",
+      "session": "3A",
+      "session_number": 3,
+      "samples": 213210,
+      "duration_seconds": 852.84,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 3,
+        "207": 3
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1098,
+        "other": 150,
+        "idle": 152,
+        "left": 150,
+        "right": 152
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S2_3B.cnt",
+      "sha256": "97524c12156932f488e563d294942b41449a35c034b2bead8d792507d4e2e6b5",
+      "participant": "S2",
+      "session": "3B",
+      "session_number": 3,
+      "samples": 217660,
+      "duration_seconds": 870.64,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 4,
+        "207": 2
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1138,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S3_1A.cnt",
+      "sha256": "a5b9dc9bf365c7d9d4b572ea55dbdd6e988a12f2ba023a46d8fe998b9062051a",
+      "participant": "S3",
+      "session": "1A",
+      "session_number": 1,
+      "samples": 219850,
+      "duration_seconds": 879.4,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "207": 4,
+        "255": 6
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1153,
+        "other": 150,
+        "idle": 151,
+        "left": 151,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S3_1B.cnt",
+      "sha256": "1ccb4c1fb66acdc0e09b58e19b1bad7fb9548ed102e6f4e46c6cbc22c4767c6d",
+      "participant": "S3",
+      "session": "1B",
+      "session_number": 1,
+      "samples": 216710,
+      "duration_seconds": 866.84,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "207": 4
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1128,
+        "other": 150,
+        "idle": 151,
+        "left": 150,
+        "right": 151
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S3_2A.cnt",
+      "sha256": "f1ec815cd1970199f4b381833043f9491b167d28e94aee3c1fa0b39cca62bfdd",
+      "participant": "S3",
+      "session": "2A",
+      "session_number": 2,
+      "samples": 226610,
+      "duration_seconds": 906.44,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "207": 12,
+        "255": 5,
+        "223": 5
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1207,
+        "other": 150,
+        "idle": 151,
+        "left": 150,
+        "right": 151
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S3_2B.cnt",
+      "sha256": "ee99b25afc7a82aa2fffd56ad92f15baba381b4ffc98517fd857367729aea613",
+      "participant": "S3",
+      "session": "2B",
+      "session_number": 2,
+      "samples": 266930,
+      "duration_seconds": 1067.72,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 26,
+        "1": 25,
+        "2": 25,
+        "255": 7,
+        "207": 5
+      },
+      "cue_counts": {
+        "other": 26,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1518,
+        "other": 156,
+        "idle": 155,
+        "left": 151,
+        "right": 152
+      },
+      "rest_intervals": 76,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S3_3A.cnt",
+      "sha256": "38bd4aa23683ac91004b6ed13ac12e43bfa769e1694e333d040d7d951b911c61",
+      "participant": "S3",
+      "session": "3A",
+      "session_number": 3,
+      "samples": 227990,
+      "duration_seconds": 911.96,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 10,
+        "207": 8
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1220,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S3_3B.cnt",
+      "sha256": "2ca558e913b9832afc26e792b10555b4f979a63ec1affb593ef3808cfa1a8c19",
+      "participant": "S3",
+      "session": "3B",
+      "session_number": 3,
+      "samples": 222460,
+      "duration_seconds": 889.84,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "223": 2,
+        "255": 3,
+        "207": 6
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1176,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S4_1A.cnt",
+      "sha256": "8dfa893421f224385b5a610466ad9aee6689114c6afeaa4a7459ec5b17022575",
+      "participant": "S4",
+      "session": "1A",
+      "session_number": 1,
+      "samples": 181340,
+      "duration_seconds": 725.36,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 20,
+        "1": 20,
+        "2": 20,
+        "255": 3,
+        "207": 1
+      },
+      "cue_counts": {
+        "other": 20,
+        "left": 20,
+        "right": 20
+      },
+      "complete_window_counts": {
+        "unknown": 965,
+        "other": 120,
+        "idle": 121,
+        "left": 121,
+        "right": 120
+      },
+      "rest_intervals": 60,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S4_1B.cnt",
+      "sha256": "5d776f0adae7a84b897fc719554f2ed8f4c7322a665e7e6212daaf53c62d313b",
+      "participant": "S4",
+      "session": "1B",
+      "session_number": 1,
+      "samples": 217140,
+      "duration_seconds": 868.56,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 10
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1134,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S4_2A.cnt",
+      "sha256": "7a50117945a3ac16324c6758307040544baf8c2471c9a82e41177c80e3a1cdc4",
+      "participant": "S4",
+      "session": "2A",
+      "session_number": 2,
+      "samples": 215400,
+      "duration_seconds": 861.6,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 3
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1118,
+        "other": 150,
+        "idle": 151,
+        "left": 150,
+        "right": 151
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S4_2B.cnt",
+      "sha256": "bea83672607fb0ba5226d1b02d79dd497dd027883ea9a93752a87af60e852890",
+      "participant": "S4",
+      "session": "2B",
+      "session_number": 2,
+      "samples": 212210,
+      "duration_seconds": 848.84,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "207": 4,
+        "255": 2
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1094,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S4_3A.cnt",
+      "sha256": "87c6665c945f624baeff2c18cccd7f8c56fbf278b0b2c3a76969b4dacb39e28e",
+      "participant": "S4",
+      "session": "3A",
+      "session_number": 3,
+      "samples": 209800,
+      "duration_seconds": 839.2,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 5,
+        "207": 4
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1075,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    },
+    {
+      "file": "S4_3B.cnt",
+      "sha256": "813ee0c01daeb0994d98b134dbaa8996547e9f7759f975fe3d6243f2b4562435",
+      "participant": "S4",
+      "session": "3B",
+      "session_number": 3,
+      "samples": 217110,
+      "duration_seconds": 868.44,
+      "sampling_hz": 250.0,
+      "source_channels": [
+        "VEOU",
+        "VEOL",
+        "Fp1",
+        "Fp2",
+        "FC3",
+        "FCz",
+        "FC4",
+        "C3",
+        "Cz",
+        "C4",
+        "CP3",
+        "CPz",
+        "CP4",
+        "O1",
+        "Oz",
+        "O2"
+      ],
+      "selected_channels": [
+        "FP1",
+        "FP2",
+        "FC3",
+        "FCZ",
+        "FC4",
+        "C3",
+        "CZ",
+        "C4",
+        "CP3",
+        "CPZ",
+        "CP4",
+        "O1",
+        "OZ",
+        "O2"
+      ],
+      "excluded_channels": [
+        "VEOL",
+        "VEOU"
+      ],
+      "annotations": {
+        "3": 25,
+        "1": 25,
+        "2": 25,
+        "255": 11,
+        "207": 8,
+        "223": 2
+      },
+      "cue_counts": {
+        "other": 25,
+        "left": 25,
+        "right": 25
+      },
+      "complete_window_counts": {
+        "unknown": 1133,
+        "other": 150,
+        "idle": 150,
+        "left": 150,
+        "right": 150
+      },
+      "rest_intervals": 75,
+      "rest_label_basis": "Protocol inferred, not an explicit recorded rest annotation"
+    }
+  ],
+  "frozen_protocol_commit": "2879a01f88a9b7d59275491f6a6d48cda2826cc5",
+  "source_layout_commit": "a1daaa71a6ff616150d88a67b91fb5204ba01a8f",
+  "repository_commit_at_run": "a1daaa71a6ff616150d88a67b91fb5204ba01a8f",
+  "code_sha256": {
+    "scripts/run_command_study.py": "0926d7fdb67b34e7ecbf90652c70d3ab967aa6243c5b1769b4e54cf5f27ec159",
+    "src/intentlab/commands.py": "ec1919d47fd5f2886d7c0b867372fe4fef5ca6a16513c2950eae5ec1aa3334fb",
+    "experiments/command-replay-v1/protocol.json": "eaf77197b11d205f7499a9db66577991d0735d6df0339a89b60c3a896d300910",
+    "experiments/command-replay-v1/PROTOCOL.md": "b7bbe51b54db7edf5ffd2534b72f0a19ce45756cc4bcf223635a7ce841e17786",
+    "experiments/command-replay-v1/AMENDMENT-01.md": "a6c8974d934fd8e0553387e42435ae54e3155fb00bdaafe776f670653ee496cc",
+    "experiments/command-replay-v1/source_layout.json": "36bf8b4df8e1bddaa9bb6b48d7178c1db5cd0f7e0a645dbbacc88c758e1e2d01"
+  },
+  "packages": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "mne": "1.13.2",
+    "scikit-learn": "1.9.1"
+  },
+  "python": "3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "output_sha256": {
+    "demo.json": "9aa0e30898a4dce6defd43bbf4ae1fa2e3568e636a06c3255dfbd8933bc63fdb",
+    "evaluation.json": "b6a40254a3f98bec1dbc47fca7f45654bd4e2cf2e5ee6f22d2ec0120cfbaeec9",
+    "events-test.csv": "7dc857ca5c15f2cb68d52fcd72ea5e9748305832931036f1e8b202306f8841a9",
+    "events-train.csv": "169b169381eb223a0ab68683571bd7d9db8123934aeabe3cde41cb092bfa86ed",
+    "events-validation.csv": "bc7d8804123b7217eb4684dc42e8e02a1b604a437e92b12724df66363f836945",
+    "predictions-movement_only-test.csv": "5fc4aed5f49aaabc8186ff118d93dd702d9ffac30948dadb2fcd7570192af05b",
+    "predictions-movement_only-validation.csv": "693f4f7735c91898e761d1d566d3a8cb5ae4a6a869fa4deeb19c2f7f91d551fb",
+    "predictions-rest_gate-test.csv": "d109f5d0bffe86163e6cd1b060e5f296cd1adb5ff2dfa3f1e43f00c7b7a4f6fb",
+    "predictions-rest_gate-validation.csv": "19e2d47a804d646d1915a3760a9f0f21129fe8ae3128286815dea33e00248e47"
+  },
+  "raw_data_redistributed": false
+}

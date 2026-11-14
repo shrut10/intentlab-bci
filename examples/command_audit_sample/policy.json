@@ -1,0 +1,7 @@
+{
+  "enter_threshold": 0.7,
+  "release_threshold": 0.4,
+  "hold_seconds": 0.5,
+  "cooldown_seconds": 0.5,
+  "max_gap_seconds": 0.75
+}

@@ -1,6 +1,14 @@
 # IntentLab research and community roadmap
 
-Updated 26 October 2026. This is a prioritised plan, not a preregistration. Completed evidence lives in the original, adaptation and pretraining reports; none establishes reliable live control.
+Updated 14 November 2026. This is a prioritised plan, not a preregistration. Completed evidence lives in the original, adaptation, pretraining and command reports; none establishes reliable live control.
+
+## November research update
+
+The [command audit](COMMANDS.md) now accepts timestamped scores and annotated intervals from other models, applies an explicit waiting and release rule, and reports unwanted commands, missed cues, delays and prediction gaps. Its local browser viewer allows inspection without uploading a report.
+
+The separate [Zhou2016 study](../experiments/command-replay-v1/README.md) uses four people, with session 1 for fitting, session 2 for selecting a policy and session 3 for final evaluation. The protocol and a source header correction were committed before fitting. A task detector reduced final session idle commands from 5.8 to 0.9 per minute, but correct first commands fell from 189 of 400 movement cues to 71 of 400. Both conditions failed the validation target. This identifies a practical tradeoff rather than a replacement for the deployed model.
+
+This adds evidence on a different recording corpus and tests causal processing and temporal decisions, while leaving unseen participant transfer, prospective interaction and independent reproduction unresolved. The [research review](RESEARCH_REVIEW_2026_11.md) records the primary papers, student projects and community requests behind this choice.
 
 ## October research update
 
@@ -14,7 +22,7 @@ The [reliability audit](RELIABILITY.md) accepts matched prediction CSVs, preserv
 
 Evidence of usefulness would be an independent reproduction, a concrete methodological correction, or an educator reporting how the exercise worked. A resource-list entry records discoverability; stars, automated clones and page views do not establish scientific impact. No external audit reproduction is claimed yet.
 
-## 2. Evaluate on independent data with a frozen protocol — highest scientific priority
+## 2. Extend independent evaluation to unseen participants
 
 PhysioNet's current test set has already informed the follow-up and must be treated as inspected. Before another performance comparison, choose an obtainable, appropriately licensed motor-imagery dataset and state its channel/reference differences, label mapping, sampling, participant split, calibration budget, primary metric and stopping rule. A common-channel pipeline must be fitted and validated for that acquisition setting; the existing nine-channel/64-channel-reference model cannot simply be presented as headset-independent.
 
@@ -22,9 +30,9 @@ Compare classical CSP/LDA and a small neural model under the same protocol, repo
 
 Acceptance evidence: a versioned protocol, auditable provenance and split manifests, runnable baseline implementation, frozen predictions, participant-level uncertainty and a clearly delimited generalisation claim. A MOABB-based implementation should name the exact version and evaluation contract and pass a synthetic split test before any compatibility claim. The project has not yet run a MOABB benchmark.
 
-## 3. Investigate unintended commands and causal processing — prerequisite for live EEG
+## 3. Extend recorded command evaluation to prospective interaction
 
-Current epochs use zero-phase filtering of complete three-second windows and assume every trial is left/right imagery. Neither idle periods nor real electrode loss are represented by the current model. Add a new data/evaluation design with an explicit rest/no-intention condition and preprocessing that uses only samples available at the prediction time. Define warm-up, reset, gaps, timestamps and end-to-end latency.
+The original deployed model uses zero phase filtering of complete three second epochs and assumes every trial is left or right imagery. The separate command study now tests past sample filtering, instructed rest and a tested temporal controller. Its rest labels are inferred from the source procedure, and the task detector may partly distinguish screen conditions or artefacts rather than intention. A prospective study should record explicit task and rest annotations, device timestamps, acquisition gaps and physical responses under a new frozen protocol.
 
 Acceptance evidence: future-sample perturbations cannot affect earlier outputs; intended-command success and false activations during recorded idle periods are both measured; threshold decisions use independent validation; latency includes acquisition and processing. Existing recordings can support an offline feasibility study, but live robustness still needs prospective data and suitable hardware. An extra rest class alone does not establish reliable asynchronous control.
 

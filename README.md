@@ -1,10 +1,10 @@
 # IntentLab
 
-**Decode imagined movement from recorded brain signals.**
+**EEG decoding and command evaluation**
 
-IntentLab is an interactive motor-imagery EEG experiment. Participants imagined moving their left or right fist; the app runs a trained model on their recorded brain signals, displays its confidence, and replays a cursor command only when the confidence threshold is met.
+IntentLab explores how models recognise imagined hand movements in recorded EEG and measures the commands that follow from their predictions. Try the original decoder, inspect the research evidence, or use the reusable audits with your own saved scores.
 
-[Open the experiment](https://intentlab-bci.vercel.app) · [Live API](https://intentlab-bci.vercel.app/docs) · [Learn the project](docs/WALKTHROUGH.md) · [Edit the website text](docs/EDITING.md)
+[Open the experiment](https://intentlab-bci.vercel.app) · [Audit commands](https://intentlab-bci.vercel.app/research/commands) · [Live API](https://intentlab-bci.vercel.app/docs) · [Learn the project](docs/WALKTHROUGH.md) · [Edit the website text](docs/EDITING.md)
 
 [![Tests and container](https://github.com/shrut10/intentlab-bci/actions/workflows/ci.yml/badge.svg)](https://github.com/shrut10/intentlab-bci/actions/workflows/ci.yml)
 
@@ -16,10 +16,21 @@ The new [participant reliability audit](https://intentlab-bci.vercel.app/researc
 
 - Explore 126 real EEG epochs from 21 people excluded from training and model selection.
 - Compare a compact neural network with signal-processing baselines through actual server-side inference.
-- Change the confidence threshold, add repeatable noise or disconnect an electrode.
+- Change the confidence threshold, add repeatable noise or mask a processed channel.
 - Inspect channel-occlusion explanations, frequency spectra, calibration and errors.
 - Replay a six-trial sequence and see the trade-off between making a command and waiting.
 - Trace every sample back to its public recording and reproduce the data pipeline and training.
+- Audit saved predictions over time, including unwanted commands during instructed rest, missed cues, delays and gaps.
+
+## Commands over time
+
+In the new recorded session study, adding a task detector reduced commands during instructed rest from 5.8 to 0.9 per minute, while correct first commands fell from 189 of 400 movement cues to 71 of 400. Neither condition met its validation target. The result exposes the cost of suppressing commands and does not establish reliable live control.
+
+The [session audit](https://intentlab-bci.vercel.app/research/commands) extends evaluation beyond individual predictions. It applies an explicit command policy to timestamped scores, then uses separate annotations to count correct responses, wrong commands, repeated responses and inactivity. Labels never drive the controller, and missing predictions are not filled in.
+
+A separate exploratory study uses Zhou2016 recordings from four people, with session 1 for fitting, session 2 for policy selection and session 3 for evaluation. It compares movement confidence alone with the same classifier behind a task detector. Instructed rest is inferred from a documented protocol, while uncertain intervals remain unscored. The original deployed PhysioNet model is unchanged.
+
+[Use your own CSV files](docs/COMMANDS.md) · [Frozen study protocol](experiments/command-replay-v1/PROTOCOL.md) · [Research and portfolio review](docs/RESEARCH_REVIEW_2026_11.md)
 
 This is a **recorded-data research demo**, not a live headset, medical device or thought reader. It classifies experimental imagery labels. It does not decode dreams or measure consciousness.
 

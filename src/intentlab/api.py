@@ -382,6 +382,11 @@ def reliability_research():
     return FileResponse(ROOT / "web/reliability.html")
 
 
+@app.get("/research/commands", include_in_schema=False)
+def command_research():
+    return FileResponse(ROOT / "web/commands.html")
+
+
 @app.get("/research/pretraining", include_in_schema=False)
 def pretraining_research():
     return FileResponse(ROOT / "web/pretraining.html")
