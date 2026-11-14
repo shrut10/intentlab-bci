@@ -54,7 +54,7 @@ def test_published_research_matches_archived_model_comparison(client):
         assert report.rows[key] == [
             f"{100 * model['validation_participant_balanced_accuracy']:.2f}%",
             f"{100 * test['participant_balanced_accuracy']:.2f}%",
-            f"{100 * low:.2f}–{100 * high:.2f}%",
+            f"{100 * low:.2f} to {100 * high:.2f}%",
         ]
 
 

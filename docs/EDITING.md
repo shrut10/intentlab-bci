@@ -8,11 +8,11 @@ Local project folder: `/Users/shruthi/Documents/ChatGPT/Career/intentlab-bci`
 
 | What you want to change | File | Search for |
 |---|---|---|
-| Main title at the very top | `web/index.html` | `Imagining left.` |
-| Short explanation below it | `web/index.html` | `I trained a model` |
+| Main title at the very top | `web/index.html` | `Recorded EEG decoding` |
+| Short explanation below it | `web/index.html` | `IntentLab classifies EEG` |
 | Browser-tab title and search description | `web/index.html` | `<title>` and `name="description"` |
-| Section headings | `web/index.html` | `TRY IT`, `RESULTS`, `NOTES` |
-| Your motivation and future ideas | `web/index.html` | `What I wanted to test` and `What still needs testing` |
+| Section headings | `web/index.html` | `Experiment`, `Evaluation`, `Interpretation` |
+| Your motivation and future ideas | `web/index.html` | `Research question` and `Further evaluation` |
 | Chart explanations and labels | `web/index.html` | The exact sentence visible on the page |
 | Text that changes after a prediction | `web/app.js` | `renderPrediction`, `decision-explanation` |
 | Confidence warning and result explanations | `web/app.js` | `operating-caveat`, `threshold-note` |
@@ -23,7 +23,7 @@ Local project folder: `/Users/shruthi/Documents/ChatGPT/Career/intentlab-bci`
 | Downloadable academic references | `web/references.bib` | The matching author or title |
 | Report typography and print layout | `web/research.css` | The relevant CSS rule |
 | GitHub project description and technical overview | `README.md` | The paragraph you want to change |
-| Colours, spacing and fonts | `web/base.css`, `web/pixel.css`, `web/styles.css` | Colour variables at the start of `base.css` |
+| Colours, spacing and fonts | `web/base.css`, `web/styles.css` | Colour variables at the start of `base.css` |
 
 In HTML, edit the words between tags. For example:
 
@@ -55,7 +55,7 @@ python -m uvicorn app:app --reload
 Open `http://127.0.0.1:8000`. Save your changes and refresh the page. When you are happy:
 
 ```sh
-git add web/index.html web/app.js web/styles.css web/base.css web/pixel.css
+git add web/index.html web/app.js web/styles.css web/base.css
 git commit -m "Rewrite the website copy in my own voice"
 git push
 ```
@@ -70,7 +70,7 @@ The introduction deliberately says **recorded** brain signals. There is no live 
 
 ## Research writing
 
-The report at `/research` is a standalone HTML page in `web/research.html`, which can be edited without changing the model. Keep normal punctuation in its scholarly paragraphs while avoiding slogan-style headings. Preserve citations beside the claims they support, the reference anchors, and the distinction between this independent report and peer-reviewed papers. The report table is checked against `artifacts/evaluation.json` by the test suite. Changes to the experiment require a new versioned evaluation and corresponding updates throughout the report; a prose edit alone must not alter a result.
+The report at `/research` is a standalone HTML page in `web/research.html`, which can be edited without changing the model. Use professional British English with flowing explanatory paragraphs, without sentence full stops, prose hyphens, exclamations or slogan style headings. Preserve decimal points, signed results, versions, DOIs, source titles and author names exactly; numeric ranges can use “to”. Preserve citations beside the claims they support, the reference anchors, and the distinction between this independent report and peer-reviewed papers. The report table is checked against `artifacts/evaluation.json` by the test suite. Changes to the experiment require a new versioned evaluation and corresponding updates throughout the report; a prose edit alone must not alter a result.
 
 ## Calibration and alignment page
 
@@ -79,11 +79,18 @@ The follow-up is published at `/research/adaptation`. Its editable prose is in `
 
 Edit `web/reliability.html` for the audit page's explanatory text, `web/reliability.js` for dynamic labels and `web/reliability.css` for its appearance. Reuse instructions are in `docs/RELIABILITY.md`, with proposed research work in `docs/ROADMAP.md`. The report `web/reliability.json` is generated from archived predictions; change the analysis code and regenerate with a reviewed explanation rather than editing numerical results by hand. CI checks it against the source artefacts.
 
-## Pixel theme
+## Shared black and neon appearance
 
-The demo uses locally served Pixelify Sans headings and DM Sans body text. `web/base.css` contains the shared palette and font definitions. `web/pixel.css` styles the demo's wooden menu buttons, square panels, layout and responsive sizes. `web/eeg-scene.svg` is the original pixel EEG illustration; it is decorative and does not show a live prediction. The real EEG plots still come from the saved recordings and prediction API. Font licences are kept with the files under `web/fonts/`.
+The demo, research pages and API documentation use pure black with neon green `#39ff14`, subdued borders and the same Comic Sans MS font stack as the portfolio, with Comic Neue served locally as the fallback
 
-Quick links: [edit the demo wording](https://github.com/shrut10/intentlab-bci/edit/main/web/index.html), [edit dynamic messages](https://github.com/shrut10/intentlab-bci/edit/main/web/app.js), [edit the palette](https://github.com/shrut10/intentlab-bci/edit/main/web/base.css), [edit the demo style](https://github.com/shrut10/intentlab-bci/edit/main/web/pixel.css).
+`web/base.css` supplies the shared palette and fonts, `web/styles.css` controls the demo layout, and `web/research.css` controls all report layouts, with audit details in `web/reliability.css` and API documentation in `web/api-docs.css`
+
+The demo uses conventional line plots, probability bars, a circular cursor and labelled electrode diagrams, with the EEG signals and prediction outputs taken from the existing saved recordings and API
+
+The introductory electrode diagram is inline SVG in `web/index.html`, while dynamic waveform, scalp and result charts are drawn in `web/app.js`, with font licences alongside the local fonts
+
+Quick links: [edit demo wording](https://github.com/shrut10/intentlab-bci/edit/main/web/index.html), [edit dynamic messages](https://github.com/shrut10/intentlab-bci/edit/main/web/app.js), [edit the palette](https://github.com/shrut10/intentlab-bci/edit/main/web/base.css), [edit demo styling](https://github.com/shrut10/intentlab-bci/edit/main/web/styles.css)
+
 
 ## Creator identity and search metadata
 

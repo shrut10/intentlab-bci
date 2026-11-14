@@ -24,34 +24,34 @@ def render(report, interpretation):
         "includes no change" if low <= 0 <= high else "lies above zero" if low > 0 else "lies below zero"
     )
     overall = (
-        f"Mean participant-macro balanced accuracy was {pct(baseline['mean_participant_balanced_accuracy'])} "
+        f"Mean participant macro balanced accuracy was {pct(baseline['mean_participant_balanced_accuracy'])} "
         f"for the baseline and {pct(alignment['mean_participant_balanced_accuracy'])} for Euclidean alignment, "
         f"a paired change of {100 * delta['mean_difference']:+.2f} percentage points "
-        f"(95% participant-bootstrap interval {100 * low:+.2f} to {100 * high:+.2f}). "
-        f"The interval {evidence}, conditional on this split and these three fitted model pairs."
+        f"(95% participant bootstrap interval {100 * low:+.2f} to {100 * high:+.2f}); "
+        f"the interval {evidence}, conditional on this split and these three fitted model pairs"
     )
     target_count = sum(s["validation_target_met_seeds"] for s in summary.values())
     reliability = (
-        "None of the twelve condition–seed combinations met the predefined validation reliability target, "
-        "so every operating point uses the declared fallback; this comparison does not establish reliable control."
+        "None of the twelve condition and seed combinations met the predefined validation reliability target, "
+        "so every operating point uses the declared fallback; this comparison does not establish reliable control"
         if not target_count
-        else f"The predefined validation reliability target was met in {target_count} of twelve condition–seed combinations; "
-        "the remaining combinations use the declared fallback. Passing that criterion is an offline result, not a validation of reliable device control."
+        else f"The predefined validation reliability target was met in {target_count} of twelve condition and seed combinations; "
+        "the remaining combinations use the declared fallback; passing that criterion is an offline result, not a validation of reliable device control"
     )
     personal = summary["personal_temperature"]
     combined = summary["alignment_temperature"]
     brier_change = personal["paired_change_vs_baseline"]["brier"]
     brier_low, brier_high = brier_change["bootstrap_95_ci"]
     calibration = (
-        "Personal temperature scaling leaves each model’s classifications unchanged, as expected. "
-        f"Its mean test Brier score was {personal['mean_brier']:.4f}, compared with {baseline['mean_brier']:.4f} "
-        f"for the global-temperature baseline. With alignment, the corresponding values were {combined['mean_brier']:.4f} "
-        f"for personal temperature and {alignment['mean_brier']:.4f} for global temperature. "
-        "These comparisons describe probability quality rather than an improvement in discrimination. "
-        f"For personal temperature versus baseline, the paired Brier change was {brier_change['mean_difference']:+.4f} "
-        f"(95% participant-bootstrap interval {brier_low:+.4f} to {brier_high:+.4f}); "
+        "Personal temperature scaling leaves each model’s classifications unchanged, as expected; "
+        f"its mean test Brier score was {personal['mean_brier']:.4f}, compared with {baseline['mean_brier']:.4f} "
+        f"for the global temperature baseline; with alignment, the corresponding values were {combined['mean_brier']:.4f} "
+        f"for personal temperature and {alignment['mean_brier']:.4f} for global temperature; "
+        "these comparisons describe probability quality rather than an improvement in discrimination; "
+        f"for personal temperature versus baseline, the paired Brier change was {brier_change['mean_difference']:+.4f} "
+        f"(95% participant bootstrap interval {brier_low:+.4f} to {brier_high:+.4f}); "
         f"this interval {'includes no change' if brier_low <= 0 <= brier_high else 'excludes zero'} "
-        "under the same conditional interpretation as the accuracy comparison."
+        "under the same conditional interpretation as the accuracy comparison"
     )
     comparison_rows, coverage_rows, seed_rows, threshold_rows = [], [], [], []
     for key, entry in summary.items():
@@ -77,7 +77,7 @@ def render(report, interpretation):
         )
         selected, point = record["validation"]["threshold_rule"], record["test"]["validation_threshold"]
         threshold_rows.append(
-            f'<tr><th scope="row">{name} / {record["seed"]}</th><td>{selected["threshold"]:.2f}</td><td>{"Yes" if selected["target_met"] else "No — fallback"}</td><td>{point["retained"]}/{point["n"]}</td><td>{point["correct"]}</td><td>{pct(point["accuracy"])}</td></tr>'
+            f'<tr><th scope="row">{name} / {record["seed"]}</th><td>{selected["threshold"]:.2f}</td><td>{"Yes" if selected["target_met"] else "No, fallback used"}</td><td>{point["retained"]}/{point["n"]}</td><td>{point["correct"]}</td><td>{pct(point["accuracy"])}</td></tr>'
         )
     counts = report["counts"]
     audit = report["personal_temperature_audit"]["test"]

@@ -8,13 +8,15 @@ import time
 import uuid
 from contextlib import asynccontextmanager
 from functools import lru_cache
+from html import escape
 from pathlib import Path
 from typing import Literal
 
 import numpy as np
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import FileResponse, JSONResponse, Response
+from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html, get_swagger_ui_oauth2_redirect_html
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from scipy.signal import welch
@@ -68,11 +70,90 @@ async def lifespan(app):
 
 
 app = FastAPI(
-    title="IntentLab · motor-imagery EEG",
+    title="IntentLab · motor imagery EEG",
     version=__version__,
     lifespan=lifespan,
-    description="Replay public, held-out EEG trials and run actual model inference. Inputs are completed, preprocessed epochs. Research demonstration; no live headset connection or medical use.",
+    docs_url=None,
+    redoc_url=None,
+    description="Replay public EEG trials from participants excluded from training and run model inference on completed, preprocessed epochs; this research demonstration has no live headset connection or medical use",
 )
+
+
+def branded_docs(response: HTMLResponse, content_id: str) -> HTMLResponse:
+    """Keep the standard API tools inside the site's shared visual theme."""
+    styles = (
+        '<meta name="theme-color" content="#000000">'
+        '<link rel="stylesheet" href="/static/base.css?v=neon-20261110">'
+        '<link rel="stylesheet" href="/static/api-docs.css?v=neon-20261110">'
+    )
+    navigation = (
+        f'<a class="skip-link" href="#{content_id}">Skip to API documentation</a>'
+        '<header class="api-docs-header"><a class="api-docs-brand" href="/">IntentLab</a>'
+        '<nav aria-label="Main navigation"><a href="/">Experiment</a>'
+        '<a href="/research">Research</a><a href="/docs">API</a>'
+        '<a href="https://jayashruthi.com">Portfolio</a></nav></header>'
+    )
+    html = response.body.decode().replace("<html>", '<html lang="en-GB">', 1)
+    html = html.replace("</head>", styles + "</head>", 1)
+    html = html.replace("<body>", '<body class="api-docs">' + navigation, 1)
+    return HTMLResponse(html)
+
+
+@app.get("/docs", include_in_schema=False)
+def api_documentation():
+    return branded_docs(
+        get_swagger_ui_html(
+            openapi_url=app.openapi_url,
+            title="IntentLab API",
+            swagger_favicon_url="/favicon.svg",
+            oauth2_redirect_url=app.swagger_ui_oauth2_redirect_url,
+            swagger_ui_parameters={"syntaxHighlight.theme": "obsidian"},
+        ),
+        "swagger-ui",
+    )
+
+
+@app.get("/docs/oauth2-redirect", include_in_schema=False)
+def swagger_redirect():
+    return get_swagger_ui_oauth2_redirect_html()
+
+
+@app.get("/redoc", include_in_schema=False)
+def api_reference():
+    theme = {
+        "colors": {
+            "primary": {"main": "#39ff14"},
+            "success": {"main": "#39ff14"},
+            "http": {"get": "#39ff14", "post": "#b5a3ff"},
+            "responses": {"success": {"color": "#39ff14", "backgroundColor": "#0b100b"}},
+            "text": {"primary": "#ededed", "secondary": "#b1b1b1"},
+            "border": {"dark": "#2c2c2c", "light": "#2c2c2c"},
+        },
+        "typography": {
+            "fontFamily": '"Comic Sans MS", "Comic Neue", cursive',
+            "headings": {"fontFamily": '"Comic Sans MS", "Comic Neue", cursive'},
+            "code": {"color": "#ededed", "backgroundColor": "#161616"},
+            "links": {"color": "#39ff14", "visited": "#39ff14", "hover": "#b5a3ff"},
+        },
+        "sidebar": {"backgroundColor": "#080808", "textColor": "#ededed", "activeTextColor": "#39ff14"},
+        "rightPanel": {"backgroundColor": "#0b0b0b", "textColor": "#ededed"},
+    }
+    response = get_redoc_html(
+        openapi_url=app.openapi_url,
+        title="IntentLab API reference",
+        redoc_favicon_url="/favicon.svg",
+        with_google_fonts=False,
+    )
+    html = response.body.decode().replace(
+        "<redoc spec-url=",
+        f'<redoc id="redoc-content" theme="{escape(json.dumps(theme), quote=True)}" spec-url=',
+        1,
+    )
+    html = html.replace(
+        "ReDoc requires Javascript to function. Please enable it to browse the documentation.",
+        "JavaScript is required to browse the API reference",
+    )
+    return branded_docs(HTMLResponse(html), "redoc-content")
 
 
 @app.exception_handler(RequestValidationError)
@@ -185,13 +266,13 @@ def adaptation_report():
 
 @app.get("/api/adaptation")
 def adaptation_evaluation():
-    """Archived four-condition comparison, not online personal calibration."""
+    """Archived comparison of four conditions, rather than online personal calibration"""
     return adaptation_report()
 
 
 @app.get("/api/adaptation/predictions")
 def adaptation_predictions():
-    """Download the public benchmark's validation/test probabilities as Parquet."""
+    """Download the public benchmark's validation and test probabilities as Parquet"""
     adaptation_report()
     return FileResponse(
         ROOT / "artifacts/adaptation-v1/predictions.parquet",
@@ -308,7 +389,7 @@ def pretraining_research():
 
 @app.get("/api/pretraining")
 def pretraining_results():
-    """Archived exploratory validation study; does not change the live model."""
+    """Archived exploratory validation study which does not change the live model"""
     return FileResponse(ROOT / "artifacts/pretraining-v1/evaluation.json", media_type="application/json")
 
 

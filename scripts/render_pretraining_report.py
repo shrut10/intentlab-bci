@@ -56,13 +56,13 @@ def render(report):
         )
         direction = "higher" if difference > 0 else "lower"
         interval_note = (
-            "the participant-bootstrap interval includes zero"
+            "the participant bootstrap interval includes zero"
             if low <= 0 <= high
-            else "the participant-bootstrap interval excludes zero on this known cohort"
+            else "the participant bootstrap interval excludes zero on this known cohort"
         )
         interpretations.append(
             f"With {labelled} supervised labels, pretrained balanced accuracy was "
-            f"{abs(difference) * 100:.2f} percentage points {direction} than scratch; {interval_note}."
+            f"{abs(difference) * 100:.2f} percentage points {direction} than scratch; {interval_note}"
         )
     seed_rows = [
         [
@@ -75,20 +75,20 @@ def render(report):
         for row in report["results"]
     ]
     replacements = {
-        "INTERPRETATION": " ".join(interpretations)
-        + " These findings are exploratory and do not alter the live decoder.",
+        "INTERPRETATION": "; ".join(interpretations).replace("; With ", "; with ")
+        + "; these findings are exploratory and do not alter the live decoder",
         "RESULTS": table(
-            "Validation only: 22 people, 989 trials; means across three seeds. BA = participant-macro balanced accuracy.",
+            "Validation only: 22 people, 989 trials; means across three seeds; BA = participant macro balanced accuracy",
             ["Source label budget", "Scratch BA", "Pretrained BA", "Scratch Brier", "Pretrained Brier"],
             result_rows,
         ),
         "PAIRED_RESULTS": table(
-            "Pretraining minus scratch; seed-averaged paired participant bootstrap, 2,000 resamples. pp = percentage points.",
+            "Pretraining minus scratch; seed averaged paired participant bootstrap, 2,000 resamples; pp = percentage points",
             ["Source label budget", "Difference", "95% interval"],
             paired_rows,
         ),
         "SEED_RESULTS": table(
-            "Every completed run; no best-seed selection.",
+            "Every completed run; no selection of the best seed",
             ["Seed", "Labels", "Training", "Validation BA", "Brier"],
             seed_rows,
         ),
