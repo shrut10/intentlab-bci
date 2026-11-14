@@ -1,6 +1,6 @@
 # IntentLab research and community roadmap
 
-Updated 14 November 2026. This is a prioritised plan, not a preregistration. Completed evidence lives in the original, adaptation, pretraining and command reports; none establishes reliable live control.
+Updated 14 November 2026, with completed evidence in the original, adaptation, pretraining, command and new participant reports; this roadmap sets priorities rather than preregistering future experiments, and none of the completed studies establishes reliable live control
 
 ## November research update
 
@@ -8,7 +8,9 @@ The [command audit](COMMANDS.md) now accepts timestamped scores and annotated in
 
 The separate [Zhou2016 study](../experiments/command-replay-v1/README.md) uses four people, with session 1 for fitting, session 2 for selecting a policy and session 3 for final evaluation. The protocol and a source header correction were committed before fitting. A task detector reduced final session idle commands from 5.8 to 0.9 per minute, but correct first commands fell from 189 of 400 movement cues to 71 of 400. Both conditions failed the validation target. This identifies a practical tradeoff rather than a replacement for the deployed model.
 
-This adds evidence on a different recording corpus and tests causal processing and temporal decisions, while leaving unseen participant transfer, prospective interaction and independent reproduction unresolved. The [research review](RESEARCH_REVIEW_2026_11.md) records the primary papers, student projects and community requests behind this choice.
+The subsequent [Dreyer2023 study](../experiments/unseen-v1/README.md) evaluates separately fitted methods on 27 people absent from fitting and selection, giving a successful but bounded discrimination result; transfer of the deployed CNN to another acquisition setting, prospective interaction and independent reproduction remain unresolved
+
+The [research review](RESEARCH_REVIEW_2026_11.md) records the primary papers, student projects and community requests behind these priorities
 
 ## October research update
 
@@ -22,13 +24,17 @@ The [reliability audit](RELIABILITY.md) accepts matched prediction CSVs, preserv
 
 Evidence of usefulness would be an independent reproduction, a concrete methodological correction, or an educator reporting how the exercise worked. A resource-list entry records discoverability; stars, automated clones and page views do not establish scientific impact. No external audit reproduction is claimed yet.
 
-## 2. Extend independent evaluation to unseen participants
+## 2. Evaluation on unseen participants completed in a separate corpus
 
-PhysioNet's current test set has already informed the follow-up and must be treated as inspected. Before another performance comparison, choose an obtainable, appropriately licensed motor-imagery dataset and state its channel/reference differences, label mapping, sampling, participant split, calibration budget, primary metric and stopping rule. A common-channel pipeline must be fitted and validated for that acquisition setting; the existing nine-channel/64-channel-reference model cannot simply be presented as headset-independent.
+The frozen [Dreyer2023 protocol](../experiments/unseen-v1/PROTOCOL.md) assigns 45 people to training, 15 to validation and 27 to final testing, comparing bandpower and covariance tangent features with fixed logistic regression settings and no target adaptation
 
-Compare classical CSP/LDA and a small neural model under the same protocol, reporting all seeds and participant-level paired differences. Separate confidence fitting and threshold selection where sample size permits, and report the limitation if data are reused. Include coverage, wrong commands, zero-command participants and uncertainty rather than ranking methods by accuracy alone. Freeze the protocol before loading final held-out outcomes and publish unsuccessful results as well.
+The selected bandpower method reached 66.02% mean participant balanced accuracy with a 95% interval of 61.80% to 70.23%, satisfying the declared discrimination criterion; the separate confidence rule failed its validation requirement for minimum predictions per person, while its test fallback retained only 18.94% of trials
 
-Acceptance evidence: a versioned protocol, auditable provenance and split manifests, runnable baseline implementation, frozen predictions, participant-level uncertainty and a clearly delimited generalisation claim. A MOABB-based implementation should name the exact version and evaluation contract and pass a synthetic split test before any compatibility claim. The project has not yet run a MOABB benchmark.
+The repository now contains the source and split manifests, committed validation selection, runnable methods, complete predictions, participant uncertainty and generated report; independent CSV checks reproduce the numerical findings, while a source review documents visual cue and sham feedback limitations
+
+This study uses the MOABB distributed source conversion without running a MOABB benchmark, and it does not test the original deployed CNN on the new corpus; its final cohort is now inspected, so future model changes require a new declared evaluation design and cannot reuse these outcomes as fresh evidence
+
+The next useful step is independent reproduction, followed by a new protocol that tests transfer or adaptation in a different acquisition setting while preserving separate calibration and final evaluation data
 
 ## 3. Extend recorded command evaluation to prospective interaction
 

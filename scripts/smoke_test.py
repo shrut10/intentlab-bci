@@ -56,6 +56,12 @@ def main():
     assert not commands["production_model_changed"] and len(commands["conditions"]) == 2
     with urllib.request.urlopen(base + "/research/commands", timeout=25) as response:
         assert 'id="local-command-audit"' in response.read().decode()
+    unseen = request("/api/unseen")
+    assert unseen["experiment"] == "unseen-v1" and not unseen["production_model_changed"]
+    assert unseen["counts"]["test"]["participants"] == 27 and len(unseen["models"]) == 2
+    assert request("/static/unseen-study.json") == unseen
+    with urllib.request.urlopen(base + "/research/unseen", timeout=25) as response:
+        assert "Testing movement decoding in new participants" in response.read().decode()
     print(
         json.dumps(
             {

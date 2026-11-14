@@ -1,0 +1,73 @@
+{
+  "experiment": "unseen-v1",
+  "version": "1.0",
+  "date": "2026-11-14",
+  "question": "Can a fixed decoder distinguish the two cued imagery tasks in participants absent from every fitting and selection step",
+  "dataset": "Dreyer2023",
+  "source_manifest": "source_manifest.json",
+  "split_manifest": "split_manifest.json",
+  "runs": ["R1acquisition", "R2acquisition"],
+  "labels": {"left_hand": 0, "right_hand": 1},
+  "sampling_hz": 512,
+  "epoch_start_s": 0.5,
+  "epoch_end_s": 4.5,
+  "eeg_channel_count": 27,
+  "channels": ["FC3", "FCz", "FC4", "C3", "Cz", "C4", "CP3", "CPz", "CP4"],
+  "preprocessing": {
+    "reference": "Common average over the 27 EEG channels before selecting nine channels",
+    "units": "volts from the recording reader",
+    "demean": "Per channel within each completed epoch",
+    "filter": {"kind": "butterworth", "order": 4, "low_hz": 8, "high_hz": 30, "implementation": "scipy.signal.sosfiltfilt"},
+    "normalisation": "One RMS across all nine channels and all samples in each filtered epoch",
+    "causal": false,
+    "resample": false,
+    "trial_rejection": "No amplitude or outcome based rejection; invalid files, missing channels, nonfinite signals, absent classes or incomplete epochs stop the run for investigation"
+  },
+  "models": {
+    "names": ["bandpower", "covariance_tangent"],
+    "bandpower": {"welch_nperseg": 512, "bands_hz": [[8, 13], [13, 20], [20, 30]], "upper_edge_exclusive": true, "power_floor": 1e-10, "features": 27},
+    "covariance_tangent": {"estimator": "oas", "trace_normalise": true, "metric": "riemann", "tsupdate": false, "features": 45},
+    "scaler": "StandardScaler fitted only on training participants",
+    "classifier": {"kind": "LogisticRegression", "C": 1.0, "max_iter": 5000, "random_state": 2027, "class_weight": null},
+    "training_weight": "For each trial: training trial count divided by twice the number of training participants times the number of training trials for that participant and class",
+    "weighted_steps": ["tangent reference", "scaler", "logistic regression"],
+    "target_adaptation": false,
+    "selection": "Highest validation participant mean balanced accuracy; exact ties favour bandpower; no refitting on validation people"
+  },
+  "partitions": {"train": 45, "validation": 15, "test": 27},
+  "cohort_partitions": {"A": [31, 10, 19], "B": [11, 4, 6], "C": [3, 1, 2]},
+  "primary": {
+    "metric": "participant_macro_balanced_accuracy",
+    "target": "The selected model has a test participant bootstrap 95% interval with lower bound strictly above 0.50",
+    "baseline": 0.5,
+    "interpretation": "Discrimination of the two cued tasks in this previously unseen participant sample, conditional on the fitted model and source cohort composition"
+  },
+  "bootstrap": {"repeats": 5000, "seed": 2027, "unit": "participant", "strata": "source cohort", "percentiles": [2.5, 97.5], "paired_difference": "covariance_tangent minus bandpower"},
+  "selective_prediction": {
+    "threshold_grid": [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95],
+    "minimum_participant_macro_accuracy": 0.75,
+    "minimum_participant_macro_coverage": 0.2,
+    "minimum_total_accepted": 100,
+    "minimum_accepted_every_participant": 5,
+    "choose": "Lowest threshold satisfying all requirements on validation participants for each model",
+    "fallback": 0.75,
+    "interpretation": "Secondary empirical operating rule, not a reliability guarantee; raw logistic scores are not recalibrated"
+  },
+  "calibration": {"bins": 10, "range": [0, 1], "include_empty_bins": true},
+  "execution": {
+    "fit_stage": "Read training and validation participants only, fit both fixed models, save validation predictions, model hashes and selection",
+    "selection_seal": "Commit selection.json before accessing final participant EEG or final outcomes",
+    "test_stage": "Verify committed selection, protocol, model and executable source hashes, then evaluate all test participants once",
+    "stopping_rule": "Publish both model results and all participant results regardless of whether either target is met; never retune or replace test people after inspection",
+    "production_model_changed": false
+  },
+  "limitations": [
+    "Cued imagery and sham feedback may contain visual responses and artefacts; delaying the epoch does not prove that those effects are removed",
+    "The first two acquisition runs use sham feedback rather than no feedback",
+    "No instructed rest or continuous command evaluation is included in this trial study",
+    "The fitted models differ from the deployed PhysioNet CNN and do not externally validate that CNN",
+    "Only two test participants come from cohort C; its individual scores are descriptive",
+    "Intervals describe these fitted models and sampled cohorts, not uncertainty across repeated training or different headsets",
+    "Participants with source missing trials are retained with their available trials; identities and partitions are never replenished"
+  ]
+}

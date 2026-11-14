@@ -387,6 +387,17 @@ def command_research():
     return FileResponse(ROOT / "web/commands.html")
 
 
+@app.get("/research/unseen", include_in_schema=False)
+def unseen_research():
+    return FileResponse(ROOT / "web/unseen.html")
+
+
+@app.get("/api/unseen")
+def unseen_results():
+    """Archived participant study using separate models with no effect on live inference"""
+    return FileResponse(ROOT / "artifacts/unseen-v1/evaluation.json", media_type="application/json")
+
+
 @app.get("/research/pretraining", include_in_schema=False)
 def pretraining_research():
     return FileResponse(ROOT / "web/pretraining.html")

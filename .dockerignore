@@ -4,6 +4,7 @@
 .env*
 data/raw
 data/derived/epochs.npz
+data/derived/unseen-v1
 data/derived/trials.parquet
 __pycache__
 .pytest_cache

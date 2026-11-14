@@ -1,0 +1,2 @@
+-r requirements-command-study.txt
+pyriemann==0.12

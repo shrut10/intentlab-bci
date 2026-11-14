@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite this software and the original recording dataset when using IntentLab"
 title: "IntentLab: EEG decoding and command evaluation"
 type: software
-version: "1.3.0"
+version: "1.4.0"
 date-released: "2026-11-14"
 authors:
   - name: "Jayashruthi Rajesh Babu"
@@ -13,7 +13,8 @@ license: MIT
 abstract: >-
   Recorded EEG experiments and reusable tools for evaluating decoder predictions
   and the commands they produce, including participant reliability, temporal
-  decision rules, instructed rest and later session evaluation
+  decision rules, instructed rest, later session evaluation and a separate
+  Dreyer2023 study with participant groups reserved for final testing
   The experiments do not establish reliable live control
   Cite the specific commit and original dataset used for reproducibility
 keywords:

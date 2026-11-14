@@ -117,6 +117,22 @@ def test_static_app_and_docs_are_available(client):
     assert client.get("/docs/oauth2-redirect").status_code == 200
 
 
+def test_unseen_study_is_served_separately_from_the_live_decoder(client, identifier):
+    before = client.post("/api/predict", json={"trial_id": identifier}).json()
+    report = client.get("/api/unseen")
+    assert report.status_code == 200
+    assert report.json()["experiment"] == "unseen-v1"
+    assert report.json()["production_model_changed"] is False
+    assert report.json()["counts"]["test"]["participants"] == 27
+    assert client.get("/static/unseen-study.json").json() == report.json()
+    page = client.get("/research/unseen")
+    assert page.status_code == 200 and page.headers["Cache-Control"] == "no-store"
+    assert "Testing movement decoding in new participants" in page.text
+    after = client.post("/api/predict", json={"trial_id": identifier}).json()
+    for key in ("model", "model_version", "right_probability", "threshold", "decision", "signal"):
+        assert before[key] == after[key]
+
+
 def test_model_artifact_corruption_fails_closed(tmp_path, monkeypatch):
     import intentlab.api as module
 
