@@ -1,0 +1,78 @@
+{
+  "experiment": "command-replay-v1",
+  "protocol_date": "2026-11-14",
+  "status": "exploratory independent corpus session evaluation",
+  "source": {
+    "dataset": "Zhou2016 original CNT release",
+    "doi": "10.6084/m9.figshare.2061654",
+    "metadata_url": "https://api.figshare.com/v2/articles/2061654",
+    "download_url": "https://ndownloader.figshare.com/files/3662952",
+    "file": "data.zip",
+    "bytes": 156181084,
+    "md5": "c48c82db4c51330285d513c4dbfd11a5",
+    "license": "CC0 as stated by the original Figshare record",
+    "subjects": [1, 2, 3, 4],
+    "sessions": [1, 2, 3],
+    "runs": ["A", "B"],
+    "cue_codes": {"1": "left", "2": "right", "3": "other"}
+  },
+  "split": {"train": [1], "validation": [2], "test": [3]},
+  "signal": {
+    "sampling_hz": 250,
+    "channels": ["FP1", "FP2", "FC3", "FCZ", "FC4", "C3", "CZ", "C4", "CP3", "CPZ", "CP4", "O1", "OZ", "O2"],
+    "reference": "common average across the 14 EEG channels",
+    "filter": "causal Butterworth N=4 bandpass applied continuously within each run, with zero initial state",
+    "band_hz": [8, 30],
+    "window_seconds": 2.0,
+    "stride_seconds": 0.5,
+    "first_decision_seconds": 2.0,
+    "record_end_decision_excluded": true,
+    "welch_nperseg": 250,
+    "feature_bands_hz": [[8, 13], [13, 20], [20, 30]],
+    "features": "log of summed Welch density bins, lower boundary inclusive and upper boundary exclusive; floor 1e-10 in squared microvolt units"
+  },
+  "labels": {
+    "imagery_interval_from_cue_seconds": [0, 5],
+    "eligible_rest_interval_from_cue_seconds": [5.5, 8.5],
+    "preparation_before_next_cue_seconds": 1.0,
+    "rest_requirement": "complete interval lies within the recording and ends no later than one second before the next cue",
+    "training_requirement": "entire trailing window lies within one eligible left, right or idle interval",
+    "feet_used_in_fitting": false,
+    "feet_used_in_policy_selection_objective": false,
+    "other_time": "transitions, preparation, uncovered time and incomplete eligible intervals are unknown",
+    "interval_semantics": "half open; command time is the end of its available input window"
+  },
+  "model": {
+    "fit_per_participant": true,
+    "features": "42 log bandpower features",
+    "estimator": "StandardScaler followed by LogisticRegression",
+    "C": 1.0,
+    "class_weight": "balanced",
+    "max_iter": 1000,
+    "random_state": 2027,
+    "movement_training_labels": ["left", "right"],
+    "gate_training_labels": ["left or right as task", "idle as rest"],
+    "conditions": ["movement_only", "rest_gate"],
+    "rest_gate_scores": "movement probabilities multiplied by task probability; these are decision scores, not calibrated joint probabilities"
+  },
+  "policy": {
+    "enter_thresholds": [0.5, 0.6, 0.7, 0.8, 0.9],
+    "hold_seconds": [0.0, 0.5, 1.0],
+    "release_threshold": 0.4,
+    "cooldown_seconds": 1.5,
+    "max_gap_seconds": 0.75,
+    "selection": "for each condition, select on pooled validation runs the highest fraction of cues whose first command is correct among policies with at most one idle command per minute; ties choose lower idle command rate, higher enter threshold, then longer hold",
+    "validation_target": {"max_idle_commands_per_minute": 1.0, "min_cues_first_command_correct_fraction": 0.5},
+    "fallback": {"enter_threshold": 0.9, "hold_seconds": 1.0},
+    "fallback_rule": "use the fallback when no candidate meets both target requirements; report target failure"
+  },
+  "evaluation": {
+    "primary": ["cues_first_command_correct_fraction", "idle_commands_per_minute"],
+    "secondary": ["cues_with_correct", "wrong_hand_commands", "median_first_correct_latency_seconds", "other_commands", "unknown_commands", "cues_without_commands"],
+    "report_by": ["condition", "participant", "recording run"],
+    "test_tuning": false,
+    "bootstrap": false,
+    "interpretation": "same participants on a later session, four experienced healthy volunteers, protocol inferred rest, recorded replay only"
+  },
+  "production_model_changed": false
+}
