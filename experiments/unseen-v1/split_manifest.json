@@ -1,0 +1,528 @@
+{
+  "method": "Sort SHA256 of seed colon two digit source ID within each source cohort, then assign the prespecified counts",
+  "seed": "IntentLab unseen-v1 Dreyer2023 2027",
+  "participants": [
+    {
+      "participant": "S01",
+      "source_id": 1,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S02",
+      "source_id": 2,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S03",
+      "source_id": 3,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S04",
+      "source_id": 4,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S05",
+      "source_id": 5,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S06",
+      "source_id": 6,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S07",
+      "source_id": 7,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S08",
+      "source_id": 8,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S09",
+      "source_id": 9,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S10",
+      "source_id": 10,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S11",
+      "source_id": 11,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S12",
+      "source_id": 12,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S13",
+      "source_id": 13,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S14",
+      "source_id": 14,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S15",
+      "source_id": 15,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S16",
+      "source_id": 16,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S17",
+      "source_id": 17,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S18",
+      "source_id": 18,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S19",
+      "source_id": 19,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S20",
+      "source_id": 20,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S21",
+      "source_id": 21,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S22",
+      "source_id": 22,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S23",
+      "source_id": 23,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S24",
+      "source_id": 24,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S25",
+      "source_id": 25,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S26",
+      "source_id": 26,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S27",
+      "source_id": 27,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S28",
+      "source_id": 28,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S29",
+      "source_id": 29,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S30",
+      "source_id": 30,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S31",
+      "source_id": 31,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S32",
+      "source_id": 32,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S33",
+      "source_id": 33,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S34",
+      "source_id": 34,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S35",
+      "source_id": 35,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S36",
+      "source_id": 36,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S37",
+      "source_id": 37,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S38",
+      "source_id": 38,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S39",
+      "source_id": 39,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S40",
+      "source_id": 40,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S41",
+      "source_id": 41,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S42",
+      "source_id": 42,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S43",
+      "source_id": 43,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S44",
+      "source_id": 44,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S45",
+      "source_id": 45,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S46",
+      "source_id": 46,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S47",
+      "source_id": 47,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S48",
+      "source_id": 48,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S49",
+      "source_id": 49,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S50",
+      "source_id": 50,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S51",
+      "source_id": 51,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S52",
+      "source_id": 52,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S53",
+      "source_id": 53,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S54",
+      "source_id": 54,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S55",
+      "source_id": 55,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S56",
+      "source_id": 56,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S57",
+      "source_id": 57,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S58",
+      "source_id": 58,
+      "cohort": "A",
+      "split": "test"
+    },
+    {
+      "participant": "S59",
+      "source_id": 59,
+      "cohort": "A",
+      "split": "train"
+    },
+    {
+      "participant": "S60",
+      "source_id": 60,
+      "cohort": "A",
+      "split": "validation"
+    },
+    {
+      "participant": "S61",
+      "source_id": 61,
+      "cohort": "B",
+      "split": "validation"
+    },
+    {
+      "participant": "S62",
+      "source_id": 62,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S63",
+      "source_id": 63,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S64",
+      "source_id": 64,
+      "cohort": "B",
+      "split": "test"
+    },
+    {
+      "participant": "S65",
+      "source_id": 65,
+      "cohort": "B",
+      "split": "test"
+    },
+    {
+      "participant": "S66",
+      "source_id": 66,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S67",
+      "source_id": 67,
+      "cohort": "B",
+      "split": "validation"
+    },
+    {
+      "participant": "S68",
+      "source_id": 68,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S69",
+      "source_id": 69,
+      "cohort": "B",
+      "split": "test"
+    },
+    {
+      "participant": "S70",
+      "source_id": 70,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S71",
+      "source_id": 71,
+      "cohort": "B",
+      "split": "test"
+    },
+    {
+      "participant": "S72",
+      "source_id": 72,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S73",
+      "source_id": 73,
+      "cohort": "B",
+      "split": "test"
+    },
+    {
+      "participant": "S74",
+      "source_id": 74,
+      "cohort": "B",
+      "split": "test"
+    },
+    {
+      "participant": "S75",
+      "source_id": 75,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S76",
+      "source_id": 76,
+      "cohort": "B",
+      "split": "validation"
+    },
+    {
+      "participant": "S77",
+      "source_id": 77,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S78",
+      "source_id": 78,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S79",
+      "source_id": 79,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S80",
+      "source_id": 80,
+      "cohort": "B",
+      "split": "validation"
+    },
+    {
+      "participant": "S81",
+      "source_id": 81,
+      "cohort": "B",
+      "split": "train"
+    },
+    {
+      "participant": "S82",
+      "source_id": 82,
+      "cohort": "C",
+      "split": "train"
+    },
+    {
+      "participant": "S83",
+      "source_id": 83,
+      "cohort": "C",
+      "split": "train"
+    },
+    {
+      "participant": "S84",
+      "source_id": 84,
+      "cohort": "C",
+      "split": "validation"
+    },
+    {
+      "participant": "S85",
+      "source_id": 85,
+      "cohort": "C",
+      "split": "test"
+    },
+    {
+      "participant": "S86",
+      "source_id": 86,
+      "cohort": "C",
+      "split": "train"
+    },
+    {
+      "participant": "S87",
+      "source_id": 87,
+      "cohort": "C",
+      "split": "test"
+    }
+  ]
+}
