@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="A separate IntentLab experiment evaluates movement decoding in participants excluded from model fitting, using a fixed split of 87 Dreyer2023 participants" />
+  <title>Testing new participants | IntentLab</title>
+  <link rel="canonical" href="https://intentlab-bci.vercel.app/research/unseen" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/research.css?v=neon-20261110" />
+</head>
+<body>
+  <a class="skip-link" href="#unseen-report">Skip to the study</a>
+  <header class="report-nav"><a class="report-brand" href="/">IntentLab</a><nav aria-label="Main navigation"><a href="/#studio">Experiment</a><a href="/research">Research</a><a href="/research/unseen" aria-current="page">New participants</a><a href="/research/commands">Command audit</a><a href="https://jayashruthi.com">Portfolio</a></nav></header>
+  <main id="unseen-report" class="report">
+    <header class="report-heading">
+      <p class="report-kicker">Independent recording corpus · Participant separation</p>
+      <h1>Testing movement decoding in new participants</h1>
+      <p class="report-subtitle">A separate experiment fits models using 45 people, chooses between them using 15 others and evaluates the selected model on 27 people excluded from both steps</p>
+      <p class="byline">Jayashruthi Rajesh Babu · $report_date · Experiment unseen-v1</p>
+      <p class="report-status">Recorded EEG analysis with a declared evaluation rule, without a live headset study or clinical validation</p>
+      <div class="report-links"><a href="#finding">Finding ↓</a><a href="#separation">Participant split ↓</a><a href="#participants">Every test participant ↓</a><a href="#reproduce">Data and reproduction ↓</a></div>
+    </header>
+    <aside class="study-update"><p><strong>The original deployed decoder remains unchanged</strong><br />These models are fitted and evaluated separately on Dreyer2023, a recording corpus collected separately from the original PhysioNet study; this is not a transfer test of the deployed PhysioNet model</p></aside>
+    <section id="finding" class="abstract">
+      <h2>What the test found</h2>
+      <p>$primary_finding</p>
+      <p>$primary_scope</p>
+      <p>$selective_finding</p>
+      <p>$validation_failure_note</p>
+    </section>
+    <section id="separation">
+      <h2>1 Which people each step can use</h2>
+      <p>Every participant belongs to exactly one partition, with both selected acquisition runs kept together; no signals or labels from validation or test participants enter model fitting, and test participants contribute neither model selection nor threshold selection</p>
+      $split_table
+      <p>$trial_count_note</p>
+      <p>The split preserves the dataset's three source cohorts, which differ in recruitment and study context; they are not three independent replications of the experiment</p>
+      $cohort_split_table
+      <details class="report-details"><summary>Inspect the exact participant identifiers</summary>$split_membership</details>
+      <p>Later recordings from a person used in training would answer a different question; here, the test participants are absent from training and validation, with no personal calibration or fitting to their unlabelled recordings</p>
+    </section>
+    <section id="methods">
+      <h2>2 What the models receive</h2>
+      <p>Dreyer and colleagues recorded left and right hand motor imagery from 87 participants using 27 scalp EEG channels at 512 Hz <a class="citation" href="#ref-dataset">[1]</a>; this experiment uses the first two acquisition runs, which include sham visual feedback, and excludes the later runs that provide actual feedback</p>
+      <p>Each example is a completed window from 0.5 to 4.5 seconds after the cue; processing is offline, so the report does not establish that an equivalent result would be available during acquisition or within a prospective control loop</p>
+      <p>$preprocessing_details</p>
+      <p>Two fixed models are compared: logistic regression on band power features, and logistic regression on covariance features mapped to a tangent space; every fitted transform uses training participants only; the covariance representation and its reference are fitted before validation or test data are transformed</p>
+      <p>Training observations are weighted so that every participant contributes equally and each of their two hand classes has equal weight; the same weights are passed to the tangent reference, the feature scalers and the classifiers</p>
+      <p>The covariance baseline draws on the EEG representations and tangent space approach studied by Barachant, Bonnet, Congedo and Jutten <a class="citation" href="#ref-geometry">[2]</a>; this implementation uses logistic regression and a separately specified evaluation protocol, with pyRiemann 0.12 configured as <code>TangentSpace(metric='riemann', tsupdate=False)</code> so that prediction retains the reference fitted on training participants <a class="citation" href="#ref-implementation">[3]</a></p>
+      <p>The model with higher mean participant balanced accuracy on validation data defines the primary analysis; a separate probability threshold is selected for each of the two models using its own validation predictions, with both models and their thresholds fixed before the test partition is evaluated</p>
+      <p>$threshold_rule</p>
+      <p>The primary metric is the mean of each test participant's balanced accuracy, so every person receives equal weight; balanced accuracy is the average recall for the two hand classes, with a chance reference of 50%; Brier score measures squared probability error, where a lower value is better</p>
+      <p>$bootstrap_details</p>
+    </section>
+    <section id="results">
+      <h2>3 Model comparison</h2>
+      <p>Selection is based on the validation column, with the selected model marked explicitly; the other model's test result is descriptive and cannot change the declared primary analysis</p>
+      $model_table
+      <p>$paired_finding</p>
+      <p>These figures use every eligible hand cue regardless of confidence; they answer whether class discrimination generalises to the reserved participants, while the thresholded results below answer how often a model is willing to issue a prediction</p>
+      $selective_table
+      <p>Mean participant coverage includes people with no accepted predictions; accepted accuracy is undefined for those people and is shown as an em dash, while the conditional mean accepted accuracy includes only participants with at least one accepted prediction; pooled accepted accuracy weights accepted trials rather than people</p>
+    </section>
+    <section id="participants">
+      <h2>4 Every test participant</h2>
+      <p>The table shows the selected model for all 27 test participants, including anyone with no accepted predictions; left and right counts describe all evaluated trials, and accepted accuracy describes only the accepted subset</p>
+      $participant_plot
+      $participant_table
+      <h3>Results within the original source cohorts</h3>
+      $cohort_result_table
+      <p>Cohort C has only two test participants, so its result is descriptive and should not be interpreted as a reliable estimate for a wider population</p>
+      <details class="report-details"><summary>Inspect the selected model's validation participants</summary>$validation_participant_table</details>
+    </section>
+    <section id="limits">
+      <h2>5 What this result cannot establish</h2>
+      <p>A cued imagery recording does not isolate intention from everything else happening during a trial; visual arrows, sham feedback, eye movements, muscle activity and participant behaviour may all affect the measured signal</p>
+      <p>Trocellier and colleagues show that visual cues in this dataset can affect EEG classification, particularly for deep learning models, and compare cue aligned windows with windows starting 0.5 seconds later <a class="citation" href="#ref-cues">[4]</a>; the delayed start used here reduces direct inclusion of cue onset but does not prove that visual or other confounds have been removed</p>
+      <p>The trial windows contain requested left or right imagery, rather than continuous periods with and without a request to act; accepted predictions therefore do not measure unintended commands during rest, response time, spontaneous intention or reliable control of a physical device</p>
+      <p>This is one fixed split of one recording corpus, with limited representation in the smallest cohort; the uncertainty interval describes the reserved participants under the declared analysis and does not include all uncertainty from model development, recruitment or a different recording protocol</p>
+      <p>The source is an EDF conversion of the original deposit, obtained through a pinned public mirror; the archive hashes match the original conversion host's metadata, which establishes byte identity for those archives but does not independently validate every source annotation</p>
+    </section>
+    <section id="reproduce">
+      <h2>6 Inspect and reproduce the evidence</h2>
+      <p>Displayed numbers are generated from the saved evaluation report and checked against its participant records; the repository retains predictions, membership and source hashes so the reported metrics can be recomputed</p>
+      <ul class="source-files">
+        <li><a href="/static/unseen-study.json" download>Download the numerical study report</a></li>
+        <li><a href="https://github.com/shrut10/intentlab-bci/tree/main/artifacts/unseen-v1">Saved predictions, evaluation and provenance</a></li>
+        <li><a href="https://github.com/shrut10/intentlab-bci/blob/main/experiments/unseen-v1/PROTOCOL.md">Read the protocol and reproduce the analysis</a></li>
+        <li><a href="https://github.com/shrut10/intentlab-bci/blob/main/experiments/unseen-v1/source_manifest.json">Inspect all source archives and checksums</a></li>
+        <li><a href="$protocol_url">Protocol revision $protocol_commit</a> · <a href="$selection_url">Selection revision $selection_commit</a></li>
+      </ul>
+      <p>The recordings are distributed under CC BY 4.0 by their authors <a class="citation" href="#ref-deposit">[5]</a>; raw EEG is not redistributed by this report, and the live application retains its existing model files</p>
+    </section>
+    <section id="references" class="references">
+      <h2>Sources</h2>
+      <ol>
+        <li id="ref-dataset">Dreyer and colleagues, 2023, <a href="https://doi.org/10.1038/s41597-023-02445-z">A large EEG database with users' profile information for motor imagery brain computer interface research</a>, Scientific Data; primary dataset description</li>
+        <li id="ref-geometry">Barachant, A, Bonnet, S, Congedo, M and Jutten, C, 2012, <a href="https://doi.org/10.1109/TBME.2011.2172210">Multiclass Brain Computer Interface Classification by Riemannian Geometry</a>, IEEE Transactions on Biomedical Engineering, 59(4), pages 920 to 928; primary research underpinning the covariance and tangent space representation</li>
+        <li id="ref-implementation">pyRiemann 0.12, <a href="https://pyriemann.readthedocs.io/en/v0.12/generated/pyriemann.tangentspace.TangentSpace.html">TangentSpace documentation</a>; implementation reference for fitting the geometric reference and disabling its update on a prediction batch</li>
+        <li id="ref-cues">Trocellier, D, Kojima, S, N'kaoua, B and Lotte, F, 2026, <a href="https://doi.org/10.3389/fnrgo.2026.1804143">Visual cues in MI BCI induce biases in EEG classification models with deep learning but not with standard machine learning</a>, Frontiers in Neuroergonomics; primary analysis of cue related confounds</li>
+        <li id="ref-deposit">Dreyer and colleagues, <a href="https://doi.org/10.5281/zenodo.8089820">Original dataset deposit on Zenodo</a>, CC BY 4.0; the exact EDF conversion archives and pinned mirror are documented in the source manifest</li>
+      </ol>
+    </section>
+    <footer class="report-footer"><a href="/research">Return to the research</a><a href="https://github.com/shrut10/intentlab-bci/issues/new?template=research.yml">Discuss a result or report a problem</a></footer>
+  </main>
+</body>
+</html>

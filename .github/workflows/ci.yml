@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
-      - run: pip install -r requirements-command-study.txt
+      - run: pip install -r requirements-unseen-study.txt
       - run: ruff check .
       - run: ruff format --check .
       - run: node --check web/app.js
@@ -33,6 +33,7 @@ jobs:
       - run: python scripts/render_adaptation_report.py --check
       - run: python scripts/render_pretraining_report.py --check
       - run: python scripts/render_command_report.py --check
+      - run: python scripts/render_unseen_report.py --check
       - run: python examples/reliability_audit.py --check
       - run: pytest -q
       - name: Build actual serving image

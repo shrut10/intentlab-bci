@@ -308,3 +308,45 @@ def test_cache_binds_source_metadata_to_exact_feature_bytes(tmp_path, monkeypatc
     metadata_path.write_text(json.dumps(metadata))
     with pytest.raises(ValueError, match="cache"):
         study.load_features(record, specification, manifest, tmp_path, cache, False)
+
+
+def test_source_code_change_during_collection_stops_before_fitting(tmp_path, monkeypatch):
+    current = {"value": "fixed"}
+    monkeypatch.setattr(study, "source_hashes", lambda: {"code": current["value"]})
+    monkeypatch.setattr(study, "packages", lambda: {"package": "fixed"})
+    records = [
+        {"participant": "S01", "source_id": 1, "cohort": "A", "split": "train"},
+        {"participant": "S02", "source_id": 2, "cohort": "A", "split": "validation"},
+    ]
+
+    def changed_collection(*args, **kwargs):
+        current["value"] = "changed"
+        return (
+            {"bandpower": np.zeros((8, 27)), "covariance": np.tile(np.eye(9) / 9, (8, 1, 1))},
+            source_trials(1) + source_trials(2),
+            [],
+        )
+
+    monkeypatch.setattr(study, "collect", changed_collection)
+    monkeypatch.setattr(study, "fit_models", lambda *args: pytest.fail("Changed code reached model fitting"))
+    args = SimpleNamespace(output=tmp_path, cache=tmp_path, raw=tmp_path, download=False)
+    with pytest.raises(ValueError):
+        study.fit_stage(protocol(), records, args)
+    assert not (tmp_path / "selection.json").exists()
+    assert not (tmp_path / "fitted_models.joblib").exists()
+
+
+def test_model_change_during_final_collection_stops_before_deserialisation(sealed_selection, monkeypatch):
+    args, _ = sealed_selection
+
+    def changed_collection(*unused, **kwargs):
+        (args.cache / "fitted_models.joblib").write_bytes(b"changed during collection")
+        return {}, [], []
+
+    monkeypatch.setattr(study, "collect", changed_collection)
+    monkeypatch.setattr(study.joblib, "load", lambda *args: pytest.fail("Changed model was deserialised"))
+    monkeypatch.setattr(study, "predict_models", lambda *args: pytest.fail("Changed model made predictions"))
+    with pytest.raises(ValueError, match="Fitted models differ"):
+        study.test_stage({}, [], args)
+    assert not (args.output / "test_predictions.csv").exists()
+    assert not (args.output / "evaluation.json").exists()

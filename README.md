@@ -2,9 +2,9 @@
 
 **EEG decoding and command evaluation**
 
-IntentLab explores how models recognise imagined hand movements in recorded EEG and measures the commands that follow from their predictions. Try the original decoder, inspect the research evidence, or use the reusable audits with your own saved scores.
+IntentLab explores how models recognise imagined hand movements in recorded EEG and measures the commands that follow from their predictions, with an interactive decoder, published experiments and reusable audits for saved prediction scores
 
-[Open the experiment](https://intentlab-bci.vercel.app) · [Audit commands](https://intentlab-bci.vercel.app/research/commands) · [Live API](https://intentlab-bci.vercel.app/docs) · [Learn the project](docs/WALKTHROUGH.md) · [Edit the website text](docs/EDITING.md)
+[Open the experiment](https://intentlab-bci.vercel.app) · [New participant study](https://intentlab-bci.vercel.app/research/unseen) · [Audit commands](https://intentlab-bci.vercel.app/research/commands) · [Live API](https://intentlab-bci.vercel.app/docs) · [Learn the project](docs/WALKTHROUGH.md) · [Edit the website text](docs/EDITING.md)
 
 [![Tests and container](https://github.com/shrut10/intentlab-bci/actions/workflows/ci.yml/badge.svg)](https://github.com/shrut10/intentlab-bci/actions/workflows/ci.yml)
 
@@ -21,6 +21,18 @@ The new [participant reliability audit](https://intentlab-bci.vercel.app/researc
 - Replay a six-trial sequence and see the trade-off between making a command and waiting.
 - Trace every sample back to its public recording and reproduce the data pipeline and training.
 - Audit saved predictions over time, including unwanted commands during instructed rest, missed cues, delays and gaps.
+
+## Evaluation on new participants
+
+The [Dreyer2023 study](https://intentlab-bci.vercel.app/research/unseen) uses 87 people in a separate public recording corpus, with 45 assigned to training, 15 to validation and 27 reserved for final evaluation; both the protocol and the model selection were committed before the corresponding analysis, and all source archives were checked against publisher hashes
+
+The selected bandpower model reached **66.02% mean participant balanced accuracy** across 2,160 final trials, with a **95% participant bootstrap interval of 61.80% to 70.23%**, meeting the declared above chance criterion; the covariance comparison reached 67.78%, but its paired difference interval includes zero and does not change the original selection
+
+At the fixed 0.75 fallback threshold, **347 of 409 accepted test predictions were correct**, giving 84.84% pooled accepted accuracy while retaining only 18.94% of trials; the validation target failed because four people had fewer than five accepted predictions, and the full participant table exposes the variation hidden by the pooled percentage
+
+These are separately fitted models on cued imagery recordings with sham visual feedback, so the study supports a limited discrimination finding and does not externally validate the deployed PhysioNet CNN or establish reliable live control
+
+[Methods and reproduction](experiments/unseen-v1/README.md) · [Exact participant split](experiments/unseen-v1/split_manifest.json) · [Predictions and provenance](artifacts/unseen-v1)
 
 ## Commands over time
 
@@ -158,6 +170,8 @@ curl https://intentlab-bci.vercel.app/api/predict \
 | `GET /api/adaptation/predictions` | Downloadable trial-level predictions for that comparison |
 | `GET /api/pretraining` | Archived validation-only masked-channel pretraining results |
 | `GET /research/pretraining` | Methods, generated result tables and primary research sources |
+| `GET /research/unseen` | Separate Dreyer2023 study with 27 reserved test participants |
+| `GET /api/unseen` | Archived participant scores, validation selection and uncertainty |
 | `GET /docs` | Interactive API specification |
 
 The public API accepts only bundled trial IDs and bounded perturbations. It does not accept private EEG uploads. The recorded label is returned for comparison **after** inference and is not a model input.

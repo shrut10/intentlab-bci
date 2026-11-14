@@ -4,7 +4,7 @@
   "functions": {
     "app.py": {
       "maxDuration": 30,
-      "excludeFiles": "{.venv/**,.git/**,tests/**,docs/**,data/raw/**,data/derived/epochs.npz,data/derived/trials.parquet,scripts/**,requirements-dev.txt,requirements-training.txt,*.ses}"
+      "excludeFiles": "{.venv/**,.git/**,tests/**,docs/**,data/raw/**,data/derived/unseen-v1/**,data/derived/epochs.npz,data/derived/trials.parquet,scripts/**,requirements-dev.txt,requirements-training.txt,requirements-unseen-study.txt,*.ses}"
     }
   }
 }
