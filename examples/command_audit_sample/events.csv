@@ -1,0 +1,3 @@
+participant,session,event_id,start_s,end_s,state
+SYNTHETIC,example,cue,0,1,left
+SYNTHETIC,example,rest,1,2,idle

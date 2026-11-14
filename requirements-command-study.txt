@@ -1,0 +1,3 @@
+-r requirements-dev.txt
+mne==1.13.2
+scikit-learn==1.9.1

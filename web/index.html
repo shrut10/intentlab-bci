@@ -88,7 +88,7 @@
       <a class="brand" href="#top" aria-label="IntentLab home">IntentLab</a>
       <nav aria-label="Main navigation">
         <a href="#studio">Experiment</a><a href="#evidence">Results</a
-        ><a href="/research">Research</a><a href="https://jayashruthi.com">Portfolio</a>
+        ><a href="/research/commands">Command audit</a><a href="/research">Research</a><a href="https://jayashruthi.com">Portfolio</a>
       </nav>
       <a
         class="source-link"
@@ -105,13 +105,13 @@
           <p class="eyebrow">
             Brain computer interfaces
           </p>
-          <h1>Recorded EEG decoding</h1>
-          <p class="hero-description">IntentLab classifies EEG recorded while participants imagined moving their left or right hand, with controls for inspecting each prediction and the effect of model confidence on a simulated cursor command</p>
-          <p class="hero-context">The demonstration uses public PhysioNet recordings without a live headset connection</p>
+          <h1>EEG decoding and command evaluation</h1>
+          <p class="hero-description">IntentLab explores how models recognise imagined hand movements in recorded EEG and measures when their predictions would produce useful or unwanted commands</p>
+          <p class="hero-context">Try the PhysioNet recordings below or use the session audit to examine command timing, errors during instructed rest and cues that receive no response</p>
           <div class="hero-actions">
             <a class="button primary" href="#studio"
               >Open the experiment <span aria-hidden="true">↓</span></a
-            ><a class="text-button" href="/research">Research report ↗</a>
+            ><a class="text-button" href="/research/commands">Audit commands ↗</a>
           </div>
         </div>
         <div
@@ -560,10 +560,10 @@
               <span class="note-number">03</span>
               <h3>Further evaluation</h3>
               <p>
-                Evaluation of live use would require repeated participant splits, an independent dataset and filtering suited to streaming signals, with a fresh test set reserved for each new experiment
+                The separate <a href="/research/commands">Zhou2016 session study</a> evaluates a simple command policy on later recordings from four people, including unwanted commands during instructed rest and intended cues that receive no correct response
               </p>
               <p>
-                The present task is limited to two cued imagined movements and does not decode arbitrary thoughts
+                These recorded experiments do not establish live control, and the original decoder remains limited to two cued imagined movements
               </p>
             </article>
           </div>
@@ -571,10 +571,10 @@
             <div>
               <h3>Reports and source material</h3>
               <p>
-                Reports cover the original experiment, subsequent calibration and pretraining studies, and the participant reliability audit
+                Reports cover the original experiment, calibration, pretraining, participant reliability and command behaviour on an independent recording corpus
               </p>
             </div>
-            <div><a href="/research">Research report and references ↗</a><a href="/research/adaptation">Calibration and alignment comparison ↗</a><a href="/research/reliability">Participant reliability audit ↗</a><a href="/research/pretraining">Unlabelled EEG learning study ↗</a><a href="https://github.com/shrut10/intentlab-bci/blob/main/docs/TEACHING.md">20 minute teaching exercise ↗</a><a href="https://physionet.org/content/eegmmidb/1.0.0/"
+            <div><a href="/research/commands">Command audit and session study ↗</a><a href="/research">Research report and references ↗</a><a href="/research/adaptation">Calibration and alignment comparison ↗</a><a href="/research/reliability">Participant reliability audit ↗</a><a href="/research/pretraining">Unlabelled EEG learning study ↗</a><a href="https://github.com/shrut10/intentlab-bci/blob/main/docs/TEACHING.md">20 minute teaching exercise ↗</a><a href="https://physionet.org/content/eegmmidb/1.0.0/"
                 target="_blank"
                 rel="noopener"
                 >PhysioNet dataset & licence ↗</a

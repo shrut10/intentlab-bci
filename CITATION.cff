@@ -1,23 +1,24 @@
 cff-version: 1.2.0
-message: "If you use IntentLab in teaching or research, cite this software and the original data and methods listed in NOTICE.md."
+message: "Please cite this software and the original recording dataset when using IntentLab"
+title: "IntentLab: EEG decoding and command evaluation"
 type: software
-version: "1.2.0"
-date-released: "2026-10-26"
-title: "IntentLab: recorded motor-imagery EEG decoding and selective prediction"
+version: "1.3.0"
+date-released: "2026-11-14"
 authors:
   - name: "Jayashruthi Rajesh Babu"
     website: "https://jayashruthi.com"
 repository-code: "https://github.com/shrut10/intentlab-bci"
 url: "https://intentlab-bci.vercel.app"
+license: MIT
 abstract: >-
-  An open-source teaching and research demonstration of motor-imagery EEG
-  decoding, participant-disjoint evaluation, confidence-based abstention and
-  channel sensitivity, with separate exploratory studies of personal calibration,
-  Euclidean alignment and masked-channel pretraining. The recorded-data experiments do not establish
-  reliable live control. Cite the specific commit used for reproducibility.
+  Recorded EEG experiments and reusable tools for evaluating decoder predictions
+  and the commands they produce, including participant reliability, temporal
+  decision rules, instructed rest and later session evaluation
+  The experiments do not establish reliable live control
+  Cite the specific commit and original dataset used for reproducibility
 keywords:
   - EEG
+  - brain computer interfaces
   - motor imagery
-  - brain-computer interface
-  - selective prediction
-  - reproducible research
+  - command evaluation
+  - reproducibility
